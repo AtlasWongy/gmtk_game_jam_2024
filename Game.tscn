@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxmgu7drrkgol"]
+[gd_scene load_steps=17 format=3 uid="uid://cxmgu7drrkgol"]
 
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_0kukt"]
-[ext_resource type="Script" path="res://Gate.gd" id="2_a5lgk"]
-[ext_resource type="PackedScene" uid="uid://bds0d08hg7ipj" path="res://objects/Sensor/Sensor.tscn" id="2_ejw6v"]
-[ext_resource type="Script" path="res://test_character.gd" id="4_b6nsf"]
+[ext_resource type="PackedScene" uid="uid://dma2hkr6ihng3" path="res://objects/Gate/gate.tscn" id="2_4vs8i"]
+[ext_resource type="Script" path="res://objects/test_character.gd" id="4_b6nsf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3vra"]
 albedo_color = Color(0.454902, 1, 1, 1)
@@ -39,14 +38,6 @@ background_mode = 2
 sky = SubResource("Sky_me7r3")
 ambient_light_color = Color(0, 0.698039, 0.733333, 1)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_os36j"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_pi1e4"]
-size = Vector3(5, 10, 3)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2kogt"]
-data = PackedVector3Array(-2.5, 5, 1.5, 2.5, 5, 1.5, -2.5, -5, 1.5, 2.5, 5, 1.5, 2.5, -5, 1.5, -2.5, -5, 1.5, 2.5, 5, -1.5, -2.5, 5, -1.5, 2.5, -5, -1.5, -2.5, 5, -1.5, -2.5, -5, -1.5, 2.5, -5, -1.5, 2.5, 5, 1.5, 2.5, 5, -1.5, 2.5, -5, 1.5, 2.5, 5, -1.5, 2.5, -5, -1.5, 2.5, -5, 1.5, -2.5, 5, -1.5, -2.5, 5, 1.5, -2.5, -5, -1.5, -2.5, 5, 1.5, -2.5, -5, 1.5, -2.5, -5, -1.5, 2.5, 5, 1.5, -2.5, 5, 1.5, 2.5, 5, -1.5, -2.5, 5, 1.5, -2.5, 5, -1.5, 2.5, 5, -1.5, -2.5, -5, 1.5, 2.5, -5, 1.5, -2.5, -5, -1.5, 2.5, -5, 1.5, 2.5, -5, -1.5, -2.5, -5, -1.5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jei4w"]
 albedo_color = Color(0.257616, 0.455869, 0.918367, 1)
 
@@ -71,7 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44.4409, 0)
 shadow_enabled = true
 
 [node name="Background" type="MeshInstance3D" parent="Level"]
-transform = Transform3D(69.2749, 0, 0, 0, 69.2749, 0, 0, 0, 39.2507, 0.180075, 0.288888, -15.7783)
+transform = Transform3D(69.2749, 0, 0, 0, 69.2749, 0, 0, 0, 39.2507, 0.180075, 0.288888, -1.30527)
 mesh = SubResource("QuadMesh_qkno2")
 skeleton = NodePath("../..")
 
@@ -99,22 +90,7 @@ shape = SubResource("ConcavePolygonShape3D_0v7l7")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
 environment = SubResource("Environment_dqqoc")
 
-[node name="Gate" type="AnimatableBody3D" parent="Level"]
-transform = Transform3D(1.01669, -0.000192686, 0.000146541, 0.00019269, 1.01669, -5.57839e-05, -0.000146536, 5.57978e-05, 1.01669, 5.211, 4.679, 0)
-physics_material_override = SubResource("PhysicsMaterial_os36j")
-script = ExtResource("2_a5lgk")
-
-[node name="GateMesh" type="MeshInstance3D" parent="Level/Gate"]
-transform = Transform3D(1, -3.72564e-11, 0, -1.04201e-11, 1, -7.27596e-12, 1.45519e-11, 3.63798e-12, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_pi1e4")
-skeleton = NodePath("../../MeshInstance3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Gate"]
-shape = SubResource("ConcavePolygonShape3D_2kogt")
-
-[node name="Sensor" parent="Level/Gate" instance=ExtResource("2_ejw6v")]
-transform = Transform3D(0.983584, 0.000186419, -0.000141759, -0.000186408, 0.983584, 5.39943e-05, 0.000141775, -5.3954e-05, 0.983584, 0.11604, 5.93507, -0.973753)
-skeleton = NodePath("../..")
+[node name="Gate" parent="Level" instance=ExtResource("2_4vs8i")]
 
 [node name="Test Character" type="CharacterBody3D" parent="Level"]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.5105, 0)
@@ -127,5 +103,3 @@ mesh = SubResource("CapsuleMesh_ltnmv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Test Character"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9544, 0.747402, -0.106356)
 shape = SubResource("BoxShape3D_874k6")
-
-[connection signal="sensor_activate" from="Level/Gate/Sensor" to="Level/Gate" method="_on_sensor_activate"]
