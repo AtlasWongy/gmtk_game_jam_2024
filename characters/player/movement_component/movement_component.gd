@@ -55,4 +55,3 @@ func _on_pressed_jump(box_type:int):
 		return
 	velocity.y = 2 * jump_height / apex_duration
 	jump_gravity = velocity.y / apex_duration
-	

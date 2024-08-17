@@ -1,16 +1,17 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxmgu7drrkgol"]
+[gd_scene load_steps=25 format=3 uid="uid://ba5c1vg5wpiy8"]
 
-[ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_0kukt"]
-[ext_resource type="PackedScene" uid="uid://dma2hkr6ihng3" path="res://objects/Gate/gate.tscn" id="2_4vs8i"]
-[ext_resource type="Shader" path="res://assets/Outline.gdshader" id="2_ecg41"]
-[ext_resource type="Material" uid="uid://j54e2f8b3hpx" path="res://assets/Platform.tres" id="2_pgr64"]
-[ext_resource type="Script" path="res://cube_level.gd" id="3_m1gqd"]
-[ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="3_u2quw"]
-[ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="5_ne6au"]
-[ext_resource type="Script" path="res://death_zone.gd" id="7_hp4od"]
+[ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_ldty6"]
+[ext_resource type="Shader" path="res://assets/Outline.gdshader" id="2_wopco"]
+[ext_resource type="Script" path="res://cube_level.gd" id="3_a5qgd"]
+[ext_resource type="Material" uid="uid://j54e2f8b3hpx" path="res://assets/Platform.tres" id="4_t8co7"]
+[ext_resource type="PackedScene" uid="uid://dma2hkr6ihng3" path="res://objects/Gate/gate.tscn" id="5_qbu7p"]
+[ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="6_jnd78"]
+[ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="7_ero0o"]
+[ext_resource type="PackedScene" uid="uid://c80ku4vswsnix" path="res://characters/player/blue_box/blue_box.tscn" id="8_mw2t5"]
+[ext_resource type="Script" path="res://death_zone.gd" id="9_5d677"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hd050"]
-panorama = ExtResource("1_0kukt")
+panorama = ExtResource("1_ldty6")
 
 [sub_resource type="Sky" id="Sky_me7r3"]
 sky_material = SubResource("PanoramaSkyMaterial_hd050")
@@ -21,7 +22,7 @@ sky = SubResource("Sky_me7r3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6yxqj"]
 render_priority = 0
-shader = ExtResource("2_ecg41")
+shader = ExtResource("2_wopco")
 shader_parameter/outlineColor = Color(0, 0, 0, 0.992157)
 shader_parameter/depth_threshold = 0.025
 shader_parameter/normal_threshold = 0.5
@@ -50,21 +51,21 @@ size = Vector3(50, 50, 50)
 data = PackedVector3Array(-0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, -1, -0.5, 0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, 0.5, -1, 0.5, 0.5, -1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, -0.5, -1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cq13r"]
-material = ExtResource("2_pgr64")
+material = ExtResource("4_t8co7")
 size = Vector3(3, 1, 3)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_up43u"]
 data = PackedVector3Array(-1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, 0.5, -1.5, -1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 1.5, -0.5, 1.5, 1.5, 0.5, -1.5, 1.5, -0.5, -1.5, 1.5, -0.5, 1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, 0.5, 1.5, -1.5, 0.5, 1.5, 1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, 0.5, -1.5, 1.5, 0.5, -1.5, -1.5, -0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, -0.5, 1.5, 1.5, -0.5, -1.5, -1.5, -0.5, -1.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ipxim"]
-material = ExtResource("2_pgr64")
+material = ExtResource("4_t8co7")
 size = Vector3(15, 1, 3)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0v7l7"]
 data = PackedVector3Array(-7.5, 0.5, 1.5, 7.5, 0.5, 1.5, -7.5, -0.5, 1.5, 7.5, 0.5, 1.5, 7.5, -0.5, 1.5, -7.5, -0.5, 1.5, 7.5, 0.5, -1.5, -7.5, 0.5, -1.5, 7.5, -0.5, -1.5, -7.5, 0.5, -1.5, -7.5, -0.5, -1.5, 7.5, -0.5, -1.5, 7.5, 0.5, 1.5, 7.5, 0.5, -1.5, 7.5, -0.5, 1.5, 7.5, 0.5, -1.5, 7.5, -0.5, -1.5, 7.5, -0.5, 1.5, -7.5, 0.5, -1.5, -7.5, 0.5, 1.5, -7.5, -0.5, -1.5, -7.5, 0.5, 1.5, -7.5, -0.5, 1.5, -7.5, -0.5, -1.5, 7.5, 0.5, 1.5, -7.5, 0.5, 1.5, 7.5, 0.5, -1.5, -7.5, 0.5, 1.5, -7.5, 0.5, -1.5, 7.5, 0.5, -1.5, -7.5, -0.5, 1.5, 7.5, -0.5, 1.5, -7.5, -0.5, -1.5, 7.5, -0.5, 1.5, 7.5, -0.5, -1.5, -7.5, -0.5, -1.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4blld"]
-material = ExtResource("2_pgr64")
+material = ExtResource("4_t8co7")
 size = Vector3(3, 1, 3)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bjhtf"]
@@ -83,7 +84,7 @@ environment = SubResource("Environment_dqqoc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.9498)
 
 [node name="Camera3D" type="Camera3D" parent="Level/Marker3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90941, 6.82818, 25.7294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7958, 5.0653, 15.6581)
 size = 57.1789
 
 [node name="ShaderMesh" type="MeshInstance3D" parent="Level/Marker3D/Camera3D"]
@@ -96,7 +97,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="BackgroundCube" type="MeshInstance3D" parent="Level"]
 mesh = SubResource("BoxMesh_sxh4v")
 skeleton = NodePath("../..")
-script = ExtResource("3_m1gqd")
+script = ExtResource("3_a5qgd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/BackgroundCube"]
 
@@ -107,7 +108,7 @@ shape = SubResource("ConcavePolygonShape3D_h8te1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.3289)
 
 [node name="Platform" type="MeshInstance3D" parent="Level/BackgroundCube/Face 1"]
-transform = Transform3D(1, -9.47561e-05, 0.000127197, 9.47623e-05, 1, -4.84132e-05, -0.000127192, 4.84252e-05, 1, -12.1525, 0, 1.0384)
+transform = Transform3D(1, -9.47561e-05, 0.000127197, 9.47623e-05, 1, -4.84132e-05, -0.000127192, 4.84252e-05, 1, -12.1525, 0, -5.90319)
 mesh = SubResource("BoxMesh_cq13r")
 skeleton = NodePath("../../../..")
 
@@ -117,7 +118,7 @@ skeleton = NodePath("../../../..")
 shape = SubResource("ConcavePolygonShape3D_up43u")
 
 [node name="Platform2" type="MeshInstance3D" parent="Level/BackgroundCube/Face 1"]
-transform = Transform3D(1, -0.000189502, 0.000254398, 0.000189527, 1, -9.68145e-05, -0.00025438, 9.68627e-05, 1, 0.044007, 0, 1.0384)
+transform = Transform3D(1, -0.000189502, 0.000254398, 0.000189527, 1, -9.68145e-05, -0.00025438, 9.68627e-05, 1, 0.044007, 0, -5.90319)
 mesh = SubResource("BoxMesh_ipxim")
 skeleton = NodePath("../Platform")
 
@@ -126,11 +127,11 @@ skeleton = NodePath("../Platform")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/BackgroundCube/Face 1/Platform2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0v7l7")
 
-[node name="Gate" parent="Level/BackgroundCube/Face 1" instance=ExtResource("2_4vs8i")]
-transform = Transform3D(1, -0.000189502, 0.000254399, 0.000189527, 1, -9.68146e-05, -0.000254381, 9.68628e-05, 1, -0.300493, 4.55008, 1.0384)
+[node name="Gate" parent="Level/BackgroundCube/Face 1" instance=ExtResource("5_qbu7p")]
+transform = Transform3D(1, -0.000189502, 0.000254399, 0.000189527, 1, -9.68146e-05, -0.000254381, 9.68628e-05, 1, -0.300493, 3.1465, -5.90319)
 
 [node name="Platform3" type="MeshInstance3D" parent="Level/BackgroundCube/Face 1"]
-transform = Transform3D(1, -0.000189502, 0.000254398, 0.000189527, 1, -9.68145e-05, -0.00025438, 9.68627e-05, 1, 11.3908, 1.75008, 1.0384)
+transform = Transform3D(1, -0.000189502, 0.000254398, 0.000189527, 1, -9.68145e-05, -0.00025438, 9.68627e-05, 1, 11.3908, 1.75008, -5.90319)
 mesh = SubResource("BoxMesh_4blld")
 skeleton = NodePath("../Platform")
 
@@ -139,15 +140,18 @@ skeleton = NodePath("../Platform")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/BackgroundCube/Face 1/Platform3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bjhtf")
 
-[node name="Flag" parent="Level/BackgroundCube/Face 1/Platform3" instance=ExtResource("5_ne6au")]
+[node name="Flag" parent="Level/BackgroundCube/Face 1/Platform3" instance=ExtResource("6_jnd78")]
 transform = Transform3D(1, 0.000189527, -0.000144131, -0.000189519, 1, 5.48818e-05, 0.00014414, -5.48545e-05, 1, -0.195686, 1.5014, -0.768833)
 
-[node name="RedBox" parent="Level" instance=ExtResource("3_u2quw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6818, 3.28289, 33.5651)
+[node name="RedBox" parent="Level" instance=ExtResource("7_ero0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6818, 3.28289, 26.1896)
+
+[node name="BlueBox" parent="Level" instance=ExtResource("8_mw2t5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8333, 3.20794, 26.2219)
 
 [node name="DeathZone" type="Area3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45.3418, 0)
-script = ExtResource("7_hp4od")
+script = ExtResource("9_5d677")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/DeathZone"]
 shape = SubResource("WorldBoundaryShape3D_lg6u2")
