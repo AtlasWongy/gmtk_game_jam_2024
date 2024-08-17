@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://78nxbcy5lnm2"]
+[gd_scene load_steps=8 format=3 uid="uid://78nxbcy5lnm2"]
 
 [ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="1_4lkkm"]
+[ext_resource type="PackedScene" uid="uid://c80ku4vswsnix" path="res://characters/player/blue_box/blue_box.tscn" id="2_bq2s6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r77l"]
 sky_top_color = Color(0.214771, 0.565469, 0.975304, 1)
@@ -35,6 +36,9 @@ shape = SubResource("BoxShape3D_u64gh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35929, 6.86705, 14.9567)
+
+[node name="BlueBox" parent="." instance=ExtResource("2_bq2s6")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.2422, 0)
 
 [node name="RedBox" parent="." instance=ExtResource("1_4lkkm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86285, 1.65103, 0)
