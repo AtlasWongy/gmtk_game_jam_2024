@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c80ku4vswsnix"]
+[gd_scene load_steps=7 format=3 uid="uid://c80ku4vswsnix"]
 
-[ext_resource type="Script" path="res://characters/player/blue_box/blue_box.gd" id="1_o7dyx"]
+[ext_resource type="Script" path="res://characters/player/player.gd" id="1_2cfad"]
+[ext_resource type="PackedScene" uid="uid://bscn1d5ohdjge" path="res://characters/player/movement_component/movement_component.tscn" id="2_dj43y"]
+[ext_resource type="Resource" uid="uid://csh141ks4txp6" path="res://characters/player/blue_box/blue_box_movement.tres" id="2_xvp5m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58jym"]
 albedo_color = Color(0.311502, 0.45634, 0.861308, 1)
@@ -13,10 +15,17 @@ size = Vector3(0.5, 0.5, 0.5)
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="BlueBox" type="CharacterBody3D"]
-script = ExtResource("1_o7dyx")
+script = ExtResource("1_2cfad")
+box_type = 1
+movement_stats = ExtResource("2_xvp5m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_gurk2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ncd2b")
+
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_dj43y")]
+player = NodePath("..")
+jump_height = 4.0
+apex_duration = 0.5

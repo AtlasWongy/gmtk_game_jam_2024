@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MovementStats" load_steps=2 format=3 uid="uid://bc22l7btvoyil"]
+
+[ext_resource type="Script" path="res://characters/player/movement_component/movement_stats/movement_stats.gd" id="1_p7d0k"]
+
+[resource]
+script = ExtResource("1_p7d0k")
+speed = 10.0
+acceleration = 6.0
