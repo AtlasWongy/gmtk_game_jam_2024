@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://78nxbcy5lnm2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r77l"]
+sky_top_color = Color(0.214771, 0.565469, 0.975304, 1)
+
+[sub_resource type="Sky" id="Sky_dn2x1"]
+sky_material = SubResource("ProceduralSkyMaterial_3r77l")
+
+[sub_resource type="Environment" id="Environment_lq8ww"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_dn2x1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_nk5vr"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u64gh"]
+size = Vector3(5, 1, 5)
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lq8ww")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nk5vr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_u64gh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.930992, -0.365039, 0, 0.365039, 0.930992, 0, 0.452679, 5.73604)
