@@ -16,6 +16,7 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [node name="BlueBox" type="CharacterBody3D"]
 script = ExtResource("1_2cfad")
+box_type = 1
 movement_stats = ExtResource("2_xvp5m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
