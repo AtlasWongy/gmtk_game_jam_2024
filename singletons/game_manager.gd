@@ -7,7 +7,7 @@ var current_box: CurrentBox
 var can_switch:bool = true
 
 func _ready() -> void:
-	current_box = CurrentBox.BLUE_BOX
+	current_box = CurrentBox.RED_BOX
 	SignalBus.set_current_box.connect(_disable_switch)
 	SignalBus.set_enable_switch.connect(_enable_switch)
 

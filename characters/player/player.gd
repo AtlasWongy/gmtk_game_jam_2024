@@ -18,7 +18,6 @@ func _set_can_control():
 	can_control = !can_control
 
 func _input(event: InputEvent) -> void:
-	
 	if !can_control:
 		return
 	
@@ -38,6 +37,10 @@ func _input(event: InputEvent) -> void:
 			
 	if event.is_action_pressed("jump") and is_on_floor():
 		SignalBus.pressed_jump.emit(box_type)
+		
+	if event.is_action_pressed("grow"):
+		print("Grow")
+		# Emit Signal
 			
 func _physics_process(_delta: float) -> void:
 	if is_movement_ongoing():
