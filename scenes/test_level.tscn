@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://78nxbcy5lnm2"]
+[gd_scene load_steps=10 format=3 uid="uid://78nxbcy5lnm2"]
 
 [ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="1_6002u"]
 [ext_resource type="PackedScene" uid="uid://c80ku4vswsnix" path="res://characters/player/blue_box/blue_box.tscn" id="1_onuck"]
+[ext_resource type="Script" path="res://characters/player/movement_component/movement_stats/movement_stats.gd" id="3_gf412"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r77l"]
 sky_top_color = Color(0.214771, 0.565469, 0.975304, 1)
@@ -19,6 +20,11 @@ size = Vector3(20, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u64gh"]
 size = Vector3(20, 1, 10)
+
+[sub_resource type="Resource" id="Resource_xvaxp"]
+script = ExtResource("3_gf412")
+speed = 0.0
+acceleration = 0.0
 
 [node name="TestLevel" type="Node3D"]
 
@@ -42,3 +48,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59077, 1.39161, 0)
 
 [node name="BlueBox" parent="." instance=ExtResource("1_onuck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.833, 0)
+movement_stats = SubResource("Resource_xvaxp")
