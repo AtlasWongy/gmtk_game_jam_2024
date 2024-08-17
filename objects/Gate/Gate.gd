@@ -12,5 +12,3 @@ func _on_sensor_activate(body) -> void:
 		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.tween_property(self,"global_position",global_position+Vector3(0,10,0),1)
 		open = true
-	
-	
