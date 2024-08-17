@@ -4,11 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://dma2hkr6ihng3" path="res://objects/Gate/gate.tscn" id="2_4vs8i"]
 [ext_resource type="Script" path="res://objects/test_character.gd" id="4_b6nsf"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3vra"]
-albedo_color = Color(0.454902, 1, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvsc4"]
+albedo_color = Color(0.54902, 0.305882, 0.823529, 0.776471)
 
-[sub_resource type="QuadMesh" id="QuadMesh_qkno2"]
-material = SubResource("StandardMaterial3D_i3vra")
+[sub_resource type="BoxMesh" id="BoxMesh_sxh4v"]
+material = SubResource("StandardMaterial3D_vvsc4")
+size = Vector3(1, 1, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h8te1"]
+data = PackedVector3Array(-0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, -1, -0.5, 0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, 0.5, -1, 0.5, 0.5, -1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, -0.5, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjaae"]
 albedo_color = Color(1, 0.04, 0.04, 1)
@@ -38,36 +42,38 @@ background_mode = 2
 sky = SubResource("Sky_me7r3")
 ambient_light_color = Color(0, 0.698039, 0.733333, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jei4w"]
-albedo_color = Color(0.257616, 0.455869, 0.918367, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ltnmv"]
-material = SubResource("StandardMaterial3D_jei4w")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tseff"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_874k6"]
-size = Vector3(2.07422, 1, 1.05847)
+size = Vector3(0.904785, 1.86121, 1.05847)
 
 [node name="Game" type="Node"]
 
 [node name="Level" type="Node3D" parent="."]
 
 [node name="Marker3D" type="Marker3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.9498)
 
 [node name="Camera3D" type="Camera3D" parent="Level/Marker3D"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 10.7081, 43.921)
+transform = Transform3D(0.906308, 0.178606, -0.383022, 0, 0.906308, 0.422618, 0.422618, -0.383022, 0.821394, -30.107, 24.1826, 48.0227)
 size = 57.1789
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44.4409, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80.9809, 80.6287)
 shadow_enabled = true
 
-[node name="Background" type="MeshInstance3D" parent="Level"]
-transform = Transform3D(69.2749, 0, 0, 0, 69.2749, 0, 0, 0, 39.2507, 0.180075, 0.288888, -1.30527)
-mesh = SubResource("QuadMesh_qkno2")
+[node name="BackgroundCube" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(69.2749, 0, 0, 0, 69.2749, 0, 0, 0, 39.2507, 0, 0, 0)
+mesh = SubResource("BoxMesh_sxh4v")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/BackgroundCube"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/BackgroundCube/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_h8te1")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
-transform = Transform3D(1, -9.47623e-05, 7.20662e-05, 9.47623e-05, 1, -2.74374e-05, -7.20662e-05, 2.74374e-05, 1, -10, 0, 0)
+transform = Transform3D(1, -9.47623e-05, 7.20662e-05, 9.47623e-05, 1, -2.74374e-05, -7.20662e-05, 2.74374e-05, 1, -10, 0, 40.758)
 mesh = SubResource("BoxMesh_cq13r")
 skeleton = NodePath("../..")
 
@@ -78,7 +84,7 @@ transform = Transform3D(1, 1.82188e-12, 0, 1.25833e-12, 1, 0, 0, -3.63798e-12, 1
 shape = SubResource("ConcavePolygonShape3D_ej5oe")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Level"]
-transform = Transform3D(1.01669, -0.000192686, 0.000146541, 0.00019269, 1.01669, -5.57839e-05, -0.000146536, 5.57978e-05, 1.01669, 7.59307, 0, 0)
+transform = Transform3D(1, -0.000189519, 0.000144141, 0.000189527, 1, -5.48545e-05, -0.00014413, 5.48818e-05, 1, 7.59307, 0, 40.758)
 mesh = SubResource("BoxMesh_ipxim")
 skeleton = NodePath("../MeshInstance3D")
 
@@ -91,15 +97,15 @@ shape = SubResource("ConcavePolygonShape3D_0v7l7")
 environment = SubResource("Environment_dqqoc")
 
 [node name="Gate" parent="Level" instance=ExtResource("2_4vs8i")]
+transform = Transform3D(1.01669, -0.000192686, 0.000146541, 0.00019269, 1.01669, -5.57839e-05, -0.000146536, 5.57978e-05, 1.01669, 5.211, 4.679, 40.758)
 
 [node name="Test Character" type="CharacterBody3D" parent="Level"]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.5105, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.44997, 7.59655, 40.758)
 script = ExtResource("4_b6nsf")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Level/Test Character"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 10.9468, 1.03496, -0.151052)
-mesh = SubResource("CapsuleMesh_ltnmv")
+mesh = SubResource("CapsuleMesh_tseff")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Test Character"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9544, 0.747402, -0.106356)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0119629, 0, 0)
 shape = SubResource("BoxShape3D_874k6")

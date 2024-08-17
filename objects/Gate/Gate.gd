@@ -3,8 +3,8 @@ extends AnimatableBody3D
 var open:bool = false
 
 
-func _on_sensor_activate() -> void:
-	if(!open):
+func _on_sensor_activate(body) -> void:
+	if(!open and body is CharacterBody3D):
 		print("detected!")
 		print(global_position)
 		#translate(Vector3i(0,10,0))
