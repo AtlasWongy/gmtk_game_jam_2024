@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://78nxbcy5lnm2"]
+[gd_scene load_steps=7 format=3 uid="uid://78nxbcy5lnm2"]
+
+[ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="1_6002u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r77l"]
 sky_top_color = Color(0.214771, 0.565469, 0.975304, 1)
@@ -12,10 +14,10 @@ background_energy_multiplier = 2.0
 sky = SubResource("Sky_dn2x1")
 
 [sub_resource type="BoxMesh" id="BoxMesh_nk5vr"]
-size = Vector3(5, 1, 5)
+size = Vector3(20, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u64gh"]
-size = Vector3(5, 1, 5)
+size = Vector3(20, 1, 10)
 
 [node name="TestLevel" type="Node3D"]
 
@@ -28,7 +30,11 @@ mesh = SubResource("BoxMesh_nk5vr")
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0283337, 0, 0)
 shape = SubResource("BoxShape3D_u64gh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.930992, -0.365039, 0, 0.365039, 0.930992, 0, 0.452679, 5.73604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35929, 6.86705, 14.9567)
+
+[node name="RedBox" parent="." instance=ExtResource("1_6002u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.67689, 2.61725, 0)
