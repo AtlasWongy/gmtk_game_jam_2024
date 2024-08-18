@@ -29,8 +29,8 @@ func _enable_switch():
 
 func _on_set_game_state(_game_state):
 	game_state = _game_state
-	if game_state == GameState.GAME_OVER_LOSE or game_state == GameState.GAME_OVER_WIN:
-		toggle_game_over()
+# 	if game_state == GameState.GAME_OVER_LOSE or game_state == GameState.GAME_OVER_WIN:
+# 		toggle_game_over()
 	
 func toggle_pause() -> void:
 	if get_tree().paused:
@@ -42,11 +42,11 @@ func toggle_pause() -> void:
 		game_state = GameState.PAUSED
 		SignalBus.set_pause_menu.emit(true)
 
-func toggle_game_over() -> void:
-	if game_state == GameState.GAME_OVER_LOSE:
-		SignalBus.set_game_over_menu(3)
-	elif game_state == GameState.GAME_OVER_WIN:
-		SignalBus.set_game_over_menu(4)
+# func toggle_game_over() -> void:
+# 	if game_state == GameState.GAME_OVER_LOSE:
+# 		SignalBus.set_game_over_menu(3)
+# 	elif game_state == GameState.GAME_OVER_WIN:
+# 		SignalBus.set_game_over_menu(4)
 
 
 	
