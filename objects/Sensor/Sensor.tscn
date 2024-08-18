@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bds0d08hg7ipj"]
+[gd_scene load_steps=6 format=3 uid="uid://bds0d08hg7ipj"]
 
 [ext_resource type="Script" path="res://objects/Sensor/sensor.gd" id="1_ka4xr"]
 
@@ -9,16 +9,21 @@ albedo_color = Color(0.513726, 1, 0.431373, 1)
 material = SubResource("StandardMaterial3D_ov4hw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wg2s"]
-size = Vector3(1, 0.780762, 3.5)
 
-[node name="Node3D" type="MeshInstance3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1crx"]
+
+[node name="Sensor" type="MeshInstance3D"]
 mesh = SubResource("BoxMesh_ldkg4")
 script = ExtResource("1_ka4xr")
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.000977039, 0.368725, 2.71827)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
 shape = SubResource("BoxShape3D_5wg2s")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_v1crx")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

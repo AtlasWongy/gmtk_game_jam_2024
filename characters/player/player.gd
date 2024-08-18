@@ -56,8 +56,6 @@ func _input(event: InputEvent) -> void:
 	
 	if !can_control:
 		return
-	
-	
 
 	if event.is_action("movement"):
 		movement_direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -91,9 +89,9 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	if is_movement_ongoing():
 		SignalBus.set_direction.emit(movement_direction, box_type)
-		
-	if is_on_ceiling() and is_changing:
-		print("bonk")
+# 		
+# 	if is_on_ceiling():
+# 		print("bonk")
 
 func is_movement_ongoing() -> bool:
 	return abs(movement_direction.x) > 0
