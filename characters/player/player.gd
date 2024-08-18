@@ -19,16 +19,22 @@ var tween:Tween
 func _ready() -> void:
 	
 	SignalBus.set_current_box.connect(_set_can_control)
+	SignalBus.destroy_cube.connect(_destroy_cube)
 	
 	if GameManager.current_box != box_type:
 		can_control = false
 
 	mesh.mesh.material.emission_enabled = can_control
+	movement_direction = Vector3(0,0,0)
 
 
 func _set_can_control():
 	can_control = !can_control
 	mesh.mesh.material.emission_enabled = can_control
+
+func _destroy_cube(cube:GameManager.CurrentBox):
+	if cube==box_type:
+		queue_free()
 
 
 func _input(event: InputEvent) -> void:
@@ -67,10 +73,10 @@ func _input(event: InputEvent) -> void:
 	
 func _physics_process(_delta: float) -> void:
 	if is_movement_ongoing():
+		print("whee")
 		SignalBus.set_direction.emit(movement_direction, box_type)
 		
 	if is_on_ceiling() and is_changing:
-
 		print("bonk")
 
 

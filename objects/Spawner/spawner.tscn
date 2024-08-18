@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuu7y6g7d73p8"]
+
+[ext_resource type="Script" path="res://objects/Spawner/spawner.gd" id="1_675nh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofuya"]
+albedo_color = Color(0.282, 0.3297, 0.6, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_dlb5y"]
+material = SubResource("StandardMaterial3D_ofuya")
+
+[node name="Spawner" type="Node3D"]
+script = ExtResource("1_675nh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_dlb5y")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
