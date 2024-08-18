@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://78nxbcy5lnm2"]
+[gd_scene load_steps=14 format=3 uid="uid://78nxbcy5lnm2"]
 
 [ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="1_4lkkm"]
 [ext_resource type="PackedScene" uid="uid://jqec1by0rjjf" path="res://ui/main_menu/MainMenu.tscn" id="2_5f41v"]
 [ext_resource type="PackedScene" uid="uid://cx6lmqhnkvmfc" path="res://ui/pause_menu/PauseMenu.tscn" id="3_5ngxv"]
 [ext_resource type="Script" path="res://scenes/game_starter.gd" id="3_fmxfb"]
 [ext_resource type="PackedScene" uid="uid://be0pid4rg5rph" path="res://ui/timer_ui/TimerUI.tscn" id="4_c2obm"]
+[ext_resource type="PackedScene" uid="uid://bmdid0ws3ju5s" path="res://ui/game_over_menu/GameOverMenu.tscn" id="5_5r0ds"]
 [ext_resource type="Script" path="res://death_zone.gd" id="6_hcfsw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r77l"]
@@ -46,7 +47,7 @@ shape = SubResource("BoxShape3D_u64gh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35929, 6.86705, 14.9567)
 
 [node name="RedBox" parent="." instance=ExtResource("1_4lkkm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86285, 11.5729, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -57,6 +58,9 @@ process_mode = 3
 visible = false
 
 [node name="TimerUI" parent="CanvasLayer" instance=ExtResource("4_c2obm")]
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("5_5r0ds")]
+visible = false
 
 [node name="GameStarter" type="Node3D" parent="."]
 process_mode = 3
