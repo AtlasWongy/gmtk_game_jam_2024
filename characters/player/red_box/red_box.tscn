@@ -9,6 +9,9 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhovl"]
 albedo_color = Color(0.920032, 0.240951, 0.254209, 1)
+metallic = 0.4
+emission_enabled = true
+emission = Color(1, 0.0405034, 0.0223529, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pas5g"]
 material = SubResource("StandardMaterial3D_xhovl")
@@ -26,5 +29,5 @@ mesh = SubResource("BoxMesh_pas5g")
 
 [node name="MovementComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_6t0iu")]
 player = NodePath("..")
-jump_height = 4.0
-apex_duration = 0.5
+jump_height = 1.0
+apex_duration = 0.2

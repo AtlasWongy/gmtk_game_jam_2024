@@ -1,13 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://ba5c1vg5wpiy8"]
+[gd_scene load_steps=18 format=3 uid="uid://ba5c1vg5wpiy8"]
 
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_ldty6"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_mmf7y"]
 [ext_resource type="Shader" path="res://assets/Outline.gdshader" id="2_wopco"]
 [ext_resource type="Script" path="res://objects/cube_level.gd" id="3_a5qgd"]
+[ext_resource type="Script" path="res://objects/camera.gd" id="3_f5inm"]
 [ext_resource type="PackedScene" uid="uid://6nonlmjrqiry" path="res://scenes/Levels/Level 1-1.tscn" id="5_scypy"]
 [ext_resource type="PackedScene" uid="uid://dkk7gn3qoo1fl" path="res://scenes/Levels/Level 1-3.tscn" id="6_1qwf0"]
-[ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="7_ero0o"]
-[ext_resource type="PackedScene" uid="uid://c80ku4vswsnix" path="res://characters/player/blue_box/blue_box.tscn" id="8_mw2t5"]
 [ext_resource type="Script" path="res://objects/death_zone.gd" id="9_5d677"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hd050"]
@@ -70,6 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.9498)
 [node name="Camera3D" type="Camera3D" parent="Level/Marker3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7958, 5.0653, 15.6581)
 size = 57.1789
+script = ExtResource("3_f5inm")
 
 [node name="ShaderMesh" type="MeshInstance3D" parent="Level/Marker3D/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.0197)
@@ -79,6 +79,7 @@ mesh = SubResource("QuadMesh_i8euw")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -109.868, 93.6658, 81.3825)
 
 [node name="CubeLevel" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("BoxMesh_sxh4v")
 skeleton = NodePath("../..")
 script = ExtResource("3_a5qgd")
@@ -92,12 +93,6 @@ shape = SubResource("ConcavePolygonShape3D_h8te1")
 
 [node name="Level 1-3" parent="Level/CubeLevel" instance=ExtResource("6_1qwf0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -26.4462)
-
-[node name="RedBox" parent="Level" instance=ExtResource("7_ero0o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.827, 2, 27)
-
-[node name="BlueBox" parent="Level" instance=ExtResource("8_mw2t5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.381, 2, 27)
 
 [node name="DeathZone" type="Area3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45.3418, 0)

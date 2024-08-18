@@ -13,6 +13,9 @@ var acceleration: float = 6.0
 var jump_gravity: float = fall_gravity
 var _box_type:int
 
+var super_jump:bool = false
+#do hammer style over acceleration deceleration here?
+
 func _ready() -> void:
 	_box_type = get_parent().box_type
 	SignalBus.set_movement.connect(_on_set_movement)
@@ -25,7 +28,10 @@ func _physics_process(delta: float) -> void:
 	if !player.can_control:
 		direction = Vector3(0,0,0)
 		
-	velocity.x = speed * direction.normalized().x
+	velocity.x = max(speed * direction.normalized().x, 0.8* velocity.x)
+	
+	if super_jump:
+		velocity.x += 100
 	
 	
 	
@@ -63,10 +69,13 @@ func _on_pressed_jump(box_type:int):
 
 		if col.get_collider() is Player:
 			var player_col: Player = col.get_collider()
-			if player_col.is_changing:
+			if player_col.is_changing and player_col.is_growing:
 				if player_col.box_type == 1:
-					velocity.y += 20
+					velocity.y += 60
 					print("bonus jump")
+				else:
+					super_jump = true
+					print("bonus horizontal jump")
 				
 			print("touching player while jumping")
 			

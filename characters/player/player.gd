@@ -15,6 +15,7 @@ var can_control: bool = true
 var is_grown:bool = false
 var is_changing:bool = false
 var is_shrunk:bool = true
+var is_growing:bool = false #use for tracking super jumps
 
 var tween:Tween
 
@@ -102,7 +103,7 @@ func _grow_right():
 		is_changing = true
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
-		
+		is_growing = true
 		if box_type == 1:
 			_grow_animate(tween, 0, 5, "right")
 		else:
@@ -113,6 +114,7 @@ func _grow_left():
 		is_changing = true
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
+		is_growing = true
 		if box_type == 1:
 			_grow_animate(tween, 0, 5, "left")
 		else:
@@ -173,3 +175,4 @@ func on_grown():
 	is_changing = false
 	is_grown = true
 	is_shrunk = false
+	is_growing = false
