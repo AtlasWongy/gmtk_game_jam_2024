@@ -44,6 +44,7 @@ func toggle_pause() -> void:
 
 func toggle_game_over() -> void:
 	SignalBus.set_game_over_menu.emit(true)
+	get_tree().paused = false
 
 
 	
