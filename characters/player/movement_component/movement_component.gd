@@ -28,16 +28,16 @@ func _physics_process(delta: float) -> void:
 	if !player.can_control:
 		direction = Vector3(0,0,0)
 	
-	if abs(velocity.x) > speed:
+	if abs(velocity.x) > speed+10:
 		if direction.normalized().x > 0:
-			velocity.x = max(speed * direction.normalized().x,  0.8* velocity.x)
+			velocity.x = max(speed * direction.normalized().x,  0.95 * velocity.x)
 		else:
-			velocity.x = min(speed * direction.normalized().x,  0.8* velocity.x)
+			velocity.x = min(speed * direction.normalized().x,  0.95 * velocity.x)
 	else:
 		velocity.x = speed * direction.normalized().x
 	
 	if super_jump:
-		velocity.x += 100
+		velocity.x += 50
 		super_jump = false
 	
 	if not player.is_on_floor():
