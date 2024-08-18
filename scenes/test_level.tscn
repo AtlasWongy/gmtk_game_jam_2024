@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://78nxbcy5lnm2"]
+[gd_scene load_steps=16 format=3 uid="uid://78nxbcy5lnm2"]
 
 [ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="1_4lkkm"]
 [ext_resource type="PackedScene" uid="uid://jqec1by0rjjf" path="res://ui/main_menu/MainMenu.tscn" id="2_5f41v"]
@@ -28,6 +28,10 @@ size = Vector3(20, 1, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0fel"]
 size = Vector3(3.6026, 1, 9.09973)
 
+[sub_resource type="BoxMesh" id="BoxMesh_vehh4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ovxm"]
+
 [node name="TestLevel" type="Node3D"]
 process_mode = 1
 
@@ -44,10 +48,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0283337, 0, 0)
 shape = SubResource("BoxShape3D_u64gh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35929, 6.86705, 14.9567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35929, 1.30022, 14.9567)
 
 [node name="RedBox" parent="." instance=ExtResource("1_4lkkm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.957196, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -72,5 +76,14 @@ script = ExtResource("6_hcfsw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7753, 0, -0.436462)
 shape = SubResource("BoxShape3D_d0fel")
+
+[node name="RandomCeiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 5, 0, 2.41209, 0)
+mesh = SubResource("BoxMesh_vehh4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RandomCeiling"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RandomCeiling/StaticBody3D"]
+shape = SubResource("BoxShape3D_5ovxm")
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
