@@ -49,13 +49,13 @@ func _input(event: InputEvent) -> void:
 		_grow_left()
 		
 	if (event.is_action_pressed("grow") or event.is_action_pressed("grow_right")) and !is_changing:
-		_grow()
+		_grow_right()
 
 	if event.is_action_pressed("shrink_left") and !is_changing:
 		_shrink_left()
 		
 	if (event.is_action_pressed("shrink") or event.is_action_pressed("shrink_right")) and !is_changing:
-		_shrink()
+		_shrink_right()
 	
 func _physics_process(_delta: float) -> void:
 	if is_movement_ongoing():
@@ -64,25 +64,16 @@ func _physics_process(_delta: float) -> void:
 func is_movement_ongoing() -> bool:
 	return abs(movement_direction.x) > 0
 
-func _grow():
+func _grow_right():
 	if !is_grown:
 		is_changing = true
 		print("Starting to grow.")
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		if box_type == 1:
-			tween.tween_property(mesh, "position", Vector3(0, 2.5, 0), 1).as_relative().from_current()
-			tween.tween_property(collisionShape, "position", Vector3(0, 2.5, 0), 1).as_relative().from_current()
-			tween.tween_property(mesh.mesh, "size:y", 5, 1).as_relative().from_current()
-			tween.tween_property(collisionShape.shape, "size:y", 5, 1).as_relative().from_current()
+			_grow_animate(tween, 0, 5, "right")
 		else:
-			tween.tween_property(mesh, "position", Vector3(2.5, 0, 0), 1).as_relative().from_current()
-			tween.tween_property(collisionShape, "position", Vector3(2.5, 0, 0), 1).as_relative().from_current()
-			tween.tween_property(mesh.mesh, "size:x", 5, 1).as_relative().from_current()
-			tween.tween_property(collisionShape.shape, "size:x", 5, 1).as_relative().from_current()
-
-	#tween.tween_callback(grow_check)
-		tween.connect("finished", on_grown)
+			_grow_animate(tween, 5, 0, "right")
 		
 func _grow_left():
 	if !is_grown:
@@ -91,20 +82,11 @@ func _grow_left():
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		if box_type == 1:
-			tween.tween_property(mesh, "position", Vector3(0, 2.5, 0), 1).as_relative().from_current()
-			tween.tween_property(collisionShape, "position", Vector3(0, 2.5, 0), 1).as_relative().from_current()
-			tween.tween_property(mesh.mesh, "size:y", 5, 1).as_relative().from_current()
-			tween.tween_property(collisionShape.shape, "size:y", 5, 1).as_relative().from_current()
+			_grow_animate(tween, 0, 5, "left")
 		else:
-			tween.tween_property(mesh, "position", Vector3(-2.5, 0, 0), 1).as_relative().from_current()
-			tween.tween_property(collisionShape, "position", Vector3(-2.5, 0, 0), 1).as_relative().from_current()
-			tween.tween_property(mesh.mesh, "size:x", 5, 1).as_relative().from_current()
-			tween.tween_property(collisionShape.shape, "size:x", 5, 1).as_relative().from_current()
-
-	#tween.tween_callback(grow_check)
-		tween.connect("finished", on_grown)
-		
-func _shrink():
+			_grow_animate(tween, 5, 0, "left")
+			
+func _shrink_right():
 	if !is_shrunk:
 		is_changing = true
 		print("Starting to shrink.")
@@ -112,17 +94,9 @@ func _shrink():
 		tween.set_parallel()
 
 		if box_type == 1:
-			tween.tween_property(mesh, "position", Vector3(0, -2.5, 0), 1).as_relative().from_current()
-			tween.tween_property(collisionShape, "position", Vector3(0, -2.5, 0), 1).as_relative().from_current()
-			tween.tween_property(mesh.mesh, "size:y", -5, 1).as_relative().from_current()
-			tween.tween_property(collisionShape.shape, "size:y", -5, 1).as_relative().from_current()
+			_shrink_animate(tween, 0, 5, "right")
 		else:
-			tween.tween_property(mesh, "position", Vector3(2.5, 0, 0), 1).as_relative().from_current()
-			tween.tween_property(collisionShape, "position", Vector3(2.5, 0, 0), 1).as_relative().from_current()
-			tween.tween_property(mesh.mesh, "size:x", -5, 1).as_relative().from_current()
-			tween.tween_property(collisionShape.shape, "size:x", -5, 1).as_relative().from_current()
-		tween.connect("finished", on_shrunk)
-	#tween.tween_callback(shrink_check)
+			_shrink_animate(tween, 5, 0, "right")
 	
 func _shrink_left():
 	if !is_shrunk:
@@ -132,18 +106,34 @@ func _shrink_left():
 		tween.set_parallel()
 
 		if box_type == 1:
-			tween.tween_property(mesh, "position", Vector3(0, -2.5, 0), 1).as_relative().from_current()
-			tween.tween_property(collisionShape, "position", Vector3(0, -2.5, 0), 1).as_relative().from_current()
-			tween.tween_property(mesh.mesh, "size:y", -5, 1).as_relative().from_current()
-			tween.tween_property(collisionShape.shape, "size:y", -5, 1).as_relative().from_current()
+			_shrink_animate(tween, 0, 5, "left")
 		else:
-			tween.tween_property(mesh, "position", Vector3(-2.5, 0, 0), 1).as_relative().from_current()
-			tween.tween_property(collisionShape, "position", Vector3(-2.5, 0, 0), 1).as_relative().from_current()
-			tween.tween_property(mesh.mesh, "size:x", -5, 1).as_relative().from_current()
-			tween.tween_property(collisionShape.shape, "size:x", -5, 1).as_relative().from_current()
-		tween.connect("finished", on_shrunk)
-	#tween.tween_callback(shrink_check)
+			_shrink_animate(tween, 5, 0, "left")
+
+func _grow_animate(tween:Tween, x:float, y:float, direction:String):
+	if direction == "right":
+		tween.tween_property(mesh, "position", Vector3(x/2, y/2, 0), 1).as_relative().from_current()
+		tween.tween_property(collisionShape, "position", Vector3(x/2, y/2, 0), 1).as_relative().from_current()
+	else:
+		tween.tween_property(mesh, "position", Vector3(-x/2, y/2, 0), 1).as_relative().from_current()
+		tween.tween_property(collisionShape, "position", Vector3(-x/2, y/2, 0), 1).as_relative().from_current()
+	tween.tween_property(mesh.mesh, "size", Vector3(x, y, 0), 1).as_relative().from_current()
+	tween.tween_property(collisionShape.shape, "size", Vector3(x, y, 0), 1).as_relative().from_current()
 	
+	tween.connect("finished", on_grown)
+
+func _shrink_animate(tween:Tween, x:float, y:float, direction:String):
+	if direction == "right":
+		tween.tween_property(mesh, "position", Vector3(x/2, y/2, 0), 1).as_relative().from_current()
+		tween.tween_property(collisionShape, "position", Vector3(x/2, y/2, 0), 1).as_relative().from_current()
+	else:
+		tween.tween_property(mesh, "position", Vector3(-x/2, y/2, 0), 1).as_relative().from_current()
+		tween.tween_property(collisionShape, "position", Vector3(-x/2, y/2, 0), 1).as_relative().from_current()
+	tween.tween_property(mesh.mesh, "size", Vector3(-x, -y, 0), 1).as_relative().from_current()
+	tween.tween_property(collisionShape.shape, "size", Vector3(-x, -y, 0), 1).as_relative().from_current()
+	
+	tween.connect("finished", on_shrunk)
+
 func on_shrunk():
 	print("Shrink complete.")
 	is_changing = false
