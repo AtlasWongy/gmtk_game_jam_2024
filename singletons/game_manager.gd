@@ -31,9 +31,7 @@ func _enable_switch():
 	can_switch = true
 	
 func _register_level(level:Node3D):
-	
 	level_ref = level
-	print(level)
 
 func _on_set_game_state(_game_state):
 	game_state = _game_state
