@@ -19,6 +19,7 @@ material = SubResource("StandardMaterial3D_xhovl")
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="RedBox" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_utoyu")
 movement_stats = ExtResource("2_i40s3")
 

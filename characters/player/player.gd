@@ -7,6 +7,8 @@ class_name Player
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var collisionShape: CollisionShape3D = $CollisionShape3D
 
+var death_vfx = preload("res://objects/VFX/cube_death_vfx.tscn")
+
 var movement_direction: Vector3
 var can_control: bool = true
 
@@ -31,10 +33,22 @@ func _ready() -> void:
 func _set_can_control():
 	can_control = !can_control
 	mesh.mesh.material.emission_enabled = can_control
+	if !can_control:
+		movement_direction = Vector3(0,0,0)
+
 
 func _destroy_cube(cube:GameManager.CurrentBox):
 	if cube==box_type:
-		queue_free()
+		mesh.position.y = 0
+		collisionShape.position.y = 0
+		mesh.mesh.size = Vector3(0.5,0.5,0.5)
+		collisionShape.shape.size = Vector3(0.5,0.5,0.5)
+
+		var vfx = death_vfx.instantiate()
+		GameManager.level_ref.add_child(vfx)
+		vfx.global_position = global_position
+		vfx.emitting = true
+		call_deferred("queue_free")
 
 
 func _input(event: InputEvent) -> void:
@@ -42,11 +56,7 @@ func _input(event: InputEvent) -> void:
 	if !can_control:
 		return
 	
-	if event.is_action_pressed("switch_box") and event.is_pressed() and GameManager.can_switch:
-		SignalBus.set_current_box.emit()
 	
-	if event.is_action_released("switch_box") and event.is_released() and !GameManager.can_switch:
-		SignalBus.set_enable_switch.emit()
 
 	if event.is_action("movement"):
 		movement_direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -71,14 +81,18 @@ func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("shrink") or event.is_action_pressed("shrink_right")) and !is_changing:
 		_shrink_right()
 	
+	if event.is_action_pressed("switch_box") and event.is_pressed() and GameManager.can_switch:
+		SignalBus.set_current_box.emit()
+	
+	if event.is_action_released("switch_box") and event.is_released() and !GameManager.can_switch:
+		SignalBus.set_enable_switch.emit()
+	
 func _physics_process(_delta: float) -> void:
 	if is_movement_ongoing():
-		print("whee")
 		SignalBus.set_direction.emit(movement_direction, box_type)
 		
 	if is_on_ceiling() and is_changing:
 		print("bonk")
-
 
 func is_movement_ongoing() -> bool:
 	return abs(movement_direction.x) > 0
@@ -89,6 +103,7 @@ func _grow_right():
 		print("Starting to grow.")
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
+		
 		if box_type == 1:
 			_grow_animate(tween, 0, 5, "right")
 		else:

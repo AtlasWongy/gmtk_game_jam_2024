@@ -15,6 +15,7 @@ func _ready() -> void:
 	SignalBus.set_enable_switch.connect(_enable_switch)
 	SignalBus.register_level.connect(_register_level)
 	SignalBus.set_game_state.connect(_on_set_game_state)
+	SignalBus.set_current_box.connect(_set_current_box)
 	
 	current_box = CurrentBox.RED_BOX
 	game_state = GameState.NOT_STARTED
@@ -23,6 +24,14 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and game_state != GameState.NOT_STARTED:
 		toggle_pause()
+
+func _set_current_box():
+	if current_box == CurrentBox.RED_BOX:
+		current_box = CurrentBox.BLUE_BOX
+	else:
+		current_box = CurrentBox.RED_BOX
+
+
 
 func _disable_switch():
 	can_switch = false

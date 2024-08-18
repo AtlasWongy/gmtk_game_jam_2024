@@ -52,7 +52,8 @@ size = Vector3(50, 50, 50)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h8te1"]
 data = PackedVector3Array(-0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, -1, -0.5, 0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, 0.5, -1, 0.5, 0.5, -1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, -0.5, -1)
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_lg6u2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8exy2"]
+size = Vector3(100, 1, 100)
 
 [node name="Game" type="Node"]
 
@@ -86,19 +87,19 @@ script = ExtResource("3_a5qgd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/BackgroundCube/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_h8te1")
 
-[node name="Face 1" parent="Level/BackgroundCube" instance=ExtResource("5_scypy")]
+[node name="Level 1-1" parent="Level/BackgroundCube" instance=ExtResource("5_scypy")]
 
 [node name="RedBox" parent="Level" instance=ExtResource("7_ero0o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5135, 3.28289, 26.9621)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.513, 3.283, 27)
 
 [node name="BlueBox" parent="Level" instance=ExtResource("8_mw2t5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7348, 3.20794, 26.9134)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.735, 3.208, 27)
 
 [node name="DeathZone" type="Area3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45.3418, 0)
 script = ExtResource("9_5d677")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/DeathZone"]
-shape = SubResource("WorldBoundaryShape3D_lg6u2")
+shape = SubResource("BoxShape3D_8exy2")
 
 [connection signal="body_entered" from="Level/DeathZone" to="Level/DeathZone" method="_on_body_entered"]

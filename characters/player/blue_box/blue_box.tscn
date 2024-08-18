@@ -19,7 +19,7 @@ size = Vector3(0.5, 0.5, 0.5)
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="BlueBox" type="CharacterBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 3
 script = ExtResource("1_4wx10")
 box_type = 1
 movement_stats = ExtResource("2_xvp5m")

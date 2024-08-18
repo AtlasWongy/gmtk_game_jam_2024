@@ -27,10 +27,11 @@ func _spawn_cube(cube:GameManager.CurrentBox):
 		if cube_type==GameManager.CurrentBox.RED_BOX:
 
 			var red_cube = red_cube_scene.instantiate()
-			red_cube.global_position = marker.global_position
 			GameManager.level_ref.add_child(red_cube)
+			red_cube.global_position = marker.global_position
+
 		else:
 
 			var blue_cube = blue_cube_scene.instantiate()
-			blue_cube.global_position = marker.global_position
 			GameManager.level_ref.add_child(blue_cube)
+			blue_cube.global_position = marker.global_position

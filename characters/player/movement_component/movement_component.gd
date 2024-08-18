@@ -21,7 +21,13 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	
+	if !player.can_control:
+		direction = Vector3(0,0,0)
+		
 	velocity.x = speed * direction.normalized().x
+	
+	
 	
 	if not player.is_on_floor():
 		if velocity.y >= 0:
@@ -52,4 +58,17 @@ func _on_pressed_jump(box_type:int):
 	if(box_type != _box_type):
 		return
 	velocity.y = 2 * jump_height / apex_duration
+	for i in player.get_slide_collision_count():
+		var col = player.get_slide_collision(i)
+
+		if col.get_collider() is Player:
+			var player_col: Player = col.get_collider()
+			if player_col.is_changing:
+				if player_col.box_type == 1:
+					velocity.y += 20
+					print("bonus jump")
+				
+			print("touching player while jumping")
+			
+
 	jump_gravity = velocity.y / apex_duration

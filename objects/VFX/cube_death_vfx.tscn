@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp5mqk25dke4u"]
+
+[ext_resource type="Texture2D" uid="uid://bp8pb50387o2s" path="res://assets/Flare01.png" id="1_o6gk4"]
+[ext_resource type="Script" path="res://objects/VFX/cube_death_vfx.gd" id="2_0jde6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eb34i"]
+transparency = 1
+depth_draw_mode = 2
+shading_mode = 0
+albedo_color = Color(0.826266, 0.755166, 0.718769, 1)
+albedo_texture = ExtResource("1_o6gk4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0sdrf"]
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 7.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_ndlc4"]
+size = Vector2(0.5, 0.5)
+
+[node name="CubeDeathVFX" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_eb34i")
+emitting = false
+amount = 32
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_0sdrf")
+draw_pass_1 = SubResource("QuadMesh_ndlc4")
+script = ExtResource("2_0jde6")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
