@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx6lmqhnkvmfc"]
+
+[ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="1_swc3n"]
+
+[node name="PauseMenu" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -379.5
+offset_top = -364.0
+offset_right = 379.5
+offset_bottom = 364.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_swc3n")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="PauseTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="SwitchControlHint" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "[Q] = Switch Box"
+horizontal_alignment = 1
+
+[node name="GrowControlHint" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "[G] = Grow / Expand"
+horizontal_alignment = 1
+
+[node name="ShrinkControlHint" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "[S] = Shrink"
+horizontal_alignment = 1

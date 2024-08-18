@@ -49,8 +49,6 @@ func _on_set_direction(_direction: Vector3, box_type:int):
 	direction = _direction
 	
 func _on_pressed_jump(box_type:int):
-	print(box_type)
-
 	if(box_type != _box_type):
 		return
 	velocity.y = 2 * jump_height / apex_duration
