@@ -47,7 +47,7 @@ shape = SubResource("BoxShape3D_u64gh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35929, 6.86705, 14.9567)
 
 [node name="RedBox" parent="." instance=ExtResource("1_4lkkm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86285, 11.5729, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
