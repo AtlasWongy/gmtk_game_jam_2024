@@ -12,6 +12,8 @@ var can_control: bool = true
 var is_grown:bool = false
 var is_growing:bool = false
 
+var tween:Tween
+
 func _ready() -> void:
 	
 	SignalBus.set_current_box.connect(_set_can_control)
@@ -51,13 +53,18 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	if is_movement_ongoing():
 		SignalBus.set_direction.emit(movement_direction, box_type)
+	if is_on_ceiling() and is_growing:
+		print(get_last_slide_collision().get_collider())
+		print(get_slide_collision_count())
+		print("bonk")
+		#_reset_grow_vertical()
 
 func is_movement_ongoing() -> bool:
 	return abs(movement_direction.x) > 0
 
 func _grow_vertical():
 	is_growing = true
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
 	tween.set_parallel()
 	#mesh.mesh.size = mesh.mesh.size + Vector3(0,5,0)
 	if is_grown:
@@ -70,6 +77,18 @@ func _grow_vertical():
 		tween.tween_property(collisionShape.shape,"size:y",5,1).as_relative().from_current()
 		#collisionShape
 		is_grown = true
+	tween.tween_callback(mesh_check).set_delay(1)
+
+func _reset_grow_vertical():
+	is_growing = true
+	tween.kill()
+	tween = get_tree().create_tween()
+	tween.set_parallel()
+	
+	tween.tween_property(mesh.mesh,"size:y",0.5,1)
+	tween.tween_property(collisionShape.shape,"size:y",0.5,1)
+	#collisionShape
+	is_grown = false
 	tween.tween_callback(mesh_check)
 
 func mesh_check():

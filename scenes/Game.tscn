@@ -128,7 +128,7 @@ skeleton = NodePath("../Platform")
 shape = SubResource("ConcavePolygonShape3D_0v7l7")
 
 [node name="Gate" parent="Level/BackgroundCube/Face 1" instance=ExtResource("5_qbu7p")]
-transform = Transform3D(1, -0.000189502, 0.000254399, 0.000189527, 1, -9.68146e-05, -0.000254381, 9.68628e-05, 1, -0.300493, 3.1465, -5.90319)
+transform = Transform3D(1, -0.000189502, 0.000254399, 0.000189527, 1, -9.68146e-05, -0.000254381, 9.68628e-05, 1, -0.300493, 6.98282, -5.90319)
 
 [node name="Platform3" type="MeshInstance3D" parent="Level/BackgroundCube/Face 1"]
 transform = Transform3D(1, -0.000189502, 0.000254398, 0.000189527, 1, -9.68145e-05, -0.00025438, 9.68627e-05, 1, 11.3908, 1.75008, -5.90319)
