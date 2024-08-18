@@ -1,0 +1,140 @@
+[gd_scene load_steps=18 format=3 uid="uid://cincemexwtwru"]
+
+[ext_resource type="Script" path="res://scenes/Levels/level_1_2/level_1_2.gd" id="1_sscbs"]
+[ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="2_5girj"]
+[ext_resource type="PackedScene" uid="uid://c80ku4vswsnix" path="res://characters/player/blue_box/blue_box.tscn" id="3_hv6dt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gkuuh"]
+size = Vector3(3, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bfa20"]
+size = Vector3(3, 1, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_db321"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qfkak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov4hw"]
+albedo_color = Color(0.513726, 1, 0.431373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_36t5h"]
+material = SubResource("StandardMaterial3D_ov4hw")
+size = Vector3(0.5, 0.25, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_00xmu"]
+size = Vector3(0.5, 0.25, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_36n1c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dbw8l"]
+material = SubResource("StandardMaterial3D_ov4hw")
+size = Vector3(0.5, 0.25, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ypus"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2m04"]
+material = SubResource("StandardMaterial3D_ov4hw")
+size = Vector3(0.5, 0.25, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m7gt6"]
+size = Vector3(0.5, 0.25, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1esvq"]
+size = Vector3(1, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5b2e8"]
+size = Vector3(1, 6, 1)
+
+[node name="Level 1-2" type="Node3D" node_paths=PackedStringArray("sensor_a", "sensor_b", "sensor_c", "platform_4", "platform_5")]
+script = ExtResource("1_sscbs")
+sensor_a = NodePath("Platform2/Sensor/Area3D")
+sensor_b = NodePath("Platform3/Sensor2/Area3D")
+sensor_c = NodePath("Platform4/Sensor2/Area3D")
+platform_4 = NodePath("Platform4")
+platform_5 = NodePath("Platform5")
+
+[node name="Platform1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+mesh = SubResource("BoxMesh_gkuuh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform1/StaticBody3D"]
+shape = SubResource("BoxShape3D_bfa20")
+
+[node name="Platform2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 6, 0)
+mesh = SubResource("BoxMesh_db321")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2/StaticBody3D"]
+shape = SubResource("BoxShape3D_qfkak")
+
+[node name="Sensor" type="MeshInstance3D" parent="Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.630288, 0)
+mesh = SubResource("BoxMesh_36t5h")
+
+[node name="Area3D" type="Area3D" parent="Platform2/Sensor"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Platform2/Sensor/Area3D"]
+shape = SubResource("BoxShape3D_00xmu")
+
+[node name="Platform3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 6, 0)
+mesh = SubResource("BoxMesh_36n1c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
+shape = SubResource("BoxShape3D_qfkak")
+
+[node name="Sensor2" type="MeshInstance3D" parent="Platform3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196781, 0.628903, 0)
+mesh = SubResource("BoxMesh_dbw8l")
+skeleton = NodePath("../../Platform2")
+
+[node name="Area3D" type="Area3D" parent="Platform3/Sensor2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Platform3/Sensor2/Area3D"]
+shape = SubResource("BoxShape3D_00xmu")
+
+[node name="Platform4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 4.5, 0)
+mesh = SubResource("BoxMesh_2ypus")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform4/StaticBody3D"]
+shape = SubResource("BoxShape3D_qfkak")
+
+[node name="Sensor2" type="MeshInstance3D" parent="Platform4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196781, 0.628578, 0)
+mesh = SubResource("BoxMesh_n2m04")
+skeleton = NodePath("../../Platform2")
+
+[node name="Area3D" type="Area3D" parent="Platform4/Sensor2"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Platform4/Sensor2/Area3D"]
+shape = SubResource("BoxShape3D_m7gt6")
+
+[node name="Platform5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.422714, 0)
+mesh = SubResource("BoxMesh_1esvq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform5/StaticBody3D"]
+shape = SubResource("BoxShape3D_5b2e8")
+
+[node name="TestCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59072, 11.0049, 17.51)
+
+[node name="RedBox" parent="." instance=ExtResource("2_5girj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.2811, 0)
+
+[node name="BlueBox" parent="." instance=ExtResource("3_hv6dt")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.11072, 12.7791, 0)
+
+[connection signal="body_entered" from="Platform3/Sensor2/Area3D" to="Platform3/Sensor2" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Platform4/Sensor2/Area3D" to="Platform4/Sensor2" method="_on_area_3d_body_entered"]

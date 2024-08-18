@@ -27,10 +27,10 @@ func _physics_process(delta: float) -> void:
 		
 	velocity.x = speed * direction.normalized().x
 	
-	
-	
 	if not player.is_on_floor():
-		if velocity.y >= 0:
+		if player.is_on_ceiling():
+			velocity.y = 0
+		elif velocity.y >= 0:
 			velocity.y -= jump_gravity * delta
 		else:
 			velocity.y -= fall_gravity * delta
