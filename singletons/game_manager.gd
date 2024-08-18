@@ -9,6 +9,7 @@ var game_state: GameState
 var can_switch:bool = true
 
 var level_ref: Node3D #used for spawners to spawn new cubes in
+var level_id:int = 0
 
 func _ready() -> void:
 	SignalBus.set_current_box.connect(_disable_switch)
@@ -16,6 +17,7 @@ func _ready() -> void:
 	SignalBus.register_level.connect(_register_level)
 	SignalBus.set_game_state.connect(_on_set_game_state)
 	SignalBus.set_current_box.connect(_set_current_box)
+	SignalBus.level_complete.connect(_level_complete)
 	
 	current_box = CurrentBox.RED_BOX
 	game_state = GameState.NOT_STARTED
@@ -31,6 +33,8 @@ func _set_current_box():
 	else:
 		current_box = CurrentBox.RED_BOX
 
+func _level_complete():
+	level_id += 1
 
 
 func _disable_switch():

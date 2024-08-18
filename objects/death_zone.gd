@@ -10,5 +10,5 @@ func _on_body_entered(body: Node3D) -> void:
 	
 func _respawn():
 	
-	SignalBus.spawn_cube.emit(GameManager.CurrentBox.RED_BOX)
-	SignalBus.spawn_cube.emit(GameManager.CurrentBox.BLUE_BOX)
+	SignalBus.spawn_cube.emit(GameManager.CurrentBox.RED_BOX, GameManager.level_id)
+	SignalBus.spawn_cube.emit(GameManager.CurrentBox.BLUE_BOX, GameManager.level_id)

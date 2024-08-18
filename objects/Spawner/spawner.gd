@@ -3,8 +3,8 @@ extends Node3D
 const spawner_colors = ["#994849","#58a65c"]
 
 @export var cube_type: GameManager.CurrentBox
-@export var active_spawner:bool = false
-@export var level_id:int
+var active_spawner:bool = false
+@export var level:int
 
 @onready var marker = $Marker3D
 @onready var mesh:MeshInstance3D = $MeshInstance3D
@@ -21,9 +21,9 @@ func _ready():
 func _set_active_spawner():
 	pass
 
-func _spawn_cube(cube:GameManager.CurrentBox):
+func _spawn_cube(cube:GameManager.CurrentBox, level_id:int):
 
-	if cube==cube_type:
+	if cube==cube_type and level_id == level:
 		if cube_type==GameManager.CurrentBox.RED_BOX:
 
 			var red_cube = red_cube_scene.instantiate()
