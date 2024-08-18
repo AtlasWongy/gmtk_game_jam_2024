@@ -18,8 +18,6 @@ func _ready():
 		sensor.position.y += offset/2
 
 
-
-
 func _on_sensor_activate(body) -> void:
 	if(!open and body is CharacterBody3D):
 		print("detected!")
