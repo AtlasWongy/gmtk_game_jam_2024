@@ -10,7 +10,7 @@ func flag_reached():
 	rotating = true
 	var tween = get_tree().create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	tween.tween_property(self,"global_rotation_degrees",global_rotation_degrees+Vector3(0,-180,0),1)
+	tween.tween_property(self,"global_rotation_degrees",global_rotation_degrees+Vector3(0,-90,0),1)
 	tween.tween_callback(_set_rotating_false)
 
 func _set_rotating_false():
