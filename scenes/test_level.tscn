@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://78nxbcy5lnm2"]
+[gd_scene load_steps=13 format=3 uid="uid://78nxbcy5lnm2"]
 
 [ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="1_4lkkm"]
 [ext_resource type="PackedScene" uid="uid://jqec1by0rjjf" path="res://ui/main_menu/MainMenu.tscn" id="2_5f41v"]
 [ext_resource type="PackedScene" uid="uid://cx6lmqhnkvmfc" path="res://ui/pause_menu/PauseMenu.tscn" id="3_5ngxv"]
 [ext_resource type="Script" path="res://scenes/game_starter.gd" id="3_fmxfb"]
 [ext_resource type="PackedScene" uid="uid://be0pid4rg5rph" path="res://ui/timer_ui/TimerUI.tscn" id="4_c2obm"]
+[ext_resource type="Script" path="res://death_zone.gd" id="6_hcfsw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r77l"]
 sky_top_color = Color(0.214771, 0.565469, 0.975304, 1)
@@ -22,6 +23,9 @@ size = Vector3(20, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u64gh"]
 size = Vector3(20, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0fel"]
+size = Vector3(3.6026, 1, 9.09973)
 
 [node name="TestLevel" type="Node3D"]
 process_mode = 1
@@ -57,3 +61,12 @@ visible = false
 [node name="GameStarter" type="Node3D" parent="."]
 process_mode = 3
 script = ExtResource("3_fmxfb")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("6_hcfsw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7753, 0, -0.436462)
+shape = SubResource("BoxShape3D_d0fel")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://dwq4nk5vpl4ya"]
-
-[node name="Timer" type="Timer"]
-process_mode = 1
