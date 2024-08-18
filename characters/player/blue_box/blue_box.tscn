@@ -5,12 +5,18 @@
 [ext_resource type="Resource" uid="uid://csh141ks4txp6" path="res://characters/player/blue_box/blue_box_movement.tres" id="2_xvp5m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58jym"]
-albedo_color = Color(0.311502, 0.45634, 0.861308, 1)
+albedo_color = Color(0.36464, 0.86, 0.3096, 1)
+metallic = 0.4
+emission_enabled = true
+emission = Color(1.05888e-06, 0.534115, 0.24079, 1)
+emission_energy_multiplier = 4.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_gurk2"]
 material = SubResource("StandardMaterial3D_58jym")
+size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ncd2b"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="BlueBox" type="CharacterBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -26,5 +32,5 @@ shape = SubResource("BoxShape3D_ncd2b")
 
 [node name="MovementComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_dj43y")]
 player = NodePath("..")
-jump_height = 4.0
-apex_duration = 0.5
+jump_height = 1.0
+apex_duration = 0.2

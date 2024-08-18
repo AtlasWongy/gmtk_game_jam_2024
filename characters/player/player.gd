@@ -9,6 +9,7 @@ class_name Player
 
 var movement_direction: Vector3
 var can_control: bool = true
+
 var is_grown:bool = false
 var is_changing:bool = false
 var is_shrunk:bool = true
@@ -22,8 +23,13 @@ func _ready() -> void:
 	if GameManager.current_box != box_type:
 		can_control = false
 
+	mesh.mesh.material.emission_enabled = can_control
+
+
 func _set_can_control():
 	can_control = !can_control
+	mesh.mesh.material.emission_enabled = can_control
+
 
 func _input(event: InputEvent) -> void:
 	
@@ -62,11 +68,11 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	if is_movement_ongoing():
 		SignalBus.set_direction.emit(movement_direction, box_type)
-	if is_on_ceiling() and is_growing:
-		print(get_last_slide_collision().get_collider())
-		print(get_slide_collision_count())
+		
+	if is_on_ceiling() and is_changing:
+
 		print("bonk")
-		#_reset_grow_vertical()
+
 
 func is_movement_ongoing() -> bool:
 	return abs(movement_direction.x) > 0

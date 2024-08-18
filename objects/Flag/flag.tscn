@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1e0ugdqkbr86"]
+[gd_scene load_steps=9 format=3 uid="uid://d1e0ugdqkbr86"]
 
 [ext_resource type="Script" path="res://objects/Flag/flag.gd" id="1_hg3ic"]
+[ext_resource type="Texture2D" uid="uid://doin7ftcibmvi" path="res://assets/Flare00.PNG" id="2_wmth3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ibqu"]
 albedo_color = Color(0.976471, 0.509804, 0.513726, 1)
@@ -11,6 +12,25 @@ material = SubResource("StandardMaterial3D_3ibqu")
 [sub_resource type="BoxShape3D" id="BoxShape3D_n3hp8"]
 size = Vector3(1, 1.78992, 5.09094)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qx5e3"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_wmth3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ygf4"]
+direction = Vector3(5, 5, 0)
+spread = 180.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+radial_accel_min = -5.0
+radial_accel_max = -5.0
+damping_min = 5.0
+damping_max = 10.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1jxfb"]
+
 [node name="Flag" type="Area3D"]
 script = ExtResource("1_hg3ic")
 
@@ -20,5 +40,16 @@ mesh = SubResource("CylinderMesh_gl5h3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 shape = SubResource("BoxShape3D_n3hp8")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_qx5e3")
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.53
+process_material = SubResource("ParticleProcessMaterial_6ygf4")
+draw_pass_1 = SubResource("QuadMesh_1jxfb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
