@@ -67,7 +67,6 @@ func is_movement_ongoing() -> bool:
 func _grow_right():
 	if !is_grown:
 		is_changing = true
-		print("Starting to grow.")
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		if box_type == 1:
@@ -78,7 +77,6 @@ func _grow_right():
 func _grow_left():
 	if !is_grown:
 		is_changing = true
-		print("Starting to grow.")
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		if box_type == 1:
@@ -89,7 +87,6 @@ func _grow_left():
 func _shrink_right():
 	if !is_shrunk:
 		is_changing = true
-		print("Starting to shrink.")
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 
@@ -101,7 +98,6 @@ func _shrink_right():
 func _shrink_left():
 	if !is_shrunk:
 		is_changing = true
-		print("Starting to shrink.")
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 
@@ -135,13 +131,11 @@ func _shrink_animate(tween:Tween, x:float, y:float, direction:String):
 	tween.connect("finished", on_shrunk)
 
 func on_shrunk():
-	print("Shrink complete.")
 	is_changing = false
 	is_grown = false
 	is_shrunk = true
 	
 func on_grown():
-	print("Grow complete.")
 	is_changing = false
 	is_grown = true
 	is_shrunk = false
