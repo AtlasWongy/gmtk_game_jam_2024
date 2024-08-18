@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3ym0qjuv0cdl"]
+
+[ext_resource type="Script" path="res://scenes/Levels/level_2_1/level_2_1.gd" id="1_vcq4f"]
+[ext_resource type="Material" uid="uid://j54e2f8b3hpx" path="res://assets/Platform.tres" id="2_wgqv6"]
+[ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="3_f7pbu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8fid2"]
+material = ExtResource("2_wgqv6")
+size = Vector3(3, 1, 3)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dj7mm"]
+data = PackedVector3Array(-1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, 0.5, -1.5, -1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 1.5, -0.5, 1.5, 1.5, 0.5, -1.5, 1.5, -0.5, -1.5, 1.5, -0.5, 1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, 0.5, 1.5, -1.5, 0.5, 1.5, 1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, 0.5, -1.5, 1.5, 0.5, -1.5, -1.5, -0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, -0.5, 1.5, 1.5, -0.5, -1.5, -1.5, -0.5, -1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_05400"]
+material = ExtResource("2_wgqv6")
+size = Vector3(3, 20, 3)
+
+[node name="Level 2-1" type="Node3D"]
+script = ExtResource("1_vcq4f")
+
+[node name="Platform" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -9.47561e-05, 0.000127197, 9.47623e-05, 1, -4.84132e-05, -0.000127192, 4.84252e-05, 1, -16, 0.5, 0)
+mesh = SubResource("BoxMesh_8fid2")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform"]
+transform = Transform3D(1, 3.41771e-12, 0, 1.0707e-11, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dj7mm")
+
+[node name="Red Spawner" parent="Platform" instance=ExtResource("3_f7pbu")]
+transform = Transform3D(1, 3.41771e-12, 0, -4.02247e-11, 1, 0, 0, 0, 1, 0, 1.622, -1)
+level = 2
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -10.545, 10.849, -1.2)
+text = "Level 2-1: Split Focus
+
+"
+
+[node name="Platform2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -9.47561e-05, 0.000127197, 9.47623e-05, 1, -4.84132e-05, -0.000127192, 4.84252e-05, 1, -16, 6.607, 0)
+mesh = SubResource("BoxMesh_8fid2")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform2"]
+transform = Transform3D(1, 3.41771e-12, 0, 1.0707e-11, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dj7mm")
+
+[node name="Blue Spawner" parent="Platform2" instance=ExtResource("3_f7pbu")]
+transform = Transform3D(1, 3.41771e-12, 0, -6.20526e-11, 1, 0, 0, 0, 1, 0, 1.613, -1)
+cube_type = 1
+level = 2
+
+[node name="Platform3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 4.006, 0)
+mesh = SubResource("BoxMesh_05400")

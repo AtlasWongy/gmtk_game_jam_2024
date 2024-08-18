@@ -120,7 +120,7 @@ shape = SubResource("ConcavePolygonShape3D_bjhtf")
 transform = Transform3D(1, 0.000189527, -0.000144131, -0.000189519, 1, 5.48818e-05, 0.00014414, -5.48545e-05, 1, -0.195686, 1.5014, -0.768833)
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(7.99995, 0.0283441, 0, -0.0283441, 7.99995, 0, 0, 0, 8, -11.7771, 11.1993, -1.4)
+transform = Transform3D(7.99995, 0.0283441, 0, -0.0283441, 7.99995, 0, 0, 0, 8, -11.777, 11.199, -7)
 text = "Level 1-1: Room to Grow"
 
 [connection signal="sensor_activate" from="Gate/Sensor" to="Gate" method="_on_sensor_activate"]
