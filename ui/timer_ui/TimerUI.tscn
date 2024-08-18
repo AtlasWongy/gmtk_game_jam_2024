@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://be0pid4rg5rph"]
+
+[ext_resource type="Script" path="res://ui/timer_ui/timer_ui.gd" id="1_7bwcd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_35m0s"]
+
+[node name="TimerUI" type="PanelContainer" node_paths=PackedStringArray("time_label")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -147.0
+offset_top = 27.0
+offset_right = -46.0
+offset_bottom = 61.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_35m0s")
+script = ExtResource("1_7bwcd")
+time_label = NodePath("GridContainer/Time")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="TimeLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Time: "
+
+[node name="Time" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "00:00"
