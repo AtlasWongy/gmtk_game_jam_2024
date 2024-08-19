@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5p4a4ef147qa"]
+[gd_scene load_steps=11 format=3 uid="uid://b5p4a4ef147qa"]
 
 [ext_resource type="Script" path="res://objects/Extender/Extender.gd" id="1_5w4s7"]
 [ext_resource type="Shader" path="res://assets/Outline.gdshader" id="2_kry5h"]
@@ -32,6 +32,13 @@ roughness = 0.02
 material = SubResource("StandardMaterial3D_fx6m6")
 size = Vector3(3, 1, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov4hw"]
+albedo_color = Color(0.513726, 1, 0.431373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_067vc"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ov4hw")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_pry5f"]
 size = Vector3(3, 1, 5)
 
@@ -45,6 +52,7 @@ mesh = SubResource("BoxMesh_egucu")
 
 [node name="Sensor" parent="." instance=ExtResource("3_7vwlw")]
 transform = Transform3D(0.983584, 0.000186419, -0.000141759, -0.000186408, 0.983584, 5.39943e-05, 0.000141775, -5.3954e-05, 0.983584, -0.000374357, 1.02478, -0.999892)
+mesh = SubResource("BoxMesh_067vc")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

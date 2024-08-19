@@ -11,4 +11,4 @@ func activate_lift(_body: Node3D) -> void:
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.tween_property(self, "global_position:y", 12.0, 10.0).as_relative().from_current()
+	tween.tween_property(self, "global_position:y", 15.0, 10.0).as_relative().from_current()
