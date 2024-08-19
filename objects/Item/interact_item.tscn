@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://h2nm0xqx8gu"]
+
+[ext_resource type="Script" path="res://objects/Item/movable_item.gd" id="1_38vas"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vdw22"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o16ct"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dk513"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pas5g"]
+material = SubResource("StandardMaterial3D_dk513")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="MovableItem" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_vdw22")
+linear_velocity = Vector3(1, 1, 1)
+linear_damp_mode = 1
+linear_damp = 1.0
+angular_velocity = Vector3(0.0174533, 0.0174533, 0.0174533)
+angular_damp_mode = 1
+angular_damp = 1.0
+script = ExtResource("1_38vas")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_o16ct")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pas5g")

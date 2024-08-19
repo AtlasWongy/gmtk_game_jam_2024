@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6nonlmjrqiry"]
+[gd_scene load_steps=20 format=3 uid="uid://6nonlmjrqiry"]
 
 [ext_resource type="Material" uid="uid://j54e2f8b3hpx" path="res://assets/Platform.tres" id="1_ns4xa"]
 [ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="2_riop2"]
@@ -38,7 +38,7 @@ shader_parameter/grazing_fresnel_power = 5.0
 shader_parameter/grazing_angle_mask_power = 1.0
 shader_parameter/grazing_angle_modulation_factor = 50.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fx6m6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvl45"]
 next_pass = SubResource("ShaderMaterial_bjbs8")
 diffuse_mode = 3
 specular_mode = 1
@@ -46,8 +46,15 @@ albedo_color = Color(0.619434, 0.794691, 0.869058, 1)
 roughness = 0.02
 
 [sub_resource type="BoxMesh" id="BoxMesh_egucu"]
-material = SubResource("StandardMaterial3D_fx6m6")
+material = SubResource("StandardMaterial3D_jvl45")
 size = Vector3(3, 5, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcwq6"]
+albedo_color = Color(0.513726, 1, 0.431373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uhphq"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_rcwq6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pry5f"]
 size = Vector3(3, 5, 3)
@@ -100,6 +107,7 @@ mesh = SubResource("BoxMesh_egucu")
 
 [node name="Sensor" parent="Gate" instance=ExtResource("5_yyeek")]
 transform = Transform3D(0.983584, 0.000186419, -0.000141759, -0.000186408, 0.983584, 5.39943e-05, 0.000141775, -5.3954e-05, 0.983584, 0, 3, -1)
+mesh = SubResource("BoxMesh_uhphq")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gate"]

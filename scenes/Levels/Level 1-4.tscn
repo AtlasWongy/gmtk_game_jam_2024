@@ -1,0 +1,137 @@
+[gd_scene load_steps=18 format=3 uid="uid://dor8mydyi755a"]
+
+[ext_resource type="Material" uid="uid://j54e2f8b3hpx" path="res://assets/Platform.tres" id="2_g0sxy"]
+[ext_resource type="PackedScene" uid="uid://b5p4a4ef147qa" path="res://objects/Extender/extender.tscn" id="3_laj76"]
+[ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="3_wordb"]
+[ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="4_7m13a"]
+[ext_resource type="PackedScene" uid="uid://h2nm0xqx8gu" path="res://objects/Item/interact_item.tscn" id="4_28cae"]
+[ext_resource type="Script" path="res://objects/Gate/Gate.gd" id="6_5xglp"]
+[ext_resource type="Shader" path="res://assets/Outline.gdshader" id="7_t5xmu"]
+[ext_resource type="PackedScene" uid="uid://bds0d08hg7ipj" path="res://objects/Sensor/Sensor.tscn" id="8_ik6t1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6dsyq"]
+material = ExtResource("2_g0sxy")
+size = Vector3(3, 1, 3)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1njj0"]
+data = PackedVector3Array(-1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0.5, -1.5, -1.5, 0.5, -1.5, 1.5, -0.5, -1.5, -1.5, 0.5, -1.5, -1.5, -0.5, -1.5, 1.5, -0.5, -1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 1.5, -0.5, 1.5, 1.5, 0.5, -1.5, 1.5, -0.5, -1.5, 1.5, -0.5, 1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, -1.5, -1.5, 0.5, 1.5, -1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, 0.5, 1.5, -1.5, 0.5, 1.5, 1.5, 0.5, -1.5, -1.5, 0.5, 1.5, -1.5, 0.5, -1.5, 1.5, 0.5, -1.5, -1.5, -0.5, 1.5, 1.5, -0.5, 1.5, -1.5, -0.5, -1.5, 1.5, -0.5, 1.5, 1.5, -0.5, -1.5, -1.5, -0.5, -1.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mcy32"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ldv2"]
+render_priority = 0
+shader = ExtResource("7_t5xmu")
+shader_parameter/outlineColor = Color(0, 0, 0, 0.78)
+shader_parameter/depth_threshold = 0.025
+shader_parameter/normal_threshold = 0.5
+shader_parameter/normal_smoothing = 0.25
+shader_parameter/max_thickness = 1.3
+shader_parameter/min_thickness = 0.5
+shader_parameter/max_distance = 75.0
+shader_parameter/min_distance = 2.0
+shader_parameter/grazing_fresnel_power = 5.0
+shader_parameter/grazing_angle_mask_power = 1.0
+shader_parameter/grazing_angle_modulation_factor = 50.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fx6m6"]
+next_pass = SubResource("ShaderMaterial_1ldv2")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.619434, 0.794691, 0.869058, 1)
+roughness = 0.02
+
+[sub_resource type="BoxMesh" id="BoxMesh_ivnpt"]
+material = SubResource("StandardMaterial3D_fx6m6")
+size = Vector3(3, 5, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov4hw"]
+albedo_color = Color(0.513726, 1, 0.431373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yevhl"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ov4hw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4l7aa"]
+size = Vector3(3, 5, 3)
+
+[node name="Level 1-4" type="Node3D"]
+
+[node name="Spawner" parent="." instance=ExtResource("3_wordb")]
+transform = Transform3D(1, -9.47563e-05, 0.000127197, 9.47624e-05, 1, -4.84132e-05, -0.000127192, 4.84254e-05, 0.999998, -17.5302, 2.12195, -0.999799)
+level = 3
+
+[node name="Spawner2" parent="." instance=ExtResource("3_wordb")]
+transform = Transform3D(1, -9.47563e-05, 0.000127197, 9.47624e-05, 1, -4.84132e-05, -0.000127192, 4.84254e-05, 0.999998, -15.7872, 2.11312, -1.00002)
+cube_type = 1
+level = 3
+
+[node name="Platform" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.62467, -9.47386e-05, 0.000127229, 0.00024872, 0.999815, -4.84252e-05, -0.000333837, 4.84163e-05, 1.00025, -17.6324, 0.5, 0)
+mesh = SubResource("BoxMesh_6dsyq")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform"]
+transform = Transform3D(1, 4.67004e-12, -7.27596e-12, -2.49329e-11, 1, 3.63798e-12, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1njj0")
+
+[node name="MovableItem" parent="." instance=ExtResource("4_28cae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2168, 1.31854, 0.420729)
+
+[node name="Extender2" parent="." instance=ExtResource("3_laj76")]
+transform = Transform3D(1, -0.000189519, 0.000144141, 0.000189527, 1, -5.48545e-05, -0.00014413, 5.48818e-05, 1, -23.0742, -1.283, 0)
+x_size = 20
+x_offset = 10
+
+[node name="Platform2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -9.47561e-05, 0.000127197, 9.47623e-05, 1, -4.84132e-05, -0.000127192, 4.84252e-05, 1, -3.29718, 0.5, 0)
+mesh = SubResource("BoxMesh_6dsyq")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform2"]
+transform = Transform3D(1, 3.41771e-12, 0, 1.0707e-11, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1njj0")
+
+[node name="Platform3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -9.47561e-05, 0.000127197, 9.47623e-05, 1, -4.84132e-05, -0.000127192, 4.84252e-05, 1, -3.2409, 8.39022, 0)
+mesh = SubResource("BoxMesh_6dsyq")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform3"]
+transform = Transform3D(1, 3.41771e-12, 0, 1.0707e-11, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
+transform = Transform3D(1, 3.41771e-12, 0, -1.11209e-11, 1, 0, 0, 0, 1, 7.15256e-07, 0.00580692, -2.81085e-07)
+shape = SubResource("ConcavePolygonShape3D_1njj0")
+
+[node name="Flag" parent="Platform3" instance=ExtResource("4_7m13a")]
+transform = Transform3D(1, 3.41771e-12, 0, -4.75007e-11, 1, 0, 0, 0, 1, -0.982778, 1.51869, -1.00525)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -12.9332, 10.849, -1.2)
+text = "Level 1-4: Interaction
+"
+
+[node name="Gate" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, -0.000189502, 0.000254399, 0.000189527, 1, -9.68146e-05, -0.000254381, 9.68628e-05, 1, 3.72217, -1.59755, 0.147242)
+physics_material_override = SubResource("PhysicsMaterial_mcy32")
+script = ExtResource("6_5xglp")
+gate_dir = 8
+
+[node name="GateMesh" type="MeshInstance3D" parent="Gate"]
+transform = Transform3D(1, -3.72564e-11, 0, -1.04201e-11, 1, -7.27596e-12, 1.45519e-11, 3.63798e-12, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_ivnpt")
+
+[node name="Sensor" parent="Gate" instance=ExtResource("8_ik6t1")]
+transform = Transform3D(0.983584, 0.000186419, -0.000141759, -0.000186408, 0.983584, 5.39943e-05, 0.000141775, -5.3954e-05, 0.983584, 0, 3, -1)
+mesh = SubResource("BoxMesh_yevhl")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate"]
+transform = Transform3D(1, -3.75557e-11, 0, -6.66578e-11, 1, -7.27596e-12, 7.27596e-11, -1.09139e-11, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_4l7aa")
+
+[connection signal="sensor_activate" from="Gate/Sensor" to="Gate" method="_on_sensor_activate"]

@@ -6,6 +6,7 @@
 albedo_color = Color(0.513726, 1, 0.431373, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ldkg4"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ov4hw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wg2s"]
@@ -22,3 +23,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("BoxShape3D_5wg2s")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

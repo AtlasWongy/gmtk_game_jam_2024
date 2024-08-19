@@ -9,6 +9,7 @@ var open:bool = false
 
 func _ready():
 	if gate_height != 5:
+		print(open)
 		#adjust stuff here
 		var offset = (gate_height - 5)
 
@@ -18,7 +19,7 @@ func _ready():
 		sensor.position.y += offset/2
 
 
-func _on_sensor_activate(body) -> void:
+func _on_sensor_activate(body, gate_instance) -> void:
 	if(!open and body is CharacterBody3D):
 		print("detected!")
 		print(global_position.y)
