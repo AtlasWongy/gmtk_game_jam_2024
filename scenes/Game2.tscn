@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://gwcvmcd1h51v"]
+
+[ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_prcqb"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4q6h3"]
+panorama = ExtResource("1_prcqb")
+
+[sub_resource type="Sky" id="Sky_s8q5m"]
+sky_material = SubResource("PanoramaSkyMaterial_4q6h3")
+
+[sub_resource type="Environment" id="Environment_7u5f2"]
+background_mode = 2
+sky = SubResource("Sky_s8q5m")
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iikal"]
+albedo_color = Color(0.695745, 0.346733, 0.139799, 0.776471)
+
+[sub_resource type="BoxMesh" id="BoxMesh_37q7o"]
+material = SubResource("StandardMaterial3D_iikal")
+size = Vector3(50, 50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tkea8"]
+size = Vector3(100, 1, 100)
+
+[node name="Game2" type="Node"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
+environment = SubResource("Environment_7u5f2")
+
+[node name="Marker3D" type="Marker3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.95)
+
+[node name="Camera3D" type="Camera3D" parent="Level/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.96, 5.065, 15.658)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+
+[node name="CubeLevel" type="MeshInstance3D" parent="Level"]
+mesh = SubResource("BoxMesh_37q7o")
+
+[node name="DeathZone" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/DeathZone"]
+shape = SubResource("BoxShape3D_tkea8")

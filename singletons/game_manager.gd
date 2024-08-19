@@ -3,14 +3,19 @@ extends Node
 enum CurrentBox {RED_BOX, BLUE_BOX}
 enum GameState {NOT_STARTED, RUNNING, PAUSED, GAME_OVER}
 
+var game_scenes = {
+	0: "res://scenes/Game.tscn",
+	1: "res://scenes/Game2.tscn"
+}
+
+var current_scene = null
+var root = null
 var current_box: CurrentBox
 var game_state: GameState
-
 var can_switch:bool = true
-
 var level_ref: Node3D #used for spawners to spawn new cubes in
 var camera_ref: Camera3D
-var level_id:int = 0
+var level_id:int = 3
 
 func _ready() -> void:
 	SignalBus.set_current_box.connect(_disable_switch)
@@ -20,6 +25,10 @@ func _ready() -> void:
 	SignalBus.set_current_box.connect(_set_current_box)
 	SignalBus.level_complete.connect(_level_complete)
 	SignalBus.get_camera.connect(_set_camera)
+	SignalBus.transition_next_level.connect(_switch_scene)
+	
+	root = get_tree().root
+	current_scene = root.get_child(root.get_child_count() - 1)
 	
 	current_box = CurrentBox.RED_BOX
 	game_state = GameState.NOT_STARTED
@@ -71,6 +80,16 @@ func toggle_pause() -> void:
 func toggle_game_over() -> void:
 	SignalBus.set_game_over_menu.emit(true)
 	get_tree().paused = false
+	
+func _switch_scene() -> void:
+	call_deferred("_deferred_switch_scene", game_scenes[1])
+	
+func _deferred_switch_scene(_res_path) -> void:
+	current_scene.free()
+	var next_scene = load(_res_path)
+	current_scene = next_scene.instantiate()
+	get_tree().root.add_child(current_scene)
+	get_tree().current_scene = current_scene
 
 
 	

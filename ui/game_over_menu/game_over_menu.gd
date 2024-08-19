@@ -7,10 +7,10 @@ class_name GameOverMenu
 func _ready() -> void:
 	# SignalBus.set_game_over_menu.connect(_on_set_game_over_menu)
 	SignalBus.send_completion_time.connect(_on_set_completion_time)
-	retry_button.button_down.connect(restart_game)
+	retry_button.button_down.connect(transition_next_level)
 	
-func restart_game() -> void:
-	print("Restart Game")
+func transition_next_level() -> void:
+	SignalBus.transition_next_level.emit()
 
 func _on_set_game_over_menu() -> void:
 	# _game_over_menu_state: bool

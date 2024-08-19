@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ba5c1vg5wpiy8"]
+[gd_scene load_steps=25 format=3 uid="uid://ba5c1vg5wpiy8"]
 
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_ldty6"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_mmf7y"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cincemexwtwru" path="res://scenes/Levels/level_1_2/Level 1-2.tscn" id="7_qedl7"]
 [ext_resource type="PackedScene" uid="uid://dor8mydyi755a" path="res://scenes/Levels/Level 1-4.tscn" id="8_phw8e"]
 [ext_resource type="Script" path="res://objects/death_zone.gd" id="9_5d677"]
+[ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="10_0gadk"]
 [ext_resource type="PackedScene" uid="uid://jqec1by0rjjf" path="res://ui/main_menu/MainMenu.tscn" id="11_5koxc"]
 [ext_resource type="PackedScene" uid="uid://yukq0n0iyq0a" path="res://ui/GameStarter.tscn" id="12_4uf55"]
 [ext_resource type="PackedScene" uid="uid://bmdid0ws3ju5s" path="res://ui/game_over_menu/GameOverMenu.tscn" id="13_ckthi"]
@@ -86,6 +87,7 @@ mesh = SubResource("QuadMesh_i8euw")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -109.868, 93.6658, 81.3825)
 
 [node name="CubeLevel" type="MeshInstance3D" parent="Level" node_paths=PackedStringArray("game_over_menu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_sxh4v")
 skeleton = NodePath("../..")
 script = ExtResource("3_a5qgd")
@@ -107,12 +109,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Level 1-4" parent="Level/CubeLevel" instance=ExtResource("8_phw8e")]
 transform = Transform3D(-0.00872653, 0, -0.999962, 0, 1, 0, 0.999962, 0, -0.00872653, -26.6974, -6.3836, 9.97897)
 
+[node name="Flag" parent="Level/CubeLevel/Level 1-4" instance=ExtResource("10_0gadk")]
+transform = Transform3D(-4.37722e-08, 0, 1, 0, 1, 0, -1, 0, -4.37722e-08, -23.0401, 2.56983, 1.20054)
+
 [node name="LevelCompleteLabel" type="Label3D" parent="Level/CubeLevel"]
 transform = Transform3D(-4.37114e-07, 10, 4.37114e-07, 0, -4.37114e-07, 10, 10, 4.37114e-07, 2.84217e-14, 13.7433, 29.8981, -1.73023)
 text = "LEVEL COMPLETE"
 
 [node name="DeathZone" type="Area3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45.3418, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45, 0)
 script = ExtResource("9_5d677")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/DeathZone"]
