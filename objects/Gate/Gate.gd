@@ -19,9 +19,10 @@ func _ready():
 		gate_mesh.mesh.size.y += offset
 		$CollisionShape3D.shape.size.y += offset
 		sensor.position.y += offset/2
-		remote_transform = get_parent() #gate parent should ALWAYS be RemoteTransform3D
+		remote_transform = get_parent().find_child("GateRemoteTransform3D")
 		remote_transform.global_position = global_position
-
+		
+		
 
 
 func _on_sensor_activate(body, gate_instance) -> void:

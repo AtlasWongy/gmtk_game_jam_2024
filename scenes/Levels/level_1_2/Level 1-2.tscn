@@ -206,8 +206,8 @@ cube_type = 1
 level = 1
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4.846, 15.825, -2)
-text = "Level 1-2 : One Small Step for Cubekind "
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 1.181, 2.61112, 0)
+text = "Level 1-2: A Small Test"
 
 [connection signal="body_entered" from="Platform3/Sensor2/Area3D" to="Platform3/Sensor2" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Platform4/Sensor2/Area3D" to="Platform4/Sensor2" method="_on_area_3d_body_entered"]

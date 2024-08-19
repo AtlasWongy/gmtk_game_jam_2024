@@ -1,14 +1,10 @@
 extends Node
 
-var sfx = preload("res://scenes/SFXOneShot.tscn")
-var jump_sfx = preload("res://assets/sfx/fish_spawn.wav")
-
-#preload your sfx here
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	SignalBus.pressed_jump.connect(_play_jump_sfx)
+	pass # Replace with function body.
 
-func _play_jump_sfx(box_type:int):
-	var new_sfx = sfx.instantiate()
-	get_tree().current_scene.add_child(new_sfx)
-	new_sfx.volume_db = -24
-	new_sfx.play_sound(jump_sfx)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
