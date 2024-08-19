@@ -1,7 +1,5 @@
 extends Area3D
 
-
-
 @onready var particles = $GPUParticles3D
 
 func _on_body_entered(body: Node3D) -> void:
@@ -15,7 +13,6 @@ func _on_body_entered(body: Node3D) -> void:
 		SignalBus.destroy_cube.emit(1)
 
 func _change_face():
-	print("change")
 	SignalBus.change_face.emit()
 	var timer = get_tree().create_timer(1)
 	timer.timeout.connect(_respawn)
