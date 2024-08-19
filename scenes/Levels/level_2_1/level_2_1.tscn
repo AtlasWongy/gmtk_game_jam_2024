@@ -130,12 +130,6 @@ mesh = SubResource("BoxMesh_05400")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xidp2")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -16.2416, 15.1191, -1.2)
-text = "Level 2-1: Split Focus
-
-"
-
 [node name="Platform4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6.5, 0)
 mesh = SubResource("BoxMesh_5b4x1")
@@ -171,7 +165,7 @@ skeleton = NodePath("../..")
 laser_id = 3
 
 [node name="Laser3" parent="GrayGate" instance=ExtResource("3_c5rxn")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.774, -1.42512, 0.487)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.774, -1.47763, 0.487)
 skeleton = NodePath("../..")
 laser_id = 1
 
@@ -229,6 +223,12 @@ transform = Transform3D(1, 3.41771e-12, 0, 1.0707e-11, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform7/StaticBody3D"]
 transform = Transform3D(1, 3.41771e-12, 0, -2.51227e-10, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_d8qx0")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -16.2416, 15.1191, -1.2)
+text = "Level 2-1: Split Focus
+
+"
 
 [connection signal="laser_blocked" from="GrayGate/Laser2" to="." method="_on_laser_blocked"]
 [connection signal="laser_not_blocked" from="GrayGate/Laser2" to="." method="_on_laser_not_blocked"]

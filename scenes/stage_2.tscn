@@ -71,7 +71,7 @@ environment = SubResource("Environment_rd76p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.9498)
 
 [node name="Camera3D" type="Camera3D" parent="Marker3D"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, -2.23774, 11.3815, 13.8848)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, -2.23774, 8.35841, 22.1633)
 size = 57.1789
 script = ExtResource("3_27ym2")
 
