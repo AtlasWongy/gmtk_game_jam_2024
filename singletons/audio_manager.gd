@@ -9,6 +9,6 @@ func _ready():
 
 func _play_jump_sfx(box_type:int):
 	var new_sfx = sfx.instantiate()
-	GameManager.game_ref.add_child(new_sfx)
+	get_tree().current_scene.add_child(new_sfx)
 	new_sfx.volume_db = -24
 	new_sfx.play_sound(jump_sfx)

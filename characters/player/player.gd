@@ -30,6 +30,10 @@ func _ready() -> void:
 
 	mesh.mesh.material.emission_enabled = can_control
 	movement_direction = Vector3(0,0,0)
+	mesh.position.y = 0
+	collisionShape.position.y = 0
+	mesh.mesh.size = Vector3(0.5,0.5,0.5)
+	collisionShape.shape.size = Vector3(0.5,0.5,0.5)
 
 
 func _set_can_control():
@@ -41,6 +45,8 @@ func _set_can_control():
 
 func _destroy_cube(cube:GameManager.CurrentBox):
 	if cube==box_type:
+		if(tween):
+			tween.kill()
 		mesh.position.y = 0
 		collisionShape.position.y = 0
 		mesh.mesh.size = Vector3(0.5,0.5,0.5)
@@ -57,7 +63,7 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("switch_box") and event.is_pressed() and GameManager.can_switch:
 		SignalBus.set_current_box.emit()
-    	
+		
 	if event.is_action_released("switch_box") and event.is_released() and !GameManager.can_switch:
 		SignalBus.set_enable_switch.emit()
 	

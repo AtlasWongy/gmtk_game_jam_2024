@@ -16,10 +16,10 @@ data = PackedVector3Array(-1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0
 
 [node name="GateRemoteTransform3D" type="RemoteTransform3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.576, 0, 0)
-remote_path = NodePath("../Gate")
+remote_path = NodePath("Gate")
 
-[node name="Gate" parent="." instance=ExtResource("3_xla1g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.576, 0, 0)
+[node name="Gate" parent="GateRemoteTransform3D" instance=ExtResource("3_xla1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 gate_dir = -8
 gate_height = 9
 
