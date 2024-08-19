@@ -13,11 +13,12 @@ func _on_body_entered(body: Node3D) -> void:
 		SignalBus.destroy_cube.emit(1)
 
 func _change_face():
+	if GameManager.level_id in [4]:
+		return
 	SignalBus.change_face.emit()
 	var timer = get_tree().create_timer(1)
 	timer.timeout.connect(_respawn)
 	
 func _respawn():
-	
 	SignalBus.spawn_cube.emit(GameManager.CurrentBox.RED_BOX, GameManager.level_id)
 	SignalBus.spawn_cube.emit(GameManager.CurrentBox.BLUE_BOX, GameManager.level_id)
