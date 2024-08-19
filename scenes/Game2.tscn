@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://gwcvmcd1h51v"]
 
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_prcqb"]
-[ext_resource type="PackedScene" uid="uid://cgih6b8naj3ey" path="res://scenes/cube_level_2.tscn" id="2_wajkh"]
+[ext_resource type="PackedScene" uid="uid://cgih6b8naj3ey" path="res://scenes/Cubes/cube_level_2.tscn" id="2_wajkh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4q6h3"]
 panorama = ExtResource("1_prcqb")

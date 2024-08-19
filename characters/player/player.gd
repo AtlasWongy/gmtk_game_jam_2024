@@ -3,6 +3,7 @@ class_name Player
 
 @export var box_type: GameManager.CurrentBox
 @export var movement_stats: MovementStats
+@export var poisoned_stats: MovementStats
 
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var collisionShape: CollisionShape3D = $CollisionShape3D
@@ -21,7 +22,6 @@ var is_poison: bool = false
 var tween:Tween
 
 func _ready() -> void:
-	
 	SignalBus.set_current_box.connect(_set_can_control)
 	SignalBus.destroy_cube.connect(_destroy_cube)
 	
@@ -62,6 +62,7 @@ func _input(event: InputEvent) -> void:
 		SignalBus.set_enable_switch.emit()
 	
 	if is_poison:
+		SignalBus.set_movement.emit(poisoned_stats, box_type)
 		return
 	
 	if !can_control:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1qp5smneb3jt"]
+[gd_scene load_steps=8 format=3 uid="uid://d1qp5smneb3jt"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_utoyu"]
 [ext_resource type="PackedScene" uid="uid://bscn1d5ohdjge" path="res://characters/player/movement_component/movement_component.tscn" id="2_6t0iu"]
 [ext_resource type="Resource" uid="uid://bc22l7btvoyil" path="res://characters/player/red_box/red_box_movement.tres" id="2_i40s3"]
+[ext_resource type="Resource" uid="uid://dn5xau7dp82mt" path="res://characters/player/poison_movement.tres" id="3_1bs7q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o16ct"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -20,6 +21,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [node name="RedBox" type="CharacterBody3D"]
 script = ExtResource("1_utoyu")
 movement_stats = ExtResource("2_i40s3")
+poisoned_stats = ExtResource("3_1bs7q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_o16ct")

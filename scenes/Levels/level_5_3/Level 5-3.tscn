@@ -1,74 +1,75 @@
-[gd_scene load_steps=40 format=3 uid="uid://nk6mxiop4uej"]
+[gd_scene load_steps=41 format=3 uid="uid://nk6mxiop4uej"]
 
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/platform_3.gd" id="1_745v0"]
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/elevator.gd" id="1_bvmsf"]
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/toxic_ball.gd" id="1_kx8wv"]
-[ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="1_wggto"]
-[ext_resource type="PackedScene" uid="uid://c80ku4vswsnix" path="res://characters/player/blue_box/blue_box.tscn" id="2_f2bx7"]
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/cure_ball.gd" id="3_8mcdm"]
+[ext_resource type="Shader" path="res://scenes/Levels/level_5_3/toxic.gdshader" id="3_egruf"]
 [ext_resource type="Script" path="res://objects/Sensor/sensor.gd" id="4_8jdr7"]
+[ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="7_ws5tv"]
+[ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="8_xdu7f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4g246"]
-size = Vector3(3, 5, 1)
+size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wratr"]
-size = Vector3(3, 5, 1)
+size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_msxth"]
-size = Vector3(4, 5, 1)
+size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rv5fw"]
-size = Vector3(4, 5, 1)
+size = Vector3(3, 5, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnlhp"]
 albedo_color = Color(0.361033, 0.41265, 0.867114, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qacrk"]
 material = SubResource("StandardMaterial3D_cnlhp")
-size = Vector3(1, 5, 1)
+size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d2fn7"]
-size = Vector3(1, 5, 1)
+size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5pky3"]
-size = Vector3(3, 8, 1)
+size = Vector3(3, 12, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8m27"]
-size = Vector3(3, 8, 1)
+size = Vector3(3, 12, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_oy1mn"]
-size = Vector3(1, 8, 1)
+size = Vector3(3, 12, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4rw2y"]
-size = Vector3(1, 8, 1)
+size = Vector3(3, 12, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ux5w0"]
-size = Vector3(1, 5, 1)
+size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cex36"]
-size = Vector3(1, 5, 1)
+size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_j4v37"]
-size = Vector3(0.5, 0.75, 1)
+size = Vector3(1.5, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwl43"]
-size = Vector3(0.5, 0.75, 1)
+size = Vector3(1.5, 1, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ck3b0"]
-size = Vector3(3, 1, 1)
+size = Vector3(3, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0i62b"]
-size = Vector3(3, 1, 1)
+size = Vector3(3, 1, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx7dh"]
-albedo_color = Color(0.480718, 0.428217, 0.276253, 1)
+albedo_color = Color(0.581216, 0.340224, 0.48687, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_s2pv1"]
+[sub_resource type="BoxMesh" id="BoxMesh_hp4hp"]
 material = SubResource("StandardMaterial3D_jx7dh")
-size = Vector3(0.85, 1, 1.25)
+size = Vector3(1, 1, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jhqk6"]
-size = Vector3(0.9, 1, 1.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_cecgn"]
+size = Vector3(1, 1, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6p83"]
 albedo_color = Color(0.729092, 0.212333, 0.213337, 1)
@@ -81,29 +82,29 @@ height = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ef61p"]
 height = 0.5
-radius = 0.25
+radius = 0.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnq7q"]
-albedo_color = Color(0.734674, 0.378967, 0.972729, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0dib"]
+render_priority = 0
+shader = ExtResource("3_egruf")
 
 [sub_resource type="SphereMesh" id="SphereMesh_37xjv"]
-material = SubResource("StandardMaterial3D_qnq7q")
+material = SubResource("ShaderMaterial_b0dib")
 radius = 0.25
 height = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_munjc"]
 radius = 0.25
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_og87j"]
-albedo_color = Color(0.307375, 0.758914, 0.462717, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wligp"]
+albedo_color = Color(0.372304, 0.690403, 0.528468, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_lepye"]
-material = SubResource("StandardMaterial3D_og87j")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kk7v5"]
+material = SubResource("StandardMaterial3D_wligp")
 radius = 0.25
-height = 0.5
+height = 1.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_mlvpp"]
-radius = 0.25
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6uksv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov4hw"]
 albedo_color = Color(0.513726, 1, 0.431373, 1)
@@ -111,7 +112,7 @@ albedo_color = Color(0.513726, 1, 0.431373, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_n5il7"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ov4hw")
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wg2s"]
 size = Vector3(1, 1, 3)
@@ -119,7 +120,7 @@ size = Vector3(1, 1, 3)
 [node name="Level 5-3" type="Node3D"]
 
 [node name="Platform1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52132, -2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2.5, 0)
 mesh = SubResource("BoxMesh_4g246")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform1"]
@@ -128,7 +129,7 @@ mesh = SubResource("BoxMesh_4g246")
 shape = SubResource("BoxShape3D_wratr")
 
 [node name="Platform2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04943, -2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -2.5, 0)
 mesh = SubResource("BoxMesh_msxth")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform2"]
@@ -137,7 +138,7 @@ mesh = SubResource("BoxMesh_msxth")
 shape = SubResource("BoxShape3D_rv5fw")
 
 [node name="Platform3" type="MeshInstance3D" parent="." node_paths=PackedStringArray("sensor")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55548, -2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -2.5, 0)
 mesh = SubResource("BoxMesh_qacrk")
 script = ExtResource("1_745v0")
 sensor = NodePath("../Sensor")
@@ -148,7 +149,7 @@ sensor = NodePath("../Sensor")
 shape = SubResource("BoxShape3D_d2fn7")
 
 [node name="Platform4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36907, 4.75713, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7, 0)
 mesh = SubResource("BoxMesh_5pky3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform4"]
@@ -157,7 +158,7 @@ mesh = SubResource("BoxMesh_5pky3")
 shape = SubResource("BoxShape3D_j8m27")
 
 [node name="Platform5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47816, 4.72908, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 7, 0)
 mesh = SubResource("BoxMesh_oy1mn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform5"]
@@ -166,7 +167,7 @@ mesh = SubResource("BoxMesh_oy1mn")
 shape = SubResource("BoxShape3D_4rw2y")
 
 [node name="Platform6" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47892, -2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -2.5, 0)
 mesh = SubResource("BoxMesh_ux5w0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform6"]
@@ -175,7 +176,7 @@ mesh = SubResource("BoxMesh_ux5w0")
 shape = SubResource("BoxShape3D_cex36")
 
 [node name="Platform7" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21315, 0.399597, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0.5, 0)
 mesh = SubResource("BoxMesh_j4v37")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform7"]
@@ -184,7 +185,7 @@ mesh = SubResource("BoxMesh_j4v37")
 shape = SubResource("BoxShape3D_xwl43")
 
 [node name="Platform8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0949, 14.5443, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 16, 0)
 mesh = SubResource("BoxMesh_ck3b0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform8"]
@@ -193,28 +194,27 @@ mesh = SubResource("BoxMesh_ck3b0")
 shape = SubResource("BoxShape3D_0i62b")
 
 [node name="Elevator" type="MeshInstance3D" parent="." node_paths=PackedStringArray("elevator_switch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489651, -4.20329, 0)
-mesh = SubResource("BoxMesh_s2pv1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -4.5, 0)
+mesh = SubResource("BoxMesh_hp4hp")
 script = ExtResource("1_bvmsf")
 elevator_switch = NodePath("../ElevatorSwitch/Area3D")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Elevator"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/StaticBody3D"]
-shape = SubResource("BoxShape3D_jhqk6")
+shape = SubResource("BoxShape3D_cecgn")
 
 [node name="ElevatorSwitch" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48003, 0.26182, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.25, 0)
 mesh = SubResource("CylinderMesh_hb5ym")
 
 [node name="Area3D" type="Area3D" parent="ElevatorSwitch"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSwitch/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.117106, 0)
 shape = SubResource("CylinderShape3D_ef61p")
 
 [node name="ToxicBall" type="MeshInstance3D" parent="." node_paths=PackedStringArray("toxic_area")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48196, 0.388848, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46136, 0.25, 0)
 mesh = SubResource("SphereMesh_37xjv")
 skeleton = NodePath("../Platform4")
 script = ExtResource("1_kx8wv")
@@ -226,18 +226,18 @@ toxic_area = NodePath("Area3D")
 shape = SubResource("SphereShape3D_munjc")
 
 [node name="CureBall" type="MeshInstance3D" parent="." node_paths=PackedStringArray("cure_area")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.523937, 10.1022, 0)
-mesh = SubResource("SphereMesh_lepye")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 10, 0)
+mesh = SubResource("CapsuleMesh_kk7v5")
 script = ExtResource("3_8mcdm")
 cure_area = NodePath("Area3D")
 
 [node name="Area3D" type="Area3D" parent="CureBall"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CureBall/Area3D"]
-shape = SubResource("SphereShape3D_mlvpp")
+shape = SubResource("CapsuleShape3D_6uksv")
 
 [node name="Sensor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63819, 9.03496, -0.0167832)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63819, 14.035, -0.0167832)
 mesh = SubResource("BoxMesh_n5il7")
 script = ExtResource("4_8jdr7")
 
@@ -247,14 +247,15 @@ script = ExtResource("4_8jdr7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("BoxShape3D_5wg2s")
 
-[node name="RedBox" parent="." instance=ExtResource("1_wggto")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.39805, 0.341175, 0)
+[node name="Spawner" parent="." instance=ExtResource("7_ws5tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -1)
 
-[node name="BlueBox" parent="." instance=ExtResource("2_f2bx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5308, 0.436439, 0)
+[node name="Spawner2" parent="." instance=ExtResource("7_ws5tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -1)
+cube_type = 1
 
-[node name="TestCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0998135, 4.12007, 16.2384)
+[node name="Flag" parent="." instance=ExtResource("8_xdu7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.12066, 14.523, -0.189278)
 
 [connection signal="body_entered" from="Sensor/Area3D" to="Sensor" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Sensor/Area3D" to="Sensor" method="_on_area_3d_body_exited"]
