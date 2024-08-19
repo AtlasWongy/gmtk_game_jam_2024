@@ -52,6 +52,7 @@ flip_faces = true
 size = Vector2(2, 2)
 
 [node name="Stage 2" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.666049, -0.109685, -0.0120964)
 mesh = SubResource("BoxMesh_87i6p")
 script = ExtResource("1_0ritk")
 
@@ -70,7 +71,7 @@ environment = SubResource("Environment_rd76p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.9498)
 
 [node name="Camera3D" type="Camera3D" parent="Marker3D"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -9.81014, 6.27558, 5.48446)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, -2.23774, 11.3815, 13.8848)
 size = 57.1789
 script = ExtResource("3_27ym2")
 

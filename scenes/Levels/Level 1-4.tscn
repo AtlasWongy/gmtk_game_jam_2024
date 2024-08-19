@@ -78,6 +78,7 @@ shape = SubResource("ConcavePolygonShape3D_1njj0")
 
 [node name="MovableItem" parent="." instance=ExtResource("4_28cae")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2168, 1.31854, 0.503427)
+axis_lock_linear_z = true
 lock_rotation = true
 
 [node name="Extender2" parent="." instance=ExtResource("3_laj76")]

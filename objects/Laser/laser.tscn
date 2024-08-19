@@ -2,17 +2,18 @@
 
 [ext_resource type="Script" path="res://objects/Laser/beam.gd" id="1_pull6"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_kmruy"]
+[sub_resource type="BoxMesh" id="BoxMesh_d6sne"]
 size = Vector3(0.75, 0.75, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_631l5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8eh6"]
 albedo_color = Color(1, 0.616667, 0, 1)
 emission_enabled = true
 emission = Color(0.81, 0.50868, 0.3078, 1)
 emission_energy_multiplier = 2.0
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_ejma7"]
-material = SubResource("StandardMaterial3D_631l5")
+[sub_resource type="CylinderMesh" id="CylinderMesh_cb74p"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_d8eh6")
 top_radius = 0.25
 bottom_radius = 0.25
 height = 50.0
@@ -42,20 +43,20 @@ material = SubResource("StandardMaterial3D_j4gmh")
 size = Vector2(0.2, 0.2)
 
 [node name="Laser" type="MeshInstance3D"]
-mesh = SubResource("BoxMesh_kmruy")
+mesh = SubResource("BoxMesh_d6sne")
+script = ExtResource("1_pull6")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -4.01708e-08, 4.01708e-08, 0.25518)
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, 50, 0)
-script = ExtResource("1_pull6")
 
 [node name="Beam" type="MeshInstance3D" parent="RayCast3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
-mesh = SubResource("CylinderMesh_ejma7")
+mesh = SubResource("CylinderMesh_cb74p")
 skeleton = NodePath("../..")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="RayCast3D"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.42109e-14, 25, 1.42109e-14)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 50, 0)
 lifetime = 0.25
 process_material = SubResource("ParticleProcessMaterial_34kud")
 draw_pass_1 = SubResource("QuadMesh_8idgg")
