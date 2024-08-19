@@ -7,6 +7,7 @@ func _ready() -> void:
 	cure_area.body_entered.connect(cure_player)
 	
 func cure_player(body: Node3D):
+	print("Hello?")
 	if body is Player:
 		body.is_poison = false
 		queue_free()
