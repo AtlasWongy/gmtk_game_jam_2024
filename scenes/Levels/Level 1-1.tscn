@@ -97,7 +97,7 @@ skeleton = NodePath("../Platform")
 shape = SubResource("ConcavePolygonShape3D_0v7l7")
 
 [node name="Gate" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, -0.000189502, 0.000254399, 0.000189527, 1, -9.68146e-05, -0.000254381, 9.68628e-05, 1, -0.300493, 3.11371, -5.90319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300493, 3.11371, -5.90319)
 physics_material_override = SubResource("PhysicsMaterial_os36j")
 script = ExtResource("3_m1230")
 
@@ -130,5 +130,9 @@ transform = Transform3D(1, 0.000189527, -0.000144131, -0.000189519, 1, 5.48818e-
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(7.99995, 0.0283441, 0, -0.0283441, 7.99995, 0, 0, 0, 8, -11.777, 11.199, -7)
 text = "Level 1-1: Room to Grow"
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300493, 3.11371, -5.90319)
+remote_path = NodePath("../Gate")
 
 [connection signal="sensor_activate" from="Gate/Sensor" to="Gate" method="_on_sensor_activate"]

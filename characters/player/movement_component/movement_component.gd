@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = speed * direction.normalized().x
 	
 	if super_jump:
-		velocity.x += 50
+		velocity.x += 30
 		super_jump = false
 	
 	if not player.is_on_floor():

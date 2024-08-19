@@ -7,9 +7,11 @@ var open:bool = false
 @onready var sensor = $Sensor
 @onready var gate_mesh = $GateMesh
 
+var remote_transform:RemoteTransform3D
+
 func _ready():
 	if gate_height != 5:
-		print(open)
+		print("adjusting gate height")
 		#adjust stuff here
 		var offset = (gate_height - 5)
 
@@ -17,6 +19,10 @@ func _ready():
 		gate_mesh.mesh.size.y += offset
 		$CollisionShape3D.shape.size.y += offset
 		sensor.position.y += offset/2
+		remote_transform = get_parent().find_child("GateRemoteTransform3D")
+		remote_transform.global_position = global_position
+		
+		
 
 
 func _on_sensor_activate(body, gate_instance) -> void:
@@ -26,7 +32,9 @@ func _on_sensor_activate(body, gate_instance) -> void:
 		print(gate_dir)
 		print(global_position.y + gate_dir)
 		#translate(Vector3i(0,10,0))
-		var tween = get_tree().create_tween()
+		var tween = get_tree().create_tween().set_parallel()
 		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.tween_property(self,"global_position:y",global_position.y+gate_dir,1)
+		tween.tween_property(remote_transform,"global_position:y",global_position.y+gate_dir,1)
+
 		open = true

@@ -5,6 +5,8 @@ extends AnimatableBody3D
 var extend:bool = false
 var shrink:bool = false
 
+var level_completed: bool = false
+
 @onready var sensor = $Sensor
 @onready var extenderMesh = $ExtenderMesh
 @onready var collisionShape = $CollisionShape3D
@@ -35,7 +37,7 @@ func _on_sensor_activate(body, extender_instance) -> void:
 		shrink = false
 
 func _on_sensor_deactivate(body, extender_instance) -> void:
-	if(!shrink): #  and body is CharacterBody3D
+	if(!shrink and !level_completed): #  and body is CharacterBody3D
 		print("detected extender deactivate!")
 		var tween = extender_instance.create_tween()
 		tween.set_parallel()
@@ -46,3 +48,8 @@ func _on_sensor_deactivate(body, extender_instance) -> void:
 		tween.tween_property(collisionShape.shape, "size", Vector3(-x_size, 0, 0), 1).as_relative().from_current()
 		shrink = true
 		extend = false
+
+
+func _on_flag_body_entered(body: Node3D) -> void:
+	if(body is Player):
+		level_completed = true
