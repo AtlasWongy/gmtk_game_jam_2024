@@ -8,7 +8,8 @@ var game_state: GameState
 
 var can_switch:bool = true
 
-var level_ref: Node3D #used for spawners to spawn new cubes in
+var level_ref: Node3D #used for spawners to spawn new cubes in\
+var game_ref: Node #used for audio controller to spawn children
 var camera_ref: Camera3D
 var level_id:int = 2
 

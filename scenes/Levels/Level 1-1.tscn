@@ -1,7 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://6nonlmjrqiry"]
 
-[ext_resource type="Material" path="res://assets/Platform.tres" id="1_ns4xa"]
-[ext_resource type="PackedScene" uid="uid://dma2hkr6ihng3" path="res://objects/Gate/gate.tscn" id="2_amt6t"]
+[ext_resource type="Material" uid="uid://j54e2f8b3hpx" path="res://assets/Platform.tres" id="1_ns4xa"]
 [ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="2_riop2"]
 [ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="3_brlvj"]
 [ext_resource type="Script" path="res://objects/Gate/Gate.gd" id="3_m1230"]

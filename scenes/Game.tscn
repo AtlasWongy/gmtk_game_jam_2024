@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://ba5c1vg5wpiy8"]
+[gd_scene load_steps=21 format=3 uid="uid://ba5c1vg5wpiy8"]
 
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_2agdx"]
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_ldty6"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_mmf7y"]
 [ext_resource type="Shader" path="res://assets/Outline.gdshader" id="2_wopco"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dkk7gn3qoo1fl" path="res://scenes/Levels/Level 1-3.tscn" id="6_1qwf0"]
 [ext_resource type="PackedScene" uid="uid://dor8mydyi755a" path="res://scenes/Levels/Level 1-4.tscn" id="8_phw8e"]
 [ext_resource type="Script" path="res://objects/death_zone.gd" id="9_5d677"]
+[ext_resource type="PackedScene" uid="uid://biuycl16q87h8" path="res://scenes/SFXOneShot.tscn" id="10_fcura"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hd050"]
 panorama = ExtResource("1_ldty6")
@@ -57,6 +59,7 @@ data = PackedVector3Array(-0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 1,
 size = Vector3(100, 1, 100)
 
 [node name="Game" type="Node"]
+script = ExtResource("1_2agdx")
 
 [node name="Level" type="Node3D" parent="."]
 script = ExtResource("1_mmf7y")
@@ -104,5 +107,7 @@ script = ExtResource("9_5d677")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/DeathZone"]
 shape = SubResource("BoxShape3D_8exy2")
+
+[node name="MusicPlayer" parent="." instance=ExtResource("10_fcura")]
 
 [connection signal="body_entered" from="Level/DeathZone" to="Level/DeathZone" method="_on_body_entered"]
