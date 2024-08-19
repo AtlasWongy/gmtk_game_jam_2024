@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://ba5c1vg5wpiy8"]
+[gd_scene load_steps=18 format=3 uid="uid://ba5c1vg5wpiy8"]
 
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_ldty6"]
-[ext_resource type="Script" path="res://scenes/level.gd" id="1_mmf7y"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_mmf7y"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="2_okfil"]
 [ext_resource type="Shader" path="res://assets/Outline.gdshader" id="2_wopco"]
 [ext_resource type="Script" path="res://objects/camera.gd" id="3_f5inm"]
 [ext_resource type="PackedScene" uid="uid://dcxqf5emy8gpx" path="res://scenes/Cubes/cube_level.tscn" id="5_0hrtp"]
@@ -49,9 +50,10 @@ size = Vector3(100, 1, 100)
 
 [node name="Game" type="Node"]
 process_mode = 1
+script = ExtResource("1_mmf7y")
 
 [node name="Level" type="Node3D" parent="."]
-script = ExtResource("1_mmf7y")
+script = ExtResource("2_okfil")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
 environment = SubResource("Environment_dqqoc")
