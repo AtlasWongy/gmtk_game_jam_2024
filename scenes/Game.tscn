@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ba5c1vg5wpiy8"]
+[gd_scene load_steps=20 format=3 uid="uid://ba5c1vg5wpiy8"]
 
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_ldty6"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_mmf7y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://objects/camera.gd" id="3_f5inm"]
 [ext_resource type="PackedScene" uid="uid://6nonlmjrqiry" path="res://scenes/Levels/Level 1-1.tscn" id="5_scypy"]
 [ext_resource type="PackedScene" uid="uid://dkk7gn3qoo1fl" path="res://scenes/Levels/Level 1-3.tscn" id="6_1qwf0"]
+[ext_resource type="PackedScene" uid="uid://cincemexwtwru" path="res://scenes/Levels/level_1_2/Level 1-2.tscn" id="7_qedl7"]
 [ext_resource type="PackedScene" uid="uid://dor8mydyi755a" path="res://scenes/Levels/Level 1-4.tscn" id="8_phw8e"]
 [ext_resource type="Script" path="res://objects/death_zone.gd" id="9_5d677"]
 
@@ -91,6 +92,9 @@ script = ExtResource("3_a5qgd")
 shape = SubResource("ConcavePolygonShape3D_h8te1")
 
 [node name="Level 1-1" parent="Level/CubeLevel" instance=ExtResource("5_scypy")]
+
+[node name="Level 1-2" parent="Level/CubeLevel" instance=ExtResource("7_qedl7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 29.5173, -3.97368, 10.6219)
 
 [node name="Level 1-3" parent="Level/CubeLevel" instance=ExtResource("6_1qwf0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -26.4462)
