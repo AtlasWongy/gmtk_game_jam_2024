@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ba5c1vg5wpiy8"]
+[gd_scene load_steps=21 format=3 uid="uid://ba5c1vg5wpiy8"]
 
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_ldty6"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_mmf7y"]
@@ -6,9 +6,13 @@
 [ext_resource type="Script" path="res://objects/camera.gd" id="3_f5inm"]
 [ext_resource type="PackedScene" uid="uid://dcxqf5emy8gpx" path="res://scenes/Cubes/cube_level.tscn" id="5_0hrtp"]
 [ext_resource type="Script" path="res://objects/death_zone.gd" id="9_5d677"]
+[ext_resource type="Texture2D" uid="uid://lhhxs2nen6d2" path="res://assets/A_KEY.png" id="10_2qyh6"]
 [ext_resource type="PackedScene" uid="uid://jqec1by0rjjf" path="res://ui/main_menu/MainMenu.tscn" id="11_5koxc"]
+[ext_resource type="Texture2D" uid="uid://cgwwimhh3j8l5" path="res://assets/D_KEY.png" id="11_l7nhk"]
 [ext_resource type="PackedScene" uid="uid://yukq0n0iyq0a" path="res://ui/GameStarter.tscn" id="12_4uf55"]
+[ext_resource type="Texture2D" uid="uid://brtm7njnxv35" path="res://assets/RED_CUBE.png" id="12_i3wdd"]
 [ext_resource type="PackedScene" uid="uid://bmdid0ws3ju5s" path="res://ui/game_over_menu/GameOverMenu.tscn" id="13_ckthi"]
+[ext_resource type="Texture2D" uid="uid://d2e2jwmf3m3qn" path="res://assets/ARROW.png" id="13_y8n7e"]
 [ext_resource type="PackedScene" uid="uid://be0pid4rg5rph" path="res://ui/timer_ui/TimerUI.tscn" id="14_y4048"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hd050"]
@@ -93,6 +97,38 @@ offset_right = 424.0
 offset_bottom = -6.0
 
 [node name="TimerUI" parent="CanvasLayer" instance=ExtResource("14_y4048")]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 41.0
+offset_top = 199.0
+offset_right = 105.0
+offset_bottom = 263.0
+texture = ExtResource("10_2qyh6")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 235.0
+offset_top = 203.0
+offset_right = 299.0
+offset_bottom = 267.0
+texture = ExtResource("11_l7nhk")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 123.0
+offset_top = 188.0
+offset_right = 219.0
+offset_bottom = 284.0
+texture = ExtResource("12_i3wdd")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer"]
+offset_left = 321.0
+offset_top = 207.0
+offset_right = 385.0
+offset_bottom = 271.0
+texture = ExtResource("13_y8n7e")
+expand_mode = 1
 
 [node name="GameStarter" parent="." instance=ExtResource("12_4uf55")]
 
