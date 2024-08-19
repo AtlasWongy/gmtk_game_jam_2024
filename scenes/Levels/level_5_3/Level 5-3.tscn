@@ -31,7 +31,7 @@ size = Vector3(1, 5, 1)
 size = Vector3(3, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8m27"]
-size = Vector3(1, 5, 1.5)
+size = Vector3(3, 5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ux5w0"]
 size = Vector3(1, 5, 1.5)
@@ -64,8 +64,8 @@ bottom_radius = 0.25
 height = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ef61p"]
-height = 0.75
-radius = 1.0
+height = 0.5
+radius = 0.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnq7q"]
 albedo_color = Color(0.734674, 0.378967, 0.972729, 1)
