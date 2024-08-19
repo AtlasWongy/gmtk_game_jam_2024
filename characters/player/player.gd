@@ -16,6 +16,7 @@ var is_grown:bool = false
 var is_changing:bool = false
 var is_shrunk:bool = true
 var is_growing:bool = false #use for tracking super jumps
+var is_poison: bool = false
 
 var tween:Tween
 
@@ -54,6 +55,15 @@ func _destroy_cube(cube:GameManager.CurrentBox):
 
 func _input(event: InputEvent) -> void:
 	
+	if event.is_action_pressed("switch_box") and event.is_pressed() and GameManager.can_switch:
+		SignalBus.set_current_box.emit()
+    	
+	if event.is_action_released("switch_box") and event.is_released() and !GameManager.can_switch:
+		SignalBus.set_enable_switch.emit()
+	
+	if is_poison:
+		return
+	
 	if !can_control:
 		return
 
@@ -80,18 +90,11 @@ func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("shrink") or event.is_action_pressed("shrink_right")) and !is_changing:
 		_shrink_right()
 	
-	if event.is_action_pressed("switch_box") and event.is_pressed() and GameManager.can_switch:
-		SignalBus.set_current_box.emit()
 	
-	if event.is_action_released("switch_box") and event.is_released() and !GameManager.can_switch:
-		SignalBus.set_enable_switch.emit()
 	
 func _physics_process(_delta: float) -> void:
 	if is_movement_ongoing():
 		SignalBus.set_direction.emit(movement_direction, box_type)
-# 		
-# 	if is_on_ceiling():
-# 		print("bonk")
 
 func is_movement_ongoing() -> bool:
 	return abs(movement_direction.x) > 0
