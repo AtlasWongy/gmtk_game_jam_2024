@@ -42,7 +42,6 @@ func _level_complete():
 func _set_camera(cam:Camera3D):
 	camera_ref = cam
 
-
 func _disable_switch():
 	can_switch = false
 
