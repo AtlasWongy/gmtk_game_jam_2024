@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lhhxs2nen6d2"
-path.s3tc="res://.godot/imported/A_KEY.png-321ff5bb4de27c1f995ec07910e8b572.s3tc.ctex"
+uid="uid://drcrnvj0kumyo"
+path.s3tc="res://.godot/imported/SWITCH.png-ff9d0b0adf145c8c5bff007fab08ca36.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/A_KEY.png"
-dest_files=["res://.godot/imported/A_KEY.png-321ff5bb4de27c1f995ec07910e8b572.s3tc.ctex"]
+source_file="res://assets/SWITCH.png"
+dest_files=["res://.godot/imported/SWITCH.png-ff9d0b0adf145c8c5bff007fab08ca36.s3tc.ctex"]
 
 [params]
 

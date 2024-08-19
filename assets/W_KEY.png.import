@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lhhxs2nen6d2"
-path.s3tc="res://.godot/imported/A_KEY.png-321ff5bb4de27c1f995ec07910e8b572.s3tc.ctex"
+uid="uid://buyvoy202u0qx"
+path.s3tc="res://.godot/imported/W_KEY.png-b09341ab18ab937ebc1d3f115bd2fe0a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/A_KEY.png"
-dest_files=["res://.godot/imported/A_KEY.png-321ff5bb4de27c1f995ec07910e8b572.s3tc.ctex"]
+source_file="res://assets/W_KEY.png"
+dest_files=["res://.godot/imported/W_KEY.png-b09341ab18ab937ebc1d3f115bd2fe0a.s3tc.ctex"]
 
 [params]
 

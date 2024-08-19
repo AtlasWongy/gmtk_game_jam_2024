@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkk7gn3qoo1fl"]
+[gd_scene load_steps=9 format=3 uid="uid://dkk7gn3qoo1fl"]
 
-[ext_resource type="Material" uid="uid://j54e2f8b3hpx" path="res://assets/Platform.tres" id="1_jrstr"]
+[ext_resource type="Material" uid="uid://4fklhayl8xgb" path="res://assets/Platform.tres" id="1_jrstr"]
 [ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="2_kyncm"]
 [ext_resource type="PackedScene" uid="uid://dma2hkr6ihng3" path="res://objects/Gate/gate.tscn" id="3_xla1g"]
 [ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="4_a2wmm"]
+[ext_resource type="Texture2D" uid="uid://cb2jtox1ai0k6" path="res://assets/FAR_JUMP.png" id="5_2nu5i"]
+[ext_resource type="Texture2D" uid="uid://bgq7jv0p0ukpc" path="res://assets/HIGH_JUMP.png" id="6_b1kg5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6dsyq"]
 material = ExtResource("1_jrstr")
@@ -58,6 +60,16 @@ shape = SubResource("ConcavePolygonShape3D_1njj0")
 transform = Transform3D(1, 3.41771e-12, 0, -3.29488e-11, 1, 0, 0, 0, 1, 0.000271678, 1.5186, -1.00512)
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -10.545, 10.849, -1.2)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -10.545, 19.743, -1.2)
 text = "Level 1-3: High Jump, Long Jump
 "
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.914535, 11.2169, 0)
+pixel_size = 0.02
+texture = ExtResource("5_2nu5i")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8179, 11.8102, 0)
+pixel_size = 0.02
+texture = ExtResource("6_b1kg5")

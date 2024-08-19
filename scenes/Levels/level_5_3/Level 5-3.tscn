@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://nk6mxiop4uej"]
+[gd_scene load_steps=48 format=3 uid="uid://nk6mxiop4uej"]
 
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/platform_3.gd" id="1_745v0"]
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/elevator.gd" id="1_bvmsf"]
@@ -9,20 +9,37 @@
 [ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="7_ws5tv"]
 [ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="8_xdu7f"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uso8k"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.85098, 0.772549, 0.14902, 1)
+roughness = 0.02
+
 [sub_resource type="BoxMesh" id="BoxMesh_4g246"]
+material = SubResource("StandardMaterial3D_uso8k")
 size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wratr"]
 size = Vector3(3, 5, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hhcp"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.85098, 0.772549, 0.14902, 1)
+roughness = 0.02
+
 [sub_resource type="BoxMesh" id="BoxMesh_msxth"]
+material = SubResource("StandardMaterial3D_4hhcp")
 size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rv5fw"]
 size = Vector3(3, 5, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnlhp"]
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.361033, 0.41265, 0.867114, 1)
+roughness = 0.02
 
 [sub_resource type="BoxMesh" id="BoxMesh_qacrk"]
 material = SubResource("StandardMaterial3D_cnlhp")
@@ -31,50 +48,91 @@ size = Vector3(3, 5, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d2fn7"]
 size = Vector3(3, 5, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5u0w"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.85098, 0.772549, 0.14902, 1)
+roughness = 0.02
+
 [sub_resource type="BoxMesh" id="BoxMesh_5pky3"]
+material = SubResource("StandardMaterial3D_x5u0w")
 size = Vector3(3, 12, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8m27"]
 size = Vector3(3, 12, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75j1c"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.85098, 0.772549, 0.14902, 1)
+roughness = 0.02
+
 [sub_resource type="BoxMesh" id="BoxMesh_oy1mn"]
+material = SubResource("StandardMaterial3D_75j1c")
 size = Vector3(3, 12, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4rw2y"]
 size = Vector3(3, 12, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oniii"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.85098, 0.772549, 0.14902, 1)
+roughness = 0.02
+
 [sub_resource type="BoxMesh" id="BoxMesh_ux5w0"]
+material = SubResource("StandardMaterial3D_oniii")
 size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cex36"]
 size = Vector3(3, 5, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hs5uu"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.85098, 0.772549, 0.14902, 1)
+roughness = 0.02
+
 [sub_resource type="BoxMesh" id="BoxMesh_j4v37"]
+material = SubResource("StandardMaterial3D_hs5uu")
 size = Vector3(1.5, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwl43"]
 size = Vector3(1.5, 1, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdn11"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.700559, 0.438109, 0.389438, 1)
+roughness = 0.02
+
 [sub_resource type="BoxMesh" id="BoxMesh_ck3b0"]
+material = SubResource("StandardMaterial3D_cdn11")
 size = Vector3(3, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0i62b"]
 size = Vector3(3, 1, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx7dh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_viy2e"]
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.581216, 0.340224, 0.48687, 1)
+roughness = 0.02
 
 [sub_resource type="BoxMesh" id="BoxMesh_hp4hp"]
-material = SubResource("StandardMaterial3D_jx7dh")
+material = SubResource("StandardMaterial3D_viy2e")
 size = Vector3(1, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cecgn"]
 size = Vector3(1, 1, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6p83"]
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.729092, 0.212333, 0.213337, 1)
+roughness = 0.02
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_hb5ym"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_lxlx0"]
 material = SubResource("StandardMaterial3D_b6p83")
 top_radius = 0.1
 bottom_radius = 0.25
@@ -84,34 +142,40 @@ height = 0.5
 height = 0.5
 radius = 0.3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0dib"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wx4ii"]
 render_priority = 0
 shader = ExtResource("3_egruf")
 
 [sub_resource type="SphereMesh" id="SphereMesh_37xjv"]
-material = SubResource("ShaderMaterial_b0dib")
+material = SubResource("ShaderMaterial_wx4ii")
 radius = 0.25
 height = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_munjc"]
 radius = 0.25
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wligp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nat1"]
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.372304, 0.690403, 0.528468, 1)
+roughness = 0.02
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kk7v5"]
-material = SubResource("StandardMaterial3D_wligp")
+material = SubResource("StandardMaterial3D_1nat1")
 radius = 0.25
 height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6uksv"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov4hw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnj6l"]
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.513726, 1, 0.431373, 1)
+roughness = 0.02
 
 [sub_resource type="BoxMesh" id="BoxMesh_n5il7"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_ov4hw")
+material = SubResource("StandardMaterial3D_vnj6l")
 size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wg2s"]
@@ -206,7 +270,7 @@ shape = SubResource("BoxShape3D_cecgn")
 
 [node name="ElevatorSwitch" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.25, 0)
-mesh = SubResource("CylinderMesh_hb5ym")
+mesh = SubResource("CylinderMesh_lxlx0")
 
 [node name="Area3D" type="Area3D" parent="ElevatorSwitch"]
 
