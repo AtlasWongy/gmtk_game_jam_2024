@@ -3,9 +3,13 @@ extends Node
 enum CurrentBox {RED_BOX, BLUE_BOX}
 enum GameState {NOT_STARTED, RUNNING, PAUSED, GAME_OVER}
 
-var game_scenes = {
-	0: "res://scenes/Game.tscn",
-	1: "res://scenes/Game2.tscn"
+# var game_scenes = {
+# 	0: "res://scenes/Game.tscn",
+# 	1: "res://scenes/Game2.tscn"
+# }
+
+var cube_levels = {
+	1: "res://scenes/cube_level_2.tscn"
 }
 
 var current_scene = null
@@ -25,7 +29,7 @@ func _ready() -> void:
 	SignalBus.set_current_box.connect(_set_current_box)
 	SignalBus.level_complete.connect(_level_complete)
 	SignalBus.get_camera.connect(_set_camera)
-	SignalBus.transition_next_level.connect(_switch_scene)
+	SignalBus.transition_next_level.connect(_switch_cube_level)
 	
 	root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
@@ -81,15 +85,44 @@ func toggle_game_over() -> void:
 	SignalBus.set_game_over_menu.emit(true)
 	get_tree().paused = false
 	
-func _switch_scene() -> void:
-	call_deferred("_deferred_switch_scene", game_scenes[1])
+func _switch_cube_level() -> void:
+	# Reset Level Id
+	level_id = 0
 	
-func _deferred_switch_scene(_res_path) -> void:
-	current_scene.free()
-	var next_scene = load(_res_path)
-	current_scene = next_scene.instantiate()
-	get_tree().root.add_child(current_scene)
-	get_tree().current_scene = current_scene
+	# Close Game Over Menu
+	# Game State back to NOT_STARTED
+	_on_set_game_state(GameManager.GameState.NOT_STARTED)
+	SignalBus.set_game_over_menu.emit(false)
+	
+	# Reset Timer
+	SignalBus.reset_timer_ui.emit()
+	call_deferred("_deferred_switch_cube_level", cube_levels[1])
+	
+func _deferred_switch_cube_level(_res_path) -> void:
+	var cube_level = current_scene.get_child(0).get_child(3)
+	var tween: Tween = create_tween()
+	await tween.tween_property(cube_level, "global_position:y", -100.0, 1.0).as_relative().from_current().set_trans(Tween.TRANS_SPRING).finished
+	
+	cube_level.free()
+	var next_cube_level = load(_res_path)
+	cube_level = next_cube_level.instantiate()
+	current_scene.get_child(0).add_child(cube_level)
+	cube_level.global_position = Vector3(0, 100.0, 0)
+
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	await tween.tween_property(cube_level, "global_position:y", -100, 1.0).as_relative().from_current().as_relative().from_current().set_trans(Tween.TRANS_SPRING).finished
+	
+	# Spawn Players
+	# Unpause the game
+	
+# For my Reference (Yi Jie) will remove later towards the end	
+# 	current_scene.free()
+# 	var next_scene = load(_res_path)
+# 	current_scene = next_scene.instantiate()
+# 	get_tree().root.add_child(current_scene)
+# 	get_tree().current_scene = current_scene
 
 
 	

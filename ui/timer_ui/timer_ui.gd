@@ -11,6 +11,7 @@ var elapsed_time = 0
 var str_elapsed
 
 func _ready() -> void:
+	SignalBus.reset_timer_ui.connect(_reset_timer)
 	start_time = Time.get_unix_time_from_datetime_dict(Time.get_datetime_dict_from_system())
 	
 func _process(_delta: float) -> void:
@@ -25,7 +26,9 @@ func _process(_delta: float) -> void:
 	elapsed_time_secs = elapsed_time % 60
 	str_elapsed = "%02d : %02d" % [elapsed_time_minutes, elapsed_time_secs]
 	time_label.text = str_elapsed
-	
+
+func _reset_timer() -> void:
+	time_label.text = "00:00"
 	
 
 
