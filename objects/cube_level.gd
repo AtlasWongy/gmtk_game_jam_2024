@@ -2,7 +2,7 @@ extends MeshInstance3D
 
 var rotating:bool = false
 @export var level:int = 0 #0,1,2 etc
-@export var game_over_menu: GameOverMenu
+@onready var game_over_menu: GameOverMenu = get_node("../../CanvasLayer/GameOver") 
 
 func _ready():
 	SignalBus.change_face.connect(_on_flag_change_face)

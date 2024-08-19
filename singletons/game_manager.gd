@@ -9,7 +9,7 @@ enum GameState {NOT_STARTED, RUNNING, PAUSED, GAME_OVER}
 # }
 
 var cube_levels = {
-	1: "res://scenes/cube_level_2.tscn"
+	1: "res://scenes/Cubes/cube_level_2.tscn"
 }
 
 var current_scene = null
@@ -115,7 +115,10 @@ func _deferred_switch_cube_level(_res_path) -> void:
 	await tween.tween_property(cube_level, "global_position:y", -100, 1.0).as_relative().from_current().as_relative().from_current().set_trans(Tween.TRANS_SPRING).finished
 	
 	# Spawn Players
-	# Unpause the game
+	SignalBus.spawn_cube.emit(GameManager.CurrentBox.RED_BOX, GameManager.level_id)
+	SignalBus.spawn_cube.emit(GameManager.CurrentBox.BLUE_BOX, GameManager.level_id)
+	
+	_on_set_game_state(GameManager.GameState.RUNNING)
 	
 # For my Reference (Yi Jie) will remove later towards the end	
 # 	current_scene.free()

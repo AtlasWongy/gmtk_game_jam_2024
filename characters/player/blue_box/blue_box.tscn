@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c80ku4vswsnix"]
+[gd_scene load_steps=8 format=3 uid="uid://c80ku4vswsnix"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_4wx10"]
 [ext_resource type="PackedScene" uid="uid://bscn1d5ohdjge" path="res://characters/player/movement_component/movement_component.tscn" id="2_dj43y"]
 [ext_resource type="Resource" uid="uid://csh141ks4txp6" path="res://characters/player/blue_box/blue_box_movement.tres" id="2_xvp5m"]
+[ext_resource type="Resource" uid="uid://dn5xau7dp82mt" path="res://characters/player/poison_movement.tres" id="3_q4lsh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58jym"]
 albedo_color = Color(0.401333, 0.86, 0.3096, 1)
@@ -21,6 +22,7 @@ size = Vector3(0.5, 0.5, 0.5)
 script = ExtResource("1_4wx10")
 box_type = 1
 movement_stats = ExtResource("2_xvp5m")
+poisoned_stats = ExtResource("3_q4lsh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_gurk2")

@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcxqf5emy8gpx"]
+
+[ext_resource type="Script" path="res://objects/cube_level.gd" id="1_uxnds"]
+[ext_resource type="PackedScene" uid="uid://6nonlmjrqiry" path="res://scenes/Levels/Level 1-1.tscn" id="2_7neub"]
+[ext_resource type="PackedScene" uid="uid://cincemexwtwru" path="res://scenes/Levels/level_1_2/Level 1-2.tscn" id="3_istxg"]
+[ext_resource type="PackedScene" uid="uid://dkk7gn3qoo1fl" path="res://scenes/Levels/Level 1-3.tscn" id="4_77qtn"]
+[ext_resource type="PackedScene" uid="uid://dor8mydyi755a" path="res://scenes/Levels/Level 1-4.tscn" id="5_t2jln"]
+[ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="6_jwyy8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvsc4"]
+albedo_color = Color(0.54902, 0.305882, 0.823529, 0.776471)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sxh4v"]
+material = SubResource("StandardMaterial3D_vvsc4")
+size = Vector3(50, 50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h8te1"]
+data = PackedVector3Array(-0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, -1, -0.5, 0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, 0.5, -1, 0.5, 0.5, -1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, -0.5, -1)
+
+[node name="CubeLevel" type="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_sxh4v")
+skeleton = NodePath("../..")
+script = ExtResource("1_uxnds")
+level = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_h8te1")
+
+[node name="Level 1-1" parent="." instance=ExtResource("2_7neub")]
+
+[node name="Level 1-2" parent="." instance=ExtResource("3_istxg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 29.5173, -3.97368, 12.0606)
+
+[node name="Level 1-3" parent="." instance=ExtResource("4_77qtn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -26.4462)
+
+[node name="Level 1-4" parent="." instance=ExtResource("5_t2jln")]
+transform = Transform3D(-0.00872653, 0, -0.999962, 0, 1, 0, 0.999962, 0, -0.00872653, -26.6974, -6.3836, 9.97897)
+
+[node name="Flag" parent="Level 1-4" instance=ExtResource("6_jwyy8")]
+transform = Transform3D(-4.37722e-08, 0, 1, 0, 1, 0, -1, 0, -4.37722e-08, -23.0401, 2.56983, 1.20054)
+
+[node name="LevelCompleteLabel" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 15, 26, 0)
+text = "LEVEL COMPLETE"
+font_size = 1080
+outline_size = 100
