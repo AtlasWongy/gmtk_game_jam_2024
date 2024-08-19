@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://yukq0n0iyq0a"]
+
+[ext_resource type="Script" path="res://ui/game_starter.gd" id="1_lpc83"]
+
+[node name="GameStarter" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_lpc83")
