@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://caeo0rdboae5c"]
+
+[ext_resource type="Texture2D" uid="uid://ykta602s8mv0" path="res://assets/Buttons-182.png" id="1_kaegk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wuvit"]
+texture = ExtResource("1_kaegk")
+expand_margin_left = 16.0
+expand_margin_top = 8.0
+expand_margin_right = 16.0
+expand_margin_bottom = 8.0
+
+[resource]
+Button/styles/normal = SubResource("StyleBoxTexture_wuvit")

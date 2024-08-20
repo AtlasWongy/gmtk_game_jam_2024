@@ -16,6 +16,9 @@ var item_placed
 var orignal_mesh_position
 var original_collision_position
 
+var count = 0
+var current_body
+
 func _ready():
 	orignal_mesh_position = extenderMesh.get_position()
 	original_collision_position = collisionShape.get_position()
@@ -45,11 +48,16 @@ func _on_sensor_activate(body) -> void:
 			item_placed = true
 		else:
 			item_placed = false
+			count += 1
+			
+	if (count < 1):
+		current_body = body 
+	
 
 func _on_sensor_deactivate(body) -> void:
 	if (body is RigidBody3D):
 		item_placed = false
-	if(!shrink and !item_placed and !level_completed): #  and body is CharacterBody3D
+	if(!shrink and !item_placed and !level_completed and body == current_body): #  and body is CharacterBody3D
 		print("detected extender deactivate!")
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
@@ -64,4 +72,5 @@ func _on_sensor_deactivate(body) -> void:
 		#tween.tween_property(collisionShape.shape, "size", Vector3(-x_size, 0, 0), 1).as_relative().from_current()
 		shrink = true
 		extend = false
+		count = 0
 	

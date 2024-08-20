@@ -201,16 +201,22 @@ mesh = SubResource("BoxMesh_msxth")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2/StaticBody3D"]
 shape = SubResource("BoxShape3D_rv5fw")
 
-[node name="Platform3" type="MeshInstance3D" parent="." node_paths=PackedStringArray("sensor")]
+[node name="Platform3" type="MeshInstance3D" parent="." node_paths=PackedStringArray("sensor", "platform_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -2.5, 0)
 mesh = SubResource("BoxMesh_qacrk")
 script = ExtResource("1_745v0")
 sensor = NodePath("../Sensor")
+platform_timer = NodePath("PlatformTimer")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform3"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
 shape = SubResource("BoxShape3D_d2fn7")
+
+[node name="PlatformTimer" type="Timer" parent="Platform3"]
+process_callback = 0
+wait_time = 10.0
+one_shot = true
 
 [node name="Platform4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7, 0)
@@ -249,7 +255,7 @@ mesh = SubResource("BoxMesh_j4v37")
 shape = SubResource("BoxShape3D_xwl43")
 
 [node name="Platform8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2865, 16, 0)
 mesh = SubResource("BoxMesh_ck3b0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform8"]
@@ -257,16 +263,25 @@ mesh = SubResource("BoxMesh_ck3b0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform8/StaticBody3D"]
 shape = SubResource("BoxShape3D_0i62b")
 
-[node name="Elevator" type="MeshInstance3D" parent="." node_paths=PackedStringArray("elevator_switch")]
+[node name="Flag" parent="Platform8" instance=ExtResource("8_xdu7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12066, -1.477, -0.189278)
+
+[node name="Elevator" type="MeshInstance3D" parent="." node_paths=PackedStringArray("elevator_switch", "elevator_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -4.5, 0)
 mesh = SubResource("BoxMesh_hp4hp")
 script = ExtResource("1_bvmsf")
 elevator_switch = NodePath("../ElevatorSwitch/Area3D")
+elevator_timer = NodePath("ElevatorTimer")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Elevator"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/StaticBody3D"]
 shape = SubResource("BoxShape3D_cecgn")
+
+[node name="ElevatorTimer" type="Timer" parent="Elevator"]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
 
 [node name="ElevatorSwitch" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.25, 0)
@@ -318,8 +333,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -1)
 cube_type = 1
 
-[node name="Flag" parent="." instance=ExtResource("8_xdu7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.12066, 14.523, -0.189278)
+[node name="Messages" type="Node3D" parent="."]
+
+[node name="LevelTitle" type="Label3D" parent="Messages"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06291, 19.9949, 0)
+text = "Level 2 - 1: You lift me up"
+font_size = 350
+outline_size = 100
 
 [connection signal="body_entered" from="Sensor/Area3D" to="Sensor" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Sensor/Area3D" to="Sensor" method="_on_area_3d_body_exited"]

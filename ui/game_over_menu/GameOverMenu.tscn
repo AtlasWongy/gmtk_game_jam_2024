@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmdid0ws3ju5s"]
+[gd_scene load_steps=6 format=3 uid="uid://bmdid0ws3ju5s"]
 
 [ext_resource type="Script" path="res://ui/game_over_menu/game_over_menu.gd" id="1_opk8o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bc8n"]
+bg_color = Color(0.189377, 0.700939, 0.487048, 1)
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy201"]
+bg_color = Color(0.0664854, 0.442893, 0.429628, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exmdm"]
+bg_color = Color(0.0862745, 0.533333, 0.517647, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tku4n"]
+bg_color = Color(0.0854148, 0.534622, 0.515884, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
 
 [node name="GameOver" type="PanelContainer" node_paths=PackedStringArray("retry_button", "completion_time_label")]
 anchors_preset = 8
@@ -8,12 +32,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -162.5
+offset_left = -202.5
 offset_top = -62.5
-offset_right = 162.5
+offset_right = 202.5
 offset_bottom = 62.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8bc8n")
 script = ExtResource("1_opk8o")
 retry_button = NodePath("MarginContainer/VBoxContainer/RetryButton")
 completion_time_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/TimeScore")
@@ -27,7 +52,7 @@ theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 visible = false
@@ -50,4 +75,9 @@ text = "00:00"
 
 [node name="RetryButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_styles/hover = SubResource("StyleBoxFlat_fy201")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_exmdm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tku4n")
 text = "NEXT LEVEL"

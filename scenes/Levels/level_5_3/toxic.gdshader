@@ -14,4 +14,3 @@ void fragment() {
     color.b -= mult - 0.1;
     ALBEDO = color.rgb;
 }
-

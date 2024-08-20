@@ -67,8 +67,6 @@ func lock_sensor_c() -> void:
 	is_sensor_c_locked = true
 
 func check_sensors() -> void:
-	print("sensor a: ", sensor_a_active)
-	print("sensor b: ", sensor_b_active)
 # 	if sensor_a_active and sensor_b_active and platform_4.global_position == platform_4_points[0]:
 	if sensor_a_active and sensor_b_active and platform_4.position == platform_4_points[0]:
 		if tween:
@@ -82,7 +80,9 @@ func check_sensors() -> void:
 		tween = create_tween()
 		tween.tween_property(platform_4, "position:x", -2.0, 2.0).as_relative().from_current()
 	if sensor_c_active and !is_sensor_c_locked:
+# 		lock_sensor_c()
 		if tween:
 			tween.kill()
 		tween = create_tween()
-		tween.tween_property(platform_5, "global_rotation:z", 1.5708, 2.0).as_relative().from_current().finished.connect(lock_sensor_c)
+		tween.tween_property(platform_5, "global_rotation:z", 1.5708, 2.0).as_relative().from_current()
+		# .finished.connect(lock_sensor_c)
