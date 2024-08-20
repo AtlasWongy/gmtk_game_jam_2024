@@ -84,7 +84,7 @@ lock_rotation = true
 
 [node name="Extender2" parent="." instance=ExtResource("3_laj76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8285, -1.83924, 0)
-x_size = 20
+x_size = 22
 x_offset = 10
 
 [node name="Platform2" type="MeshInstance3D" parent="."]
