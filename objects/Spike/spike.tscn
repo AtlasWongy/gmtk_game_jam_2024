@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4cp1lc48pfg4"]
+
+[ext_resource type="Script" path="res://objects/death_zone.gd" id="1_er5vj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_whqkn"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.168449, 0.117115, 0.000763053, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_1km5e"]
+material = SubResource("StandardMaterial3D_whqkn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j5xmi"]
+size = Vector3(0.975, 1, 1)
+
+[node name="Spike" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0794921, 0.471798, 0)
+mesh = SubResource("PrismMesh_1km5e")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_er5vj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_j5xmi")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
