@@ -14,6 +14,7 @@ var jump_gravity: float = fall_gravity
 var _box_type:int
 
 var super_jump:bool = false
+var super_jump_left:bool = false
 #do hammer style over acceleration deceleration here?
 
 func _ready() -> void:
@@ -39,6 +40,10 @@ func _physics_process(delta: float) -> void:
 	if super_jump:
 		velocity.x += 30
 		super_jump = false
+	
+	if super_jump_left:
+		velocity.x -= 30
+		super_jump_left = false
 	
 	if not player.is_on_floor():
 		if player.is_on_ceiling():
@@ -68,23 +73,32 @@ func _on_set_direction(_direction: Vector3, box_type:int):
 	direction = _direction
 	
 func _on_pressed_jump(box_type:int):
+	var super_jumped:bool = false
 	if(box_type != _box_type):
 		return
 	velocity.y = 2 * jump_height / apex_duration
 	for i in player.get_slide_collision_count():
 		var col = player.get_slide_collision(i)
-
 		if col.get_collider() is Player:
 			var player_col: Player = col.get_collider()
+			print("The player: ", i)
+			print("Is the player changing: ", player.is_changing)
+			print("Is the player growing: ", player.is_growing)
 			if player_col.is_changing and player_col.is_growing:
+				SignalBus.pressed_super_jump.emit()
+				super_jumped = true
 				if player_col.box_type == 1:
 					velocity.y += 60
 					print("bonus jump")
 				else:
-					super_jump = true
+					if player_col.grow_horizontal_direction:
+						super_jump = true
+					else:
+						super_jump_left = true
 					print("bonus horizontal jump")
-				
+
 			print("touching player while jumping")
-			
+	if !super_jumped:
+		SignalBus.pressed_jump_sfx.emit()
 
 	jump_gravity = velocity.y / apex_duration

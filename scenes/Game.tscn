@@ -1,14 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://ba5c1vg5wpiy8"]
+[gd_scene load_steps=19 format=3 uid="uid://ba5c1vg5wpiy8"]
 
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_ldty6"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_mmf7y"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="2_okfil"]
 [ext_resource type="Shader" path="res://assets/Outline.gdshader" id="2_wopco"]
 [ext_resource type="Script" path="res://objects/camera.gd" id="3_f5inm"]
-[ext_resource type="PackedScene" uid="uid://dcxqf5emy8gpx" path="res://scenes/Cubes/cube_level.tscn" id="5_0hrtp"]
+[ext_resource type="PackedScene" uid="uid://dcxqf5emy8gpx" path="res://scenes/Cubes/cube_level.tscn" id="5_1hg5v"]
 [ext_resource type="Script" path="res://objects/death_zone.gd" id="9_5d677"]
 [ext_resource type="PackedScene" uid="uid://jqec1by0rjjf" path="res://ui/main_menu/MainMenu.tscn" id="11_5koxc"]
+[ext_resource type="AudioStream" uid="uid://bfhu7wuc0dbqm" path="res://assets/music/Skybox.wav" id="11_qhjwx"]
 [ext_resource type="PackedScene" uid="uid://yukq0n0iyq0a" path="res://ui/GameStarter.tscn" id="12_4uf55"]
+[ext_resource type="Script" path="res://scenes/music_player.gd" id="12_iicbd"]
 [ext_resource type="PackedScene" uid="uid://bmdid0ws3ju5s" path="res://ui/game_over_menu/GameOverMenu.tscn" id="13_ckthi"]
 [ext_resource type="PackedScene" uid="uid://be0pid4rg5rph" path="res://ui/timer_ui/TimerUI.tscn" id="14_y4048"]
 
@@ -59,7 +61,7 @@ script = ExtResource("2_okfil")
 environment = SubResource("Environment_dqqoc")
 
 [node name="Marker3D" type="Marker3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.9498)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9165, 8.36049, 38.9498)
 
 [node name="Camera3D" type="Camera3D" parent="Level/Marker3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7958, 5.0653, 15.6581)
@@ -73,7 +75,7 @@ mesh = SubResource("QuadMesh_i8euw")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -109.868, 93.6658, 81.3825)
 
-[node name="CubeLevel" parent="Level" instance=ExtResource("5_0hrtp")]
+[node name="CubeLevel" parent="Level" instance=ExtResource("5_1hg5v")]
 
 [node name="DeathZone" type="Area3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45, 0)
@@ -89,13 +91,18 @@ process_mode = 3
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("13_ckthi")]
 visible = false
-offset_left = 99.0
-offset_top = -131.0
-offset_right = 424.0
-offset_bottom = -6.0
+offset_left = 10.0
+offset_top = -79.0
+offset_right = 415.0
+offset_bottom = 46.0
 
 [node name="TimerUI" parent="CanvasLayer" instance=ExtResource("14_y4048")]
 
 [node name="GameStarter" parent="." instance=ExtResource("12_4uf55")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_qhjwx")
+autoplay = true
+script = ExtResource("12_iicbd")
 
 [connection signal="body_entered" from="Level/DeathZone" to="Level/DeathZone" method="_on_body_entered"]

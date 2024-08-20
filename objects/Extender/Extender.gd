@@ -11,45 +11,66 @@ var level_completed: bool = false
 @onready var extenderMesh = $ExtenderMesh
 @onready var collisionShape = $CollisionShape3D
 
-var extender_id
+var item_placed
+
+var orignal_mesh_position
+var original_collision_position
+
+var count = 0
+var current_body
 
 func _ready():
-	extender_id = "Extender_%d" % get_instance_id()
-	print(extender_id)
-	print("Ready Extender: ", extender_id)
+	orignal_mesh_position = extenderMesh.get_position()
+	original_collision_position = collisionShape.get_position()
 	#sensor.connect(self, "_on_sensor_activate", [self])
 	#sensor.connect(self, "_on_sensor_deactivate", [self])
 	
 	
-func _on_sensor_activate(body, extender_instance) -> void:
+func _on_sensor_activate(body) -> void:
 	print("detected extender activate!")
-	print(extender_instance)
-	if(!extend and "Extender_%d" % get_instance_id() == "Extender_%d" % extender_instance.get_instance_id()): # and body is CharacterBody3D
-		var tween = extender_instance.create_tween()
-		print(extender_instance)
+	SignalBus.interactable_sfx.emit()
+	if(!extend and !item_placed): # and body is CharacterBody3D
+		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-		tween.tween_property(extender_instance.get_node("ExtenderMesh"), "position", Vector3(x_offset, 0, 0), 1).as_relative().from_current()
-		tween.tween_property(extender_instance.get_node("CollisionShape3D"), "position", Vector3(x_offset, 0, 0), 1).as_relative().from_current()
-		tween.tween_property(extender_instance.get_node("ExtenderMesh").mesh, "size", Vector3(x_size, 0, 0), 1).as_relative().from_current()
-		tween.tween_property(extender_instance.get_node("CollisionShape3D").shape, "size", Vector3(x_size, 0, 0), 1).as_relative().from_current()
+		tween.tween_property(extenderMesh, "position", Vector3(orignal_mesh_position.x + x_offset, 0, 0), 1)
+		tween.tween_property(collisionShape, "position", Vector3(original_collision_position.x + x_offset, 0, 0), 1)
+		tween.tween_property(extenderMesh.mesh, "size", Vector3(x_size, 1, 5), 1)
+		tween.tween_property(collisionShape.shape, "size", Vector3(x_size, 1, 5), 1)
+		#tween.tween_property(extenderMesh, "position", Vector3(x_offset, 0, 0), 1).as_relative().from_current()
+		#tween.tween_property(collisionShape, "position", Vector3(x_offset, 0, 0), 1).as_relative().from_current()
+		#tween.tween_property(extenderMesh.mesh, "size", Vector3(x_size, 0, 0), 1).as_relative().from_current()
+		#tween.tween_property(collisionShape.shape, "size", Vector3(x_size, 0, 0), 1).as_relative().from_current()
 		extend = true
 		shrink = false
+		
+		if (body is RigidBody3D):
+			item_placed = true
+		else:
+			item_placed = false
+			count += 1
+			
+	if (count < 1):
+		current_body = body 
+	
 
-func _on_sensor_deactivate(body, extender_instance) -> void:
-	if(!shrink and !level_completed): #  and body is CharacterBody3D
+func _on_sensor_deactivate(body) -> void:
+	if (body is RigidBody3D):
+		item_placed = false
+	if(!shrink and !item_placed and !level_completed and body == current_body): #  and body is CharacterBody3D
 		print("detected extender deactivate!")
-		var tween = extender_instance.create_tween()
+		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-		tween.tween_property(extenderMesh, "position", Vector3(-x_offset, 0, 0), 1).as_relative().from_current()
-		tween.tween_property(collisionShape, "position", Vector3(7, 0, 0), 1).as_relative().from_current()
-		tween.tween_property(extenderMesh.mesh, "size", Vector3(-x_size, 0, 0), 1).as_relative().from_current()
-		tween.tween_property(collisionShape.shape, "size", Vector3(-x_size, 0, 0), 1).as_relative().from_current()
+		tween.tween_property(extenderMesh, "position", orignal_mesh_position, 1)
+		tween.tween_property(collisionShape, "position", original_collision_position, 1)
+		tween.tween_property(extenderMesh.mesh, "size", Vector3(3, 1, 5), 1)
+		tween.tween_property(collisionShape.shape, "size", Vector3(3, 1, 5), 1)
+		#tween.tween_property(extenderMesh, "position", Vector3(-x_offset, 0, 0), 1).as_relative().from_current()
+		#tween.tween_property(collisionShape, "position", Vector3(-x_offset, 0, 0), 1).as_relative().from_current()
+		#tween.tween_property(extenderMesh.mesh, "size", Vector3(-x_size, 0, 0), 1).as_relative().from_current()
+		#tween.tween_property(collisionShape.shape, "size", Vector3(-x_size, 0, 0), 1).as_relative().from_current()
 		shrink = true
 		extend = false
-
-
-func _on_flag_body_entered(body: Node3D) -> void:
-	if(body is Player):
-		level_completed = true
+		count = 0
+	

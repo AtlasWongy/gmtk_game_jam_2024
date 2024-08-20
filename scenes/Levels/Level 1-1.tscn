@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://6nonlmjrqiry"]
+[gd_scene load_steps=29 format=3 uid="uid://6nonlmjrqiry"]
 
 [ext_resource type="Material" uid="uid://4fklhayl8xgb" path="res://assets/Platform.tres" id="1_ns4xa"]
 [ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="2_riop2"]
@@ -6,6 +6,15 @@
 [ext_resource type="Script" path="res://objects/Gate/Gate.gd" id="3_m1230"]
 [ext_resource type="Shader" path="res://assets/Outline.gdshader" id="4_7qygw"]
 [ext_resource type="PackedScene" uid="uid://bds0d08hg7ipj" path="res://objects/Sensor/Sensor.tscn" id="5_yyeek"]
+[ext_resource type="Texture2D" uid="uid://brtm7njnxv35" path="res://assets/RED_CUBE.png" id="7_sigvf"]
+[ext_resource type="Texture2D" uid="uid://lhhxs2nen6d2" path="res://assets/A_KEY.png" id="8_pcx72"]
+[ext_resource type="Texture2D" uid="uid://cgwwimhh3j8l5" path="res://assets/D_KEY.png" id="9_ro1y7"]
+[ext_resource type="Texture2D" uid="uid://d2e2jwmf3m3qn" path="res://assets/ARROW.png" id="10_24ww4"]
+[ext_resource type="Texture2D" uid="uid://bri77oaiudbl5" path="res://assets/GREEN_CUBE.png" id="11_njtr5"]
+[ext_resource type="Texture2D" uid="uid://buwj7b3crramx" path="res://assets/S_KEY.png" id="12_5m5le"]
+[ext_resource type="Texture2D" uid="uid://buyvoy202u0qx" path="res://assets/W_KEY.png" id="13_luxt8"]
+[ext_resource type="Texture2D" uid="uid://dho0defkarppx" path="res://assets/ARROW_2.png" id="14_d2jx2"]
+[ext_resource type="Texture2D" uid="uid://drcrnvj0kumyo" path="res://assets/SWITCH.png" id="15_l50f8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cq13r"]
 material = ExtResource("1_ns4xa")
@@ -110,7 +119,7 @@ shape = SubResource("ConcavePolygonShape3D_bjhtf")
 transform = Transform3D(1, 0.000189527, -0.000144131, -0.000189519, 1, 5.48818e-05, 0.00014414, -5.48545e-05, 1, -0.195686, 1.5014, -0.768833)
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(7.99995, 0.0283441, 0, -0.0283441, 7.99995, 0, 0, 0, 8, -11.777, 11.199, -7)
+transform = Transform3D(7.99995, 0.0283441, 0, -0.0283441, 7.99995, 0, 0, 0, 8, -11.9832, 23.6327, -7)
 text = "Level 1-1: Room to Grow"
 
 [node name="GateRemoteTransform3D" type="RemoteTransform3D" parent="."]
@@ -139,3 +148,53 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.052, 10.363, -7)
 text = "Press G to Grow and S to Shrink."
 
 [connection signal="sensor_activate" from="GateRemoteTransform3D/Gate/Sensor" to="GateRemoteTransform3D/Gate" method="_on_sensor_activate"]
+[node name="ControlLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="Sprite3D" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4855, 5.65836, 0)
+texture = ExtResource("7_sigvf")
+
+[node name="Sprite3D2" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1918, 5.63611, 0)
+texture = ExtResource("8_pcx72")
+
+[node name="Sprite3D3" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25419, 5.7131, 0)
+texture = ExtResource("9_ro1y7")
+
+[node name="Sprite3D4" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8052, 5.62032, 0)
+texture = ExtResource("10_24ww4")
+
+[node name="Sprite3D5" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0406, 5.41837, 0)
+flip_h = true
+texture = ExtResource("10_24ww4")
+
+[node name="Sprite3D6" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7862, 13.9845, 0)
+texture = ExtResource("11_njtr5")
+
+[node name="Sprite3D7" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 11, 0)
+texture = ExtResource("12_5m5le")
+
+[node name="Sprite3D8" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 17, 0)
+texture = ExtResource("13_luxt8")
+
+[node name="Sprite3D9" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 19, 0)
+texture = ExtResource("14_d2jx2")
+
+[node name="Sprite3D10" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 8, 0)
+flip_v = true
+texture = ExtResource("14_d2jx2")
+
+[node name="Sprite3D11" type="Sprite3D" parent="ControlLabel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2919, 13, 0)
+texture = ExtResource("15_l50f8")
+
+[connection signal="sensor_activate" from="Gate/Sensor" to="Gate" method="_on_sensor_activate"]

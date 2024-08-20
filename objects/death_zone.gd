@@ -7,8 +7,10 @@ func _on_body_entered(body: Node3D) -> void:
 		SignalBus.destroy_cube.emit(1)
 		var timer = get_tree().create_timer(1)
 		timer.timeout.connect(_respawn)
+		SignalBus.death_sfx.emit()
 	
 func _respawn():
-	
+	SignalBus.respawn_sfx.emit()
 	SignalBus.spawn_cube.emit(GameManager.CurrentBox.RED_BOX, GameManager.level_id)
 	SignalBus.spawn_cube.emit(GameManager.CurrentBox.BLUE_BOX, GameManager.level_id)
+	SignalBus.reset_level.emit()

@@ -15,7 +15,7 @@ roughness = 0.02
 material = SubResource("StandardMaterial3D_xoxe2")
 size = Vector3(12, 1, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_28s2r"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1d8f"]
 size = Vector3(12, 1, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8fid2"]
@@ -83,7 +83,17 @@ skeleton = NodePath("../../../..")
 transform = Transform3D(1, 3.41771e-12, 0, 1.0707e-11, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/StaticBody3D"]
-shape = SubResource("BoxShape3D_28s2r")
+shape = SubResource("BoxShape3D_m1d8f")
+
+[node name="Red Spawner" parent="Platform" instance=ExtResource("3_f7pbu")]
+transform = Transform3D(1, 3.41771e-12, 0, -4.02247e-11, 1, 0, 0, 0, 1, 0, 1.622, -1)
+level = 2
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.545, 14.849, -1.2)
+text = "Level 2-4: Split Focus
+
+"
 
 [node name="Platform2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -9.47561e-05, 0.000127197, 9.47623e-05, 1, -4.84132e-05, -0.000127192, 4.84252e-05, 1, -12.5, 6.5, 0)
@@ -224,7 +234,7 @@ transform = Transform3D(1, 3.41771e-12, 0, 1.0707e-11, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 3.41771e-12, 0, -2.51227e-10, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_d8qx0")
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Label3D2" type="Label3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -16.2416, 15.1191, -1.2)
 text = "Level 2-1: Split Focus
 
