@@ -25,6 +25,7 @@ func _ready():
 	
 func _on_sensor_activate(body) -> void:
 	print("detected extender activate!")
+	SignalBus.interactable_sfx.emit()
 	if(!extend and !item_placed): # and body is CharacterBody3D
 		var tween = get_tree().create_tween()
 		tween.set_parallel()

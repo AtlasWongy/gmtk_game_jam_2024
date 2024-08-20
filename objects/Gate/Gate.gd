@@ -25,11 +25,8 @@ func _ready():
 		
 func _on_sensor_activate(body) -> void:
 	if(!open and body is CharacterBody3D):
-		print("detected!")
-		print(global_position.y)
-		print(gate_dir)
-		print(global_position.y + gate_dir)
-		#translate(Vector3i(0,10,0))
+		SignalBus.interactable_sfx.emit()
+
 		var tween = get_tree().create_tween().set_parallel()
 		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.tween_property(self,"global_position:y",global_position.y+gate_dir,1)

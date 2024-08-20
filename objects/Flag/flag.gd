@@ -20,5 +20,6 @@ func _change_face():
 	timer.timeout.connect(_respawn)
 	
 func _respawn():
+	SignalBus.respawn_sfx.emit()
 	SignalBus.spawn_cube.emit(GameManager.CurrentBox.RED_BOX, GameManager.level_id)
 	SignalBus.spawn_cube.emit(GameManager.CurrentBox.BLUE_BOX, GameManager.level_id)

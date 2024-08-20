@@ -30,6 +30,7 @@ func _ready() -> void:
 	platform_4_points[1] = Vector3(platform_4.position.x + 2.0, platform_4.position.y, platform_4.position.z)
 
 func activate_sensor_a(_body: Node3D):
+	SignalBus.on_press_switch.emit()
 	num_of_players_at_a += 1
 	if num_of_players_at_a == 1:
 		sensor_a_active = true
@@ -37,12 +38,16 @@ func activate_sensor_a(_body: Node3D):
 	check_sensors()
 
 func activate_sensor_b(_body: Node3D):
+	SignalBus.on_press_switch.emit()
+
 	num_of_players_at_b += 1
 	if num_of_players_at_b == 1:
 		sensor_b_active = true
 	check_sensors()
 
 func activate_sensor_c(_body: Node3D):
+	SignalBus.on_press_switch.emit()
+
 	sensor_c_active = true
 	check_sensors()
 

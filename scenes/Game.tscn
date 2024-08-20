@@ -72,6 +72,7 @@ mesh = SubResource("QuadMesh_i8euw")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -109.868, 93.6658, 81.3825)
 
 [node name="CubeLevel" parent="Level" instance=ExtResource("5_0hrtp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="DeathZone" type="Area3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45, 0)

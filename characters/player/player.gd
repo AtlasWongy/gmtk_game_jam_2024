@@ -20,6 +20,8 @@ var is_growing:bool = false #use for tracking super jumps
 var grow_horizontal_direction:bool = false #false = left, true = right
 var is_poison: bool = false
 
+var is_landed:bool = true
+
 var tween:Tween
 
 func _ready() -> void:
@@ -97,7 +99,13 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	if is_movement_ongoing():
 		SignalBus.set_direction.emit(movement_direction, box_type)
-
+	
+	if !is_on_floor():
+		is_landed = false
+	if is_on_floor() and !is_landed:
+		is_landed = true
+		SignalBus.landing_sfx.emit()
+		
 func is_movement_ongoing() -> bool:
 	return abs(movement_direction.x) > 0
 
@@ -158,6 +166,7 @@ func _grow_animate(tween:Tween, x:float, y:float, direction:String):
 	tween.tween_property(collisionShape.shape, "size", Vector3(x, y, 0), 1).as_relative().from_current()
 	
 	tween.connect("finished", on_grown)
+	SignalBus.grow_sfx.emit()
 
 func _shrink_animate(tween:Tween, x:float, y:float, direction:String):
 	if direction == "right":
@@ -170,6 +179,7 @@ func _shrink_animate(tween:Tween, x:float, y:float, direction:String):
 	tween.tween_property(collisionShape.shape, "size", Vector3(-x, -y, 0), 1).as_relative().from_current()
 	
 	tween.connect("finished", on_shrunk)
+	SignalBus.shrink_sfx.emit()
 
 func on_shrunk():
 	is_changing = false

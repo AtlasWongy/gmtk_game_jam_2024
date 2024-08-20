@@ -73,6 +73,7 @@ func _on_set_direction(_direction: Vector3, box_type:int):
 	direction = _direction
 	
 func _on_pressed_jump(box_type:int):
+	var super_jumped:bool = false
 	if(box_type != _box_type):
 		return
 	velocity.y = 2 * jump_height / apex_duration
@@ -85,7 +86,7 @@ func _on_pressed_jump(box_type:int):
 			print(player_col.is_growing)
 			if player_col.is_changing and player_col.is_growing:
 				SignalBus.pressed_super_jump.emit()
-				
+				super_jumped = true
 				if player_col.box_type == 1:
 					velocity.y += 60
 					print("bonus jump")
@@ -97,6 +98,7 @@ func _on_pressed_jump(box_type:int):
 					print("bonus horizontal jump")
 
 			print("touching player while jumping")
-			
+	if !super_jumped:
+		SignalBus.pressed_jump_sfx.emit()
 
 	jump_gravity = velocity.y / apex_duration
