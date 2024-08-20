@@ -1,8 +1,9 @@
-extends Node
+extends RigidBody3D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	max_contacts_reported = 1
 	pass # Replace with function body.
 
 
