@@ -26,6 +26,10 @@ SignalBus="*res://singletons/signal_bus.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[gui]
+
+theme/custom_font="res://assets/KnightVision-p7Ezy.ttf"
+
 [input]
 
 movement={

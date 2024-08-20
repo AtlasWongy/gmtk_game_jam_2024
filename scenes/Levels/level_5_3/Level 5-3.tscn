@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://nk6mxiop4uej"]
+[gd_scene load_steps=50 format=3 uid="uid://nk6mxiop4uej"]
 
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/platform_3.gd" id="1_745v0"]
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/elevator.gd" id="1_bvmsf"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/cure_ball.gd" id="3_8mcdm"]
 [ext_resource type="Shader" path="res://scenes/Levels/level_5_3/toxic.gdshader" id="3_egruf"]
 [ext_resource type="Script" path="res://objects/Sensor/sensor.gd" id="4_8jdr7"]
+[ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="6_8b1hg"]
+[ext_resource type="PackedScene" uid="uid://c80ku4vswsnix" path="res://characters/player/blue_box/blue_box.tscn" id="7_gxiuj"]
 [ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="7_ws5tv"]
 [ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="8_xdu7f"]
 
@@ -201,16 +203,22 @@ mesh = SubResource("BoxMesh_msxth")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2/StaticBody3D"]
 shape = SubResource("BoxShape3D_rv5fw")
 
-[node name="Platform3" type="MeshInstance3D" parent="." node_paths=PackedStringArray("sensor")]
+[node name="Platform3" type="MeshInstance3D" parent="." node_paths=PackedStringArray("sensor", "platform_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -2.5, 0)
 mesh = SubResource("BoxMesh_qacrk")
 script = ExtResource("1_745v0")
 sensor = NodePath("../Sensor")
+platform_timer = NodePath("PlatformTimer")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform3"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3/StaticBody3D"]
 shape = SubResource("BoxShape3D_d2fn7")
+
+[node name="PlatformTimer" type="Timer" parent="Platform3"]
+process_callback = 0
+wait_time = 10.0
+one_shot = true
 
 [node name="Platform4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7, 0)
@@ -249,7 +257,7 @@ mesh = SubResource("BoxMesh_j4v37")
 shape = SubResource("BoxShape3D_xwl43")
 
 [node name="Platform8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2865, 16, 0)
 mesh = SubResource("BoxMesh_ck3b0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platform8"]
@@ -257,16 +265,25 @@ mesh = SubResource("BoxMesh_ck3b0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform8/StaticBody3D"]
 shape = SubResource("BoxShape3D_0i62b")
 
-[node name="Elevator" type="MeshInstance3D" parent="." node_paths=PackedStringArray("elevator_switch")]
+[node name="Flag" parent="Platform8" instance=ExtResource("8_xdu7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12066, -1.477, -0.189278)
+
+[node name="Elevator" type="MeshInstance3D" parent="." node_paths=PackedStringArray("elevator_switch", "elevator_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -4.5, 0)
 mesh = SubResource("BoxMesh_hp4hp")
 script = ExtResource("1_bvmsf")
 elevator_switch = NodePath("../ElevatorSwitch/Area3D")
+elevator_timer = NodePath("ElevatorTimer")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Elevator"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/StaticBody3D"]
 shape = SubResource("BoxShape3D_cecgn")
+
+[node name="ElevatorTimer" type="Timer" parent="Elevator"]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
 
 [node name="ElevatorSwitch" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.25, 0)
@@ -313,13 +330,21 @@ shape = SubResource("BoxShape3D_5wg2s")
 
 [node name="Spawner" parent="." instance=ExtResource("7_ws5tv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -1)
+visible = false
 
 [node name="Spawner2" parent="." instance=ExtResource("7_ws5tv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -1)
+visible = false
 cube_type = 1
 
-[node name="Flag" parent="." instance=ExtResource("8_xdu7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.12066, 14.523, -0.189278)
+[node name="RedBox" parent="." instance=ExtResource("6_8b1hg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 0)
+
+[node name="BlueBox" parent="." instance=ExtResource("7_gxiuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.03589, 1.19231, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.84607, 12.409)
 
 [connection signal="body_entered" from="Sensor/Area3D" to="Sensor" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Sensor/Area3D" to="Sensor" method="_on_area_3d_body_exited"]
