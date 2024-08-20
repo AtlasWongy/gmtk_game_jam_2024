@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("switch_box") and event.is_pressed() and GameManager.can_switch:
 		SignalBus.set_current_box.emit()
-    	
+		
 	if event.is_action_released("switch_box") and event.is_released() and !GameManager.can_switch:
 		SignalBus.set_enable_switch.emit()
 	
