@@ -12,3 +12,4 @@ func _respawn():
 	
 	SignalBus.spawn_cube.emit(GameManager.CurrentBox.RED_BOX, GameManager.level_id)
 	SignalBus.spawn_cube.emit(GameManager.CurrentBox.BLUE_BOX, GameManager.level_id)
+	SignalBus.reset_level.emit()

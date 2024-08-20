@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dor8mydyi755a"]
+[gd_scene load_steps=19 format=3 uid="uid://dor8mydyi755a"]
 
+[ext_resource type="Script" path="res://scenes/Levels/level_1_4/level_1_4.gd" id="1_m2ptj"]
 [ext_resource type="Material" uid="uid://4fklhayl8xgb" path="res://assets/Platform.tres" id="2_g0sxy"]
 [ext_resource type="PackedScene" uid="uid://b5p4a4ef147qa" path="res://objects/Extender/extender.tscn" id="3_laj76"]
 [ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="3_wordb"]
@@ -55,6 +56,7 @@ material = SubResource("StandardMaterial3D_ybkq3")
 size = Vector3(3, 5, 3)
 
 [node name="Level 1-4" type="Node3D"]
+script = ExtResource("1_m2ptj")
 
 [node name="Spawner" parent="." instance=ExtResource("3_wordb")]
 transform = Transform3D(1, -9.47563e-05, 0.000127197, 9.47624e-05, 1, -4.84132e-05, -0.000127192, 4.84254e-05, 0.999998, -17.5302, 2.12195, -0.999799)
