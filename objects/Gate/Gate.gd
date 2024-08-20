@@ -23,9 +23,7 @@ func _ready():
 		remote_transform.global_position = global_position
 		
 		
-
-
-func _on_sensor_activate(body, gate_instance) -> void:
+func _on_sensor_activate(body) -> void:
 	if(!open and body is CharacterBody3D):
 		print("detected!")
 		print(global_position.y)
