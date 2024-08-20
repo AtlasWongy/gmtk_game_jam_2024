@@ -33,6 +33,11 @@ func _ready() -> void:
 
 	mesh.mesh.material.emission_enabled = can_control
 	movement_direction = Vector3(0,0,0)
+	
+	mesh.position.y = 0
+	collisionShape.position.y = 0
+	mesh.mesh.size = Vector3(0.5,0.5,0.5)
+	collisionShape.shape.size = Vector3(0.5,0.5,0.5)
 
 
 func _set_can_control():

@@ -145,49 +145,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300493, 3.11371, -5.90319)
 remote_path = NodePath("../Gate")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4855, 5.65836, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4855, -2.45272, -6.60282)
 texture = ExtResource("7_sigvf")
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1918, 5.63611, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1918, -2.47497, -6.60282)
 texture = ExtResource("8_pcx72")
 
 [node name="Sprite3D3" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25419, 5.7131, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25419, -2.39798, -6.60282)
 texture = ExtResource("9_ro1y7")
 
 [node name="Sprite3D4" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8052, 5.62032, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8052, -2.49076, -6.60282)
 texture = ExtResource("10_24ww4")
 
 [node name="Sprite3D5" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0406, 5.41837, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0406, -2.69271, -6.60282)
 flip_h = true
 texture = ExtResource("10_24ww4")
 
 [node name="Sprite3D6" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7862, 13.9845, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7862, 5.87342, -6.60282)
 texture = ExtResource("11_njtr5")
 
 [node name="Sprite3D7" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 2.88892, -6.60282)
 texture = ExtResource("12_5m5le")
 
 [node name="Sprite3D8" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 17, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 8.88892, -6.60282)
 texture = ExtResource("13_luxt8")
 
 [node name="Sprite3D9" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 19, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 10.8889, -6.60282)
 texture = ExtResource("14_d2jx2")
 
 [node name="Sprite3D10" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, 8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8173, -0.111075, -6.60282)
 flip_v = true
 texture = ExtResource("14_d2jx2")
 
 [node name="Sprite3D11" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2919, 13, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2919, 14.4666, -6.60282)
 texture = ExtResource("15_l50f8")
 
 [connection signal="sensor_activate" from="Gate/Sensor" to="Gate" method="_on_sensor_activate"]
