@@ -142,7 +142,7 @@ func _resize_down():
 		is_changing = true
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
-		_shrink_animate(tween, 0, 5, "up")
+		_shrink_animate(tween, 0, 5, "down")
 
 func _grow_animate(tween:Tween, x:float, y:float, direction:String):
 	if direction == "right":
@@ -151,6 +151,9 @@ func _grow_animate(tween:Tween, x:float, y:float, direction:String):
 	elif direction == "left":
 		tween.tween_property(mesh, "position", Vector3(-x/2, y/2, 0), 1).as_relative().from_current()
 		tween.tween_property(collisionShape, "position", Vector3(-x/2, y/2, 0), 1).as_relative().from_current()
+	elif direction == "up":
+		tween.tween_property(mesh, "position", Vector3(x/2, (y+2)/2, 0), 1).as_relative().from_current()
+		tween.tween_property(collisionShape, "position", Vector3(x/2, (y+2)/2, 0), 1).as_relative().from_current()
 	tween.tween_property(mesh.mesh, "size", Vector3(x, y, 0), 1).as_relative().from_current()
 	tween.tween_property(collisionShape.shape, "size", Vector3(x, y, 0), 1).as_relative().from_current()
 	
