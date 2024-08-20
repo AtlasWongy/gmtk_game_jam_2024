@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://jqec1by0rjjf"]
+[gd_scene load_steps=5 format=3 uid="uid://jqec1by0rjjf"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_0apmf"]
 [ext_resource type="FontFile" uid="uid://dxrusiu7nqpuo" path="res://assets/KnightVision-p7Ezy.ttf" id="2_apvnv"]
+[ext_resource type="Theme" uid="uid://ddb7c616c3qbd" path="res://ui/button_theme.tres" id="3_6hrbj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f16j0"]
 bg_color = Color(0.289959, 0.639114, 0.842497, 1)
@@ -53,5 +54,6 @@ alignment = 1
 
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_6hrbj")
 theme_override_font_sizes/font_size = 48
 text = "Start Game"
