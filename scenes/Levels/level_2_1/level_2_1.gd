@@ -19,7 +19,7 @@ const platform_up_coords = Vector3(-2.15,7.5,0)
 const platform_down_coords = Vector3(-2.15,6.5,0)
 
 func _physics_process(delta:float):
-	if(GameManager.level_id != 0):
+	if(GameManager.level_id != 2):
 		return
 	
 	if(gate_up):
@@ -45,6 +45,7 @@ func _physics_process(delta:float):
 
 func _on_laser_blocked(id: int) -> void:
 	if(id==0):
+		print("LAZER ME")
 		gate_up = true
 	elif(id==1):
 		laser_rotated = true

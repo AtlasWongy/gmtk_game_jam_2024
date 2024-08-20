@@ -10,7 +10,7 @@ var gate_position
 func _ready():
 	movable_item = $MovableItem
 	movable_item_position = movable_item.get_position()
-	gate = $Gate
+	gate = $GateRemoteTransform3D/Gate
 	gate_position = gate.get_position()
 	SignalBus.reset_level.connect(_reset_items)
 	

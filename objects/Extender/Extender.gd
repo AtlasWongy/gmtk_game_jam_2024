@@ -27,6 +27,9 @@ func _ready():
 	
 	
 func _on_sensor_activate(body) -> void:
+	if (count < 1):
+		current_body = body 
+	
 	print("detected extender activate!")
 	SignalBus.interactable_sfx.emit()
 	if(!extend and !item_placed): # and body is CharacterBody3D
@@ -50,8 +53,7 @@ func _on_sensor_activate(body) -> void:
 			item_placed = false
 			count += 1
 			
-	if (count < 1):
-		current_body = body 
+	
 	
 
 func _on_sensor_deactivate(body) -> void:

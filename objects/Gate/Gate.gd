@@ -7,7 +7,7 @@ var open:bool = false
 @onready var sensor = $Sensor
 @onready var gate_mesh = $GateMesh
 
-var remote_transform:RemoteTransform3D
+var remote_transform: RemoteTransform3D
 
 func _ready():
 	if gate_height != 5:
@@ -19,8 +19,8 @@ func _ready():
 		gate_mesh.mesh.size.y += offset
 		$CollisionShape3D.shape.size.y += offset
 		sensor.position.y += offset/2
-		remote_transform = get_parent() #gate parent should ALWAYS be RemoteTransform3D
-		remote_transform.global_position = global_position
+# 		remote_transform = get_parent() #gate parent should ALWAYS be RemoteTransform3D
+# 		remote_transform.global_position = global_position
 		
 		
 func _on_sensor_activate(body) -> void:

@@ -1,8 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://ba5c1vg5wpiy8"]
 
 [ext_resource type="Texture2D" uid="uid://di4y3hqts0yja" path="res://assets/panorama_sky.png" id="1_ldty6"]
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_mmf7y"]
-[ext_resource type="Script" path="res://scenes/level.gd" id="2_okfil"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_mmf7y"]
 [ext_resource type="Shader" path="res://assets/Outline.gdshader" id="2_wopco"]
 [ext_resource type="Script" path="res://objects/camera.gd" id="3_f5inm"]
 [ext_resource type="PackedScene" uid="uid://dcxqf5emy8gpx" path="res://scenes/Cubes/cube_level.tscn" id="5_1hg5v"]
@@ -52,16 +51,15 @@ size = Vector3(100, 1, 100)
 
 [node name="Game" type="Node"]
 process_mode = 1
-script = ExtResource("1_mmf7y")
 
 [node name="Level" type="Node3D" parent="."]
-script = ExtResource("2_okfil")
+script = ExtResource("1_mmf7y")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
 environment = SubResource("Environment_dqqoc")
 
 [node name="Marker3D" type="Marker3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9165, 8.36049, 38.9498)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.81079, 2.46114, 41.1192)
 
 [node name="Camera3D" type="Camera3D" parent="Level/Marker3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7958, 5.0653, 15.6581)

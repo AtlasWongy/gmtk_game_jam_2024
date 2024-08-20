@@ -9,7 +9,7 @@ func _ready() -> void:
 	sensor.sensor_activate.connect(_on_sensor_activate)
 	platform_timer.timeout.connect(_on_reset_platform)
 	
-func _on_sensor_activate(_body: Node3D, _parent: Node) -> void:
+func _on_sensor_activate(_body: Node3D) -> void:
 	if !is_sensor_used:
 		is_sensor_used = true
 		if tween:

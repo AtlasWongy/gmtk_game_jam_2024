@@ -4,6 +4,7 @@ extends AnimatableBody3D
 @export var gate_height:int = 5
 
 var open:bool = false
+var count: int = 0
 
 @onready var sensor = $Sensor
 @onready var gate_mesh = $GateMesh
@@ -25,7 +26,8 @@ func _ready():
 		
 		
 func _on_sensor_activate(body) -> void:
-	if(!open and body is CharacterBody3D):
+	if(!open and body is CharacterBody3D and count == 0):
+		count += 1
 		print("detected!")
 		print(global_position.y)
 		print(up_gate_dir)

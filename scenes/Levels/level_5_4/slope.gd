@@ -7,7 +7,7 @@ var boulder_count: int = 0
 func _ready() -> void:
 	sensor.sensor_activate.connect(_on_sensor_activate)
 	
-func _on_sensor_activate(_body: Node3D, _parent: Node3D) -> void:
+func _on_sensor_activate(_body: Node3D) -> void:
 	boulder_count += 1
 	if boulder_count == 1:
 		var boulder = boulder_scene.instantiate()

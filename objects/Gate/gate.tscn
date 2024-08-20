@@ -29,6 +29,7 @@ albedo_color = Color(0.619434, 0.794691, 0.869058, 1)
 roughness = 0.02
 
 [sub_resource type="BoxMesh" id="BoxMesh_egucu"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_fx6m6")
 size = Vector3(3, 5, 3)
 

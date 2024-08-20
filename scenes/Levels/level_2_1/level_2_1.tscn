@@ -85,13 +85,9 @@ transform = Transform3D(1, 3.41771e-12, 0, 1.0707e-11, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/StaticBody3D"]
 shape = SubResource("BoxShape3D_m1d8f")
 
-[node name="Red Spawner" parent="Platform" instance=ExtResource("3_f7pbu")]
-transform = Transform3D(1, 3.41771e-12, 0, -4.02247e-11, 1, 0, 0, 0, 1, 0, 1.622, -1)
-level = 2
-
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.545, 14.849, -1.2)
-text = "Level 2-4: Split Focus
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -13.1148, 17.7812, -1.2)
+text = "Level 2-3: Split Focus
 
 "
 
@@ -153,12 +149,34 @@ shape = SubResource("ConcavePolygonShape3D_iioyl")
 [node name="Flag" parent="Platform4" instance=ExtResource("4_gfyos")]
 transform = Transform3D(1, 0.000189527, -0.000144131, -0.000189519, 1, 5.48818e-05, 0.00014414, -5.48545e-05, 1, -0.195686, 1.5014, -0.768833)
 
+[node name="Platform9" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -8.74228e-08, 4.37114e-08, 1, 1, 4.37114e-08, 8.74228e-08, 19, 10.5, 1)
+mesh = SubResource("BoxMesh_5b4x1")
+skeleton = NodePath("../Platform")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform9/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_iioyl")
+
+[node name="Platform11" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -8.74228e-08, 4.37114e-08, 1, 1, 4.37114e-08, 8.74228e-08, 19, 13.5, 1)
+mesh = SubResource("BoxMesh_5b4x1")
+skeleton = NodePath("../Platform")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platform11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform11/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_iioyl")
+
 [node name="Blue Spawner" parent="." instance=ExtResource("3_f7pbu")]
 transform = Transform3D(1, -9.47561e-05, 0.000127197, 9.47622e-05, 1, -4.84132e-05, -0.000127192, 4.84252e-05, 1, -16.0276, 8.26146, -0.996074)
 cube_type = 1
+level = 2
 
 [node name="Red Spawner" parent="." instance=ExtResource("3_f7pbu")]
 transform = Transform3D(1, -9.47561e-05, 0.000127197, 9.47622e-05, 1, -4.84132e-05, -0.000127192, 4.84252e-05, 1, -16, 2.122, -1)
+level = 2
 
 [node name="GrayGate" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 12, 0)
@@ -236,6 +254,7 @@ shape = SubResource("BoxShape3D_d8qx0")
 
 [node name="Label3D2" type="Label3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -16.2416, 15.1191, -1.2)
+visible = false
 text = "Level 2-1: Split Focus
 
 "

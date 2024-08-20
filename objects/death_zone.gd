@@ -2,7 +2,6 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if(body is CharacterBody3D):
-
 		SignalBus.destroy_cube.emit(0)
 		SignalBus.destroy_cube.emit(1)
 		var timer = get_tree().create_timer(1)

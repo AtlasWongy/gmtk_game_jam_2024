@@ -278,10 +278,12 @@ outline_size = 100
 
 [node name="Spawner" parent="." instance=ExtResource("7_ttfhv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.799, 2, -1)
+level = 1
 
 [node name="Spawner2" parent="." instance=ExtResource("7_ttfhv")]
 transform = Transform3D(1, 0, 0, 0, 0.999889, 0.0148697, 0, -0.0148697, 0.999889, -9.283, 2, -1)
 cube_type = 1
+level = 1
 
 [connection signal="body_entered" from="Platform1/ResetButton/Area3D" to="Platform1/ResetButton" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Platform1/ResetButton/Area3D" to="Platform1/ResetButton" method="_on_area_3d_body_exited"]

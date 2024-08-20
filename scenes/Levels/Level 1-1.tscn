@@ -147,7 +147,6 @@ shape = SubResource("BoxShape3D_pry5f")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.052, 10.363, -7)
 text = "Press G to Grow and S to Shrink."
 
-[connection signal="sensor_activate" from="GateRemoteTransform3D/Gate/Sensor" to="GateRemoteTransform3D/Gate" method="_on_sensor_activate"]
 [node name="ControlLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
@@ -197,4 +196,4 @@ texture = ExtResource("14_d2jx2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2919, 13, 0)
 texture = ExtResource("15_l50f8")
 
-[connection signal="sensor_activate" from="Gate/Sensor" to="Gate" method="_on_sensor_activate"]
+[connection signal="sensor_activate" from="GateRemoteTransform3D/Gate/Sensor" to="GateRemoteTransform3D/Gate" method="_on_sensor_activate"]

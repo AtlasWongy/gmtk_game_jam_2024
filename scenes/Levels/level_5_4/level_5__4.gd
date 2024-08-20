@@ -18,7 +18,7 @@ func _ready() -> void:
 	platform_5_sensor.sensor_activate.connect(_on_platform_5_sensor_activate)
 	reset_button.sensor_activate.connect(_on_reset_level)
 	
-func _on_platform_5_sensor_activate(_body: Node3D, _parent: Node3D) -> void:
+func _on_platform_5_sensor_activate(_body: Node3D) -> void:
 	if !is_platform_5_sensor_locked:
 		is_platform_5_sensor_locked = true
 		if platform_5_tween:
@@ -36,7 +36,7 @@ func _trigger_platform_4() -> void:
 	await platform_4_tween.tween_property(platform_4, "rotation:z", 1.5708, 2.0).as_relative().from_current().finished
 	platform_4_can_reset = true
 		
-func _on_reset_level(_body: Node3D, _parent: Node3D) -> void:
+func _on_reset_level(_body: Node3D) -> void:
 	if is_reset_button_active:
 		is_reset_button_active = false
 		slope.boulder_count = 0

@@ -23,10 +23,12 @@ columns = 2
 
 [node name="TimeLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Time: "
 
 [node name="Time" type="Label" parent="GridContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "00:00"

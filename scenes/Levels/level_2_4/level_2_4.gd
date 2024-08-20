@@ -31,3 +31,5 @@ func _reset_items():
 	movable_item_3.set_position(movable_item_position_3)
 	movable_item_2.set_position(movable_item_2_position)
 	gate.set_position(gate_position)
+	gate.open = false
+	gate.count = 0
