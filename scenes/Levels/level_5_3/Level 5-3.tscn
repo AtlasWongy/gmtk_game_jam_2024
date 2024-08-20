@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://nk6mxiop4uej"]
+[gd_scene load_steps=48 format=3 uid="uid://nk6mxiop4uej"]
 
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/platform_3.gd" id="1_745v0"]
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/elevator.gd" id="1_bvmsf"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://scenes/Levels/level_5_3/cure_ball.gd" id="3_8mcdm"]
 [ext_resource type="Shader" path="res://scenes/Levels/level_5_3/toxic.gdshader" id="3_egruf"]
 [ext_resource type="Script" path="res://objects/Sensor/sensor.gd" id="4_8jdr7"]
-[ext_resource type="PackedScene" uid="uid://d1qp5smneb3jt" path="res://characters/player/red_box/red_box.tscn" id="6_8b1hg"]
-[ext_resource type="PackedScene" uid="uid://c80ku4vswsnix" path="res://characters/player/blue_box/blue_box.tscn" id="7_gxiuj"]
 [ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="7_ws5tv"]
 [ext_resource type="PackedScene" uid="uid://d1e0ugdqkbr86" path="res://objects/Flag/flag.tscn" id="8_xdu7f"]
 
@@ -330,21 +328,18 @@ shape = SubResource("BoxShape3D_5wg2s")
 
 [node name="Spawner" parent="." instance=ExtResource("7_ws5tv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -1)
-visible = false
 
 [node name="Spawner2" parent="." instance=ExtResource("7_ws5tv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -1)
-visible = false
 cube_type = 1
 
-[node name="RedBox" parent="." instance=ExtResource("6_8b1hg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 0)
+[node name="Messages" type="Node3D" parent="."]
 
-[node name="BlueBox" parent="." instance=ExtResource("7_gxiuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.03589, 1.19231, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.84607, 12.409)
+[node name="LevelTitle" type="Label3D" parent="Messages"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06291, 19.9949, 0)
+text = "Level 2 - 1: You lift me up"
+font_size = 350
+outline_size = 100
 
 [connection signal="body_entered" from="Sensor/Area3D" to="Sensor" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Sensor/Area3D" to="Sensor" method="_on_area_3d_body_exited"]

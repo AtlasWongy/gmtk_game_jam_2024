@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3ym0qjuv0cdl"]
 
 [ext_resource type="Script" path="res://scenes/Levels/level_2_1/level_2_1.gd" id="1_vcq4f"]
-[ext_resource type="Material" uid="uid://j54e2f8b3hpx" path="res://assets/Platform.tres" id="2_wgqv6"]
+[ext_resource type="Material" uid="uid://4fklhayl8xgb" path="res://assets/Platform.tres" id="2_wgqv6"]
 [ext_resource type="PackedScene" uid="uid://cuu7y6g7d73p8" path="res://objects/Spawner/spawner.tscn" id="3_f7pbu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8fid2"]
@@ -34,8 +34,8 @@ transform = Transform3D(1, 3.41771e-12, 0, -4.02247e-11, 1, 0, 0, 0, 1, 0, 1.622
 level = 2
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -10.545, 10.849, -1.2)
-text = "Level 2-1: Split Focus
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.545, 14.849, -1.2)
+text = "Level 2-4: Split Focus
 
 "
 
