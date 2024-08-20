@@ -17,6 +17,7 @@ var is_grown:bool = false
 var is_changing:bool = false
 var is_shrunk:bool = true
 var is_growing:bool = false #use for tracking super jumps
+var grow_horizontal_direction:bool = false #false = left, true = right
 var is_poison: bool = false
 
 var tween:Tween
@@ -102,17 +103,17 @@ func is_movement_ongoing() -> bool:
 
 func _resize_right():
 	if (box_type == 0):
+		grow_horizontal_direction = true
+		is_growing = true
+		is_changing = true
+
 		if !is_grown:
-			is_changing = true
 			var tween = get_tree().create_tween()
 			tween.set_parallel()
-			is_growing = true
 			_grow_animate(tween, 5, 0, "right")
 		elif !is_shrunk:
-			is_changing = true
 			var tween = get_tree().create_tween()
 			tween.set_parallel()
-			is_growing = true
 			_shrink_animate(tween, 5, 0, "right")
 		
 func _resize_left():
@@ -133,6 +134,7 @@ func _resize_left():
 func _resize_up():
 	if !is_grown and box_type == 1:
 		is_changing = true
+		is_growing = true
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		_grow_animate(tween, 0, 5, "up")
@@ -140,6 +142,7 @@ func _resize_up():
 func _resize_down():
 	if !is_shrunk and box_type == 1:
 		is_changing = true
+		is_growing = true
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		_shrink_animate(tween, 0, 5, "up")

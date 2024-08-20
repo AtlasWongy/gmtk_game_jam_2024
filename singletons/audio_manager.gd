@@ -1,10 +1,15 @@
 extends Node
 
+@onready var player = preload("res://scenes/SFXOneShot/SFXOneShot.tscn")
+
+var super_jump_sfx = preload("res://assets/sfx/jump5.ogg")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	SignalBus.pressed_super_jump.connect(_on_super_jump)
+	
+func _on_super_jump():
+	var sfx = player.instantiate()
+	get_tree().get_root().add_child(sfx)
+	sfx.play_sound(super_jump_sfx)
+	sfx.volume_db = -16

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://du8kpxy1f7cou"]
+
+[ext_resource type="Script" path="res://scenes/SFXOneShot/sfx_one_shot.gd" id="1_l3gh0"]
+
+[node name="SFXOneShot" type="AudioStreamPlayer"]
+script = ExtResource("1_l3gh0")
