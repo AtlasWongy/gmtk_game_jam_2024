@@ -40,8 +40,6 @@ func _set_can_control():
 
 
 func _destroy_cube(cube: GameManager.CurrentBox):
-	print("The cube is: ", cube)
-	print("The box type is: ",box_type)
 	if cube==box_type:
 		mesh.position.y = 0
 		collisionShape.position.y = 0
@@ -135,6 +133,7 @@ func _resize_left():
 func _resize_up():
 	if !is_grown and box_type == 1:
 		is_changing = true
+		is_growing = true
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		_grow_animate(tween, 0, 5, "up")
@@ -142,6 +141,7 @@ func _resize_up():
 func _resize_down():
 	if !is_shrunk and box_type == 1:
 		is_changing = true
+		is_growing = true
 		var tween = get_tree().create_tween()
 		tween.set_parallel()
 		_shrink_animate(tween, 0, 5, "up")

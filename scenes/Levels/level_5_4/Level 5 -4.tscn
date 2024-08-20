@@ -264,9 +264,16 @@ shape = SubResource("BoxShape3D_j7pim")
 [node name="Message" type="Node3D" parent="."]
 
 [node name="Warning" type="Label3D" parent="Message"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87854, 10.671, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5892, 13.744, 0)
 text = "Boulder Ahead"
-font_size = 420
+font_size = 260
+outline_size = 50
+
+[node name="LevelTitle" type="Label3D" parent="Message"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.13204, 20.4736, 0)
+text = "Level 2 - 2: Teamwork
+"
+font_size = 350
 outline_size = 100
 
 [node name="Spawner" parent="." instance=ExtResource("7_ttfhv")]

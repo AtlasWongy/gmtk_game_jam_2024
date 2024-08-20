@@ -73,9 +73,11 @@ func _on_pressed_jump(box_type:int):
 	velocity.y = 2 * jump_height / apex_duration
 	for i in player.get_slide_collision_count():
 		var col = player.get_slide_collision(i)
-
 		if col.get_collider() is Player:
 			var player_col: Player = col.get_collider()
+			print("The player: ", i)
+			print("Is the player changing: ", player.is_changing)
+			print("Is the player growing: ", player.is_growing)
 			if player_col.is_changing and player_col.is_growing:
 				if player_col.box_type == 1:
 					velocity.y += 60
@@ -85,6 +87,4 @@ func _on_pressed_jump(box_type:int):
 					print("bonus horizontal jump")
 				
 			print("touching player while jumping")
-			
-
 	jump_gravity = velocity.y / apex_duration
