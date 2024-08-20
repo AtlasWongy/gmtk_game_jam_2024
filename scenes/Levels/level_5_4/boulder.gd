@@ -17,6 +17,12 @@ func _on_area_3d_body_entered(_body: Node3D) -> void:
 	
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
-		body._destroy_cube(GameManager.CurrentBox.RED_BOX)
-		body._destroy_cube(GameManager.CurrentBox.BLUE_BOX)
-	
+# 		body._destroy_cube(GameManager.CurrentBox.RED_BOX)
+# 		body._destroy_cube(GameManager.CurrentBox.BLUE_BOX)
+		SignalBus.destroy_cube.emit(0)
+		SignalBus.destroy_cube.emit(1)
+		var timer = get_tree().create_timer(1)
+		await timer.timeout
+		SignalBus.spawn_cube.emit(GameManager.CurrentBox.RED_BOX, GameManager.level_id)
+		SignalBus.spawn_cube.emit(GameManager.CurrentBox.BLUE_BOX, GameManager.level_id)
+

@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://scenes/Levels/level_5_4/boulder.gd" id="1_2mhfj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3vc7"]
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.495962, 0.557426, 0.688499, 1)
+roughness = 0.02
 
 [sub_resource type="SphereMesh" id="SphereMesh_xgf1w"]
 material = SubResource("StandardMaterial3D_k3vc7")
-radius = 0.25
-height = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k78my"]
-radius = 0.254601
 
 [node name="Boulder" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.409422, 6.20313, -2)

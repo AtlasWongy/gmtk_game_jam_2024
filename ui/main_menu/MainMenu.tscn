@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://jqec1by0rjjf"]
+[gd_scene load_steps=4 format=3 uid="uid://jqec1by0rjjf"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_0apmf"]
+[ext_resource type="FontFile" uid="uid://dxrusiu7nqpuo" path="res://assets/KnightVision-p7Ezy.ttf" id="2_apvnv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f16j0"]
+bg_color = Color(0.289959, 0.639114, 0.842497, 1)
+shadow_size = 40
 
 [node name="MainMenu" type="PanelContainer" node_paths=PackedStringArray("start_button")]
 anchors_preset = 8
@@ -14,6 +19,7 @@ offset_right = 575.0
 offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f16j0")
 script = ExtResource("1_0apmf")
 start_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/StartButton")
 
@@ -22,12 +28,23 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 128
+theme_override_font_sizes/bold_font_size = 128
+bbcode_enabled = true
+text = "[center]SkyBox[/center]"
+fit_content = true
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_apvnv")
 theme_override_font_sizes/font_size = 98
-text = "The Box Game"
+text = "SkyBox"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]

@@ -39,7 +39,9 @@ func _set_can_control():
 		movement_direction = Vector3(0,0,0)
 
 
-func _destroy_cube(cube:GameManager.CurrentBox):
+func _destroy_cube(cube: GameManager.CurrentBox):
+	print("The cube is: ", cube)
+	print("The box type is: ",box_type)
 	if cube==box_type:
 		mesh.position.y = 0
 		collisionShape.position.y = 0
